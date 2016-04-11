@@ -8,7 +8,7 @@ This code may only be used under the MIT style license found at LICENSE.txt
 
 var gulp = require('gulp-task-doc');
 var gulpIf = require('gulp-if');
-var minifyCss = require('gulp-minify-css');
+var cleanCSS = require('gulp-clean-css');
 var minifyHtml = require('gulp-minify-html');
 var size = require('gulp-size');
 var uglify = require('gulp-uglify');
@@ -26,7 +26,7 @@ gulp.task('html', function() {
     })))
     // Concatenate and minify styles
     // In case you are still using useref build blocks
-    .pipe(gulpIf('*.css', minifyCss()))
+    .pipe(gulpIf('*.css', cleanCSS()))
     // Minify any HTML
     .pipe(gulpIf('*.html', minifyHtml({
       quotes: true,
