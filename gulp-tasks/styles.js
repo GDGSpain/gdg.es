@@ -8,7 +8,7 @@ This code may only be used under the MIT style license found at LICENSE.txt
 
 var changed = require('gulp-changed');
 var gulp = require('gulp-task-doc');
-var minifyCss = require('gulp-minify-css');
+var cleanCSS = require('gulp-clean-css');
 var path = require('path');
 var size = require('gulp-size');
 
@@ -23,7 +23,7 @@ gulp.task('styles', function() {
     }))
     .pipe(changed(stylesPath, {extension: '.css'}))
     .pipe(gulp.dest('.tmp/' + stylesPath))
-    .pipe(minifyCss())
+    .pipe(cleanCSS())
     .pipe(gulp.dest(dist(stylesPath)))
     .pipe(size({title: stylesPath}));
 });
