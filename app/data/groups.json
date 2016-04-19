@@ -1,0 +1,110 @@
+[
+  {
+    "name": "GDG Albacete",
+    "city": "Albacete"
+  },
+  {
+    "name": "GDG Almería",
+    "city": "Almería"
+  },
+  {
+    "name": "GDG Asturias",
+    "city": "Asturias"
+  },
+  {
+    "name": "GDG Barcelona",
+    "city": "Barcelona"
+  },
+  {
+    "name": "GDG Bilbao",
+    "city": "Bilbao"
+  },
+  {
+    "name": "GDG Burgos",
+    "city": "Burgos"
+  },
+  {
+    "name": "GDG Castellón",
+    "city": "Castellón"
+  },
+  {
+    "name": "GDG Cáceres",
+    "city": "Cáceres"
+  },
+  {
+    "name": "GDG Córdoba",
+    "city": "Córdoba"
+  },
+  {
+    "name": "GDG Girona",
+    "city": "Girona"
+  },
+  {
+    "name": "GDG Gran Canaria",
+    "city": "Las Palmas de Gran Canaria"
+  },
+  {
+    "name": "GDG Granada",
+    "city": "Granada"
+  },
+  {
+    "name": "GDG Jaén",
+    "city": "Jaén"
+  },
+  {
+    "name": "GDG La Rioja",
+    "city": "Logroño"
+  },
+  {
+    "name": "GDG Lleida",
+    "city": "Lleida"
+  },
+  {
+    "name": "GDG Madrid",
+    "city": "Madrid"
+  },
+  {
+    "name": "GDG Mallorca",
+    "city": "Mallorca"
+  },
+  {
+    "name": "GDG Menorca",
+    "city": "Mahon"
+  },
+  {
+    "name": "GDG Murcia",
+    "city": "Murcia"
+  },
+  {
+    "name": "GDG Málaga",
+    "city": "Malaga"
+  },
+  {
+    "name": "GDG Ourense",
+    "city": "Ourense"
+  },
+  {
+    "name": "GDG Salamanca",
+    "city": "Salamanca"
+  },
+  {
+    "name": "GDG Santiago",
+    "city": "Santiago de Compostela"
+  },
+  {
+    "name": "GDG Sevilla",
+    "city": "Sevilla"
+  },
+  {
+    "name": "GDG Tarragona",
+    "city": "Tarragona"
+  },
+  {
+    "name": "GDG Tenerife",
+    "city": "Santa Cruz de Tenerife"
+  },
+  {
+    "name": "GDG Vigo",
+    "city": "Vigo"
+  }
+]

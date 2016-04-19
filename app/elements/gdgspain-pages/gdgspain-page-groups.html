@@ -5,6 +5,9 @@ This code may only be used under the MIT style license found at LICENSE.txt
 -->
 
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="gdgspain-pages-animation.html">
 <link rel="import" href="gdgspain-pages-shared-styles.html">
 
@@ -13,13 +16,34 @@ This code may only be used under the MIT style license found at LICENSE.txt
     <style include="gdgspain-pages-shared-styles">
       :host {
         display: block;
+
+        margin: 0 16px;
+      }
+
+      .groups-list {
+        @apply(--layout-vertical);
+      }
+
+      .groups-list paper-card {
+        margin-bottom: 16px;
       }
     </style>
+
+    <iron-ajax
+      auto
+      url="../../data/groups.json"
+      handle-as="json"
+      last-response="{{groups}}"></iron-ajax>
 
     <h1>Grupos</h1>
 
     <div class="translate-animation">
-      Contenid de grupos aquí.
+      <div class="groups-list">
+        <template is="dom-repeat" items="[[groups]]" as="group">
+          <paper-card heading="[[group.name]]">
+          </paper-card>
+        </template>
+      </div>
     </div>
   </template>
   <script>
