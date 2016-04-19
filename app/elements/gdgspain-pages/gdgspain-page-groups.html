@@ -8,6 +8,8 @@ This code may only be used under the MIT style license found at LICENSE.txt
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../gdgspain-app/gdgspain-app-icons.html">
 <link rel="import" href="gdgspain-pages-animation.html">
 <link rel="import" href="gdgspain-pages-shared-styles.html">
 
@@ -24,8 +26,32 @@ This code may only be used under the MIT style license found at LICENSE.txt
         @apply(--layout-vertical);
       }
 
-      .groups-list paper-card {
+      paper-card {
         margin-bottom: 16px;
+
+        --paper-card-actions: {
+          border-top: none;
+        };
+      }
+
+      .card-actions {
+        @apply(--layout-horizontal-reverse);
+      }
+
+      .social-networks a {
+        display: inline-block;
+
+        text-decoration: none;
+
+        color: inherit;
+        /* NOTE: Both values are needed, since some phones require the `transparent` value. */
+
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      paper-icon-button {
+        color: var(--secondary-text-color);
       }
     </style>
 
@@ -41,6 +67,19 @@ This code may only be used under the MIT style license found at LICENSE.txt
       <div class="groups-list">
         <template is="dom-repeat" items="[[groups]]" as="group">
           <paper-card heading="[[group.name]]" image="[[group.image]]">
+            <div class="card-actions">
+              <div class="social-networks">
+                <a href="[[group.googlePlus]]" tabindex="-1" target="_blank" title$="Google+ page of [[group.name]]">
+                  <paper-icon-button icon="gdgspain-app-icons:googlePlus" hidden$="[[!group.googlePlus]]"></paper-icon-button>
+                </a>
+                <a href="[[group.twitter]]" tabindex="-1" target="_blank" title$="Twitter profile of [[group.name]]">
+                  <paper-icon-button icon="gdgspain-app-icons:twitter" hidden$="[[!group.twitter]]"></paper-icon-button>
+                </a>
+                <a href="[[group.facebook]]" tabindex="-1" target="_blank" title$="Facebook page of [[group.name]]">
+                  <paper-icon-button icon="gdgspain-app-icons:facebook" hidden$="[[!group.facebook]]"></paper-icon-button>
+                </a>
+              </div>
+            </div>
           </paper-card>
         </template>
       </div>

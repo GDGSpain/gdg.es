@@ -2,136 +2,217 @@
   {
     "name": "GDG Albacete",
     "city": "Albacete",
-    "image": "images/cities/albacete.png"
+    "image": "images/cities/albacete.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/102621042210157682440"
   },
   {
     "name": "GDG Almería",
     "city": "Almería",
-    "image": "images/cities/almeria.png"
+    "image": "images/cities/almeria.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/100779332357161488372"
   },
   {
     "name": "GDG Asturias",
     "city": "Asturias",
-    "image": "images/cities/asturias.png"
+    "image": "images/cities/asturias.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/101359474493518761310"
   },
   {
     "name": "GDG Barcelona",
     "city": "Barcelona",
-    "image": "images/cities/barcelona.png"
+    "image": "images/cities/barcelona.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/103861605362659114750"
   },
   {
     "name": "GDG Bilbao",
     "city": "Bilbao",
-    "image": "images/cities/bilbao.png"
+    "image": "images/cities/bilbao.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/112983420398182870109"
   },
   {
     "name": "GDG Burgos",
     "city": "Burgos",
-    "image": "images/cities/burgos.png"
+    "image": "images/cities/burgos.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/105194801788903823438"
   },
   {
     "name": "GDG Castellón",
     "city": "Castellón",
-    "image": "images/cities/castellon.png"
+    "image": "images/cities/castellon.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/108304194216355971829"
   },
   {
     "name": "GDG Cáceres",
     "city": "Cáceres",
-    "image": "images/cities/caceres.png"
+    "image": "images/cities/caceres.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/110029291185137285136"
   },
   {
     "name": "GDG Córdoba",
     "city": "Córdoba",
-    "image": "images/cities/cordoba.png"
+    "image": "images/cities/cordoba.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/106302567584201009963"
   },
   {
     "name": "GDG Girona",
     "city": "Girona",
-    "image": "images/cities/girona.png"
+    "image": "images/cities/girona.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/101057782603674264562"
   },
   {
     "name": "GDG Gran Canaria",
     "city": "Las Palmas de Gran Canaria",
-    "image": "images/cities/las-palmas-de-gran-canaria.png"
+    "image": "images/cities/las-palmas-de-gran-canaria.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/118027875298659982093"
   },
   {
     "name": "GDG Granada",
     "city": "Granada",
-    "image": "images/cities/granada.png"
+    "image": "images/cities/granada.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/107621838547829286968"
   },
   {
     "name": "GDG Jaén",
     "city": "Jaén",
-    "image": "images/cities/jaen.png"
+    "image": "images/cities/jaen.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/116243063925737679471"
   },
   {
     "name": "GDG La Rioja",
     "city": "Logroño",
-    "image": "images/cities/logrono.png"
+    "image": "images/cities/logrono.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/107567067338388204476"
   },
   {
     "name": "GDG Lleida",
     "city": "Lleida",
-    "image": "images/cities/lleida.png"
+    "image": "images/cities/lleida.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/107962088655881499591"
   },
   {
     "name": "GDG Madrid",
     "city": "Madrid",
-    "image": "images/cities/madrid.png"
+    "image": "images/cities/madrid.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/112952310970563894279"
   },
   {
     "name": "GDG Mallorca",
     "city": "Mallorca",
-    "image": "images/cities/mallorca.png"
+    "image": "images/cities/mallorca.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/101769406777537927870"
   },
   {
     "name": "GDG Menorca",
     "city": "Mahon",
-    "image": "images/cities/mahon.png"
+    "image": "images/cities/mahon.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/100839678049320757129"
   },
   {
     "name": "GDG Murcia",
     "city": "Murcia",
-    "image": "images/cities/murcia.png"
+    "image": "images/cities/murcia.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/107657001882433902492"
   },
   {
     "name": "GDG Málaga",
     "city": "Malaga",
-    "image": "images/cities/malaga.png"
+    "image": "images/cities/malaga.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/105524274802890643642"
   },
   {
     "name": "GDG Ourense",
     "city": "Ourense",
-    "image": "images/cities/ourense.png"
+    "image": "images/cities/ourense.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/110532659286437537057"
   },
   {
     "name": "GDG Salamanca",
     "city": "Salamanca",
-    "image": "images/cities/salamanca.png"
+    "image": "images/cities/salamanca.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/107931642576280918674"
   },
   {
     "name": "GDG Santiago",
     "city": "Santiago de Compostela",
-    "image": "images/cities/santiago-de-compostela.png"
+    "image": "images/cities/santiago-de-compostela.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/106226686422101121625"
   },
   {
     "name": "GDG Sevilla",
     "city": "Sevilla",
-    "image": "images/cities/sevilla.png"
+    "image": "images/cities/sevilla.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/117186888160178861350"
   },
   {
     "name": "GDG Tarragona",
     "city": "Tarragona",
-    "image": "images/cities/tarragona.png"
+    "image": "images/cities/tarragona.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/110881000795710392242"
   },
   {
     "name": "GDG Tenerife",
     "city": "Santa Cruz de Tenerife",
-    "image": "images/cities/santa-cruz-de-tenerife.png"
+    "image": "images/cities/santa-cruz-de-tenerife.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/114098393732890092873"
   },
   {
     "name": "GDG Vigo",
     "city": "Vigo",
-    "image": "images/cities/vigo.png"
+    "image": "images/cities/vigo.png",
+    "twitter": "",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/106284181570326060854"
   }
 ]
