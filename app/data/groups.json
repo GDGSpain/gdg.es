@@ -1,110 +1,137 @@
 [
   {
     "name": "GDG Albacete",
-    "city": "Albacete"
+    "city": "Albacete",
+    "image": "images/cities/albacete.png"
   },
   {
     "name": "GDG Almería",
-    "city": "Almería"
+    "city": "Almería",
+    "image": "images/cities/almeria.png"
   },
   {
     "name": "GDG Asturias",
-    "city": "Asturias"
+    "city": "Asturias",
+    "image": "images/cities/asturias.png"
   },
   {
     "name": "GDG Barcelona",
-    "city": "Barcelona"
+    "city": "Barcelona",
+    "image": "images/cities/barcelona.png"
   },
   {
     "name": "GDG Bilbao",
-    "city": "Bilbao"
+    "city": "Bilbao",
+    "image": "images/cities/bilbao.png"
   },
   {
     "name": "GDG Burgos",
-    "city": "Burgos"
+    "city": "Burgos",
+    "image": "images/cities/burgos.png"
   },
   {
     "name": "GDG Castellón",
-    "city": "Castellón"
+    "city": "Castellón",
+    "image": "images/cities/castellon.png"
   },
   {
     "name": "GDG Cáceres",
-    "city": "Cáceres"
+    "city": "Cáceres",
+    "image": "images/cities/caceres.png"
   },
   {
     "name": "GDG Córdoba",
-    "city": "Córdoba"
+    "city": "Córdoba",
+    "image": "images/cities/cordoba.png"
   },
   {
     "name": "GDG Girona",
-    "city": "Girona"
+    "city": "Girona",
+    "image": "images/cities/girona.png"
   },
   {
     "name": "GDG Gran Canaria",
-    "city": "Las Palmas de Gran Canaria"
+    "city": "Las Palmas de Gran Canaria",
+    "image": "images/cities/las-palmas-de-gran-canaria.png"
   },
   {
     "name": "GDG Granada",
-    "city": "Granada"
+    "city": "Granada",
+    "image": "images/cities/granada.png"
   },
   {
     "name": "GDG Jaén",
-    "city": "Jaén"
+    "city": "Jaén",
+    "image": "images/cities/jaen.png"
   },
   {
     "name": "GDG La Rioja",
-    "city": "Logroño"
+    "city": "Logroño",
+    "image": "images/cities/logrono.png"
   },
   {
     "name": "GDG Lleida",
-    "city": "Lleida"
+    "city": "Lleida",
+    "image": "images/cities/lleida.png"
   },
   {
     "name": "GDG Madrid",
-    "city": "Madrid"
+    "city": "Madrid",
+    "image": "images/cities/madrid.png"
   },
   {
     "name": "GDG Mallorca",
-    "city": "Mallorca"
+    "city": "Mallorca",
+    "image": "images/cities/mallorca.png"
   },
   {
     "name": "GDG Menorca",
-    "city": "Mahon"
+    "city": "Mahon",
+    "image": "images/cities/mahon.png"
   },
   {
     "name": "GDG Murcia",
-    "city": "Murcia"
+    "city": "Murcia",
+    "image": "images/cities/murcia.png"
   },
   {
     "name": "GDG Málaga",
-    "city": "Malaga"
+    "city": "Malaga",
+    "image": "images/cities/malaga.png"
   },
   {
     "name": "GDG Ourense",
-    "city": "Ourense"
+    "city": "Ourense",
+    "image": "images/cities/ourense.png"
   },
   {
     "name": "GDG Salamanca",
-    "city": "Salamanca"
+    "city": "Salamanca",
+    "image": "images/cities/salamanca.png"
   },
   {
     "name": "GDG Santiago",
-    "city": "Santiago de Compostela"
+    "city": "Santiago de Compostela",
+    "image": "images/cities/santiago-de-compostela.png"
   },
   {
     "name": "GDG Sevilla",
-    "city": "Sevilla"
+    "city": "Sevilla",
+    "image": "images/cities/sevilla.png"
   },
   {
     "name": "GDG Tarragona",
-    "city": "Tarragona"
+    "city": "Tarragona",
+    "image": "images/cities/tarragona.png"
   },
   {
     "name": "GDG Tenerife",
-    "city": "Santa Cruz de Tenerife"
+    "city": "Santa Cruz de Tenerife",
+    "image": "images/cities/santa-cruz-de-tenerife.png"
   },
   {
     "name": "GDG Vigo",
-    "city": "Vigo"
+    "city": "Vigo",
+    "image": "images/cities/vigo.png"
   }
 ]

@@ -24,13 +24,17 @@ gulp.task('copy', function() {
     'app/data/**/*'
   ]).pipe(gulp.dest(dist('data')));
 
+  var images = gulp.src([
+    'app/images/**/*'
+  ]).pipe(gulp.dest(dist('images')));
+
   // Copy over only the bower_components we need
   // These are things which cannot be vulcanized
   var bower = gulp.src([
     'app/bower_components/{webcomponentsjs,promise-polyfill}/**/*'
   ]).pipe(gulp.dest(dist('bower_components')));
 
-  return merge(app, data, bower)
+  return merge(app, data, images, bower)
     .pipe(size({
       title: 'copy'
     }));
