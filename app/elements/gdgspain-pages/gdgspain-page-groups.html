@@ -14,6 +14,9 @@ This code may only be used under the MIT style license found at LICENSE.txt
 <link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/image-grid/image-grid.html">
+<link rel="import" href="../../bower_components/image-grid/image-grid-item.html.html">
+
 <link rel="import" href="../gdgspain-app/gdgspain-app-icons.html">
 <link rel="import" href="gdgspain-pages-animation.html">
 <link rel="import" href="gdgspain-pages-shared-styles.html">
@@ -70,23 +73,27 @@ This code may only be used under the MIT style license found at LICENSE.txt
 
     <div class="translate-animation">
       <div class="groups-list">
-        <template is="dom-repeat" items="[[groups]]" as="group" on-dom-change="_domChanged">
-          <paper-card heading="[[group.name]]" image="[[group.image]]">
-            <div class="card-actions">
-              <div class="social-networks">
-                <a href="[[group.googlePlus]]" tabindex="-1" target="_blank" title$="Google+ page of [[group.name]]">
-                  <paper-icon-button icon="gdgspain-app-icons:googlePlus" hidden$="[[!group.googlePlus]]"></paper-icon-button>
-                </a>
-                <a href="[[group.twitter]]" tabindex="-1" target="_blank" title$="Twitter profile of [[group.name]]">
-                  <paper-icon-button icon="gdgspain-app-icons:twitter" hidden$="[[!group.twitter]]"></paper-icon-button>
-                </a>
-                <a href="[[group.facebook]]" tabindex="-1" target="_blank" title$="Facebook page of [[group.name]]">
-                  <paper-icon-button icon="gdgspain-app-icons:facebook" hidden$="[[!group.facebook]]"></paper-icon-button>
-                </a>
-              </div>
-            </div>
-          </paper-card>
-        </template>
+        <image-grid>
+          <template is="dom-repeat" items="[[groups]]" as="group" on-dom-change="_domChanged">
+            <image-grid-item>
+                <paper-card heading="[[group.name]]" image="[[group.image]]">
+                <div class="card-actions">
+                  <div class="social-networks">
+                    <a href="[[group.googlePlus]]" tabindex="-1" target="_blank" title$="Google+ page of [[group.name]]">
+                      <paper-icon-button icon="gdgspain-app-icons:googlePlus" hidden$="[[!group.googlePlus]]"></paper-icon-button>
+                    </a>
+                    <a href="[[group.twitter]]" tabindex="-1" target="_blank" title$="Twitter profile of [[group.name]]">
+                      <paper-icon-button icon="gdgspain-app-icons:twitter" hidden$="[[!group.twitter]]"></paper-icon-button>
+                    </a>
+                    <a href="[[group.facebook]]" tabindex="-1" target="_blank" title$="Facebook page of [[group.name]]">
+                      <paper-icon-button icon="gdgspain-app-icons:facebook" hidden$="[[!group.facebook]]"></paper-icon-button>
+                    </a>
+                  </div>
+                </div>
+              </paper-card>
+            </image-grid-item>
+          </template>
+        </image-grid>
       </div>
     </div>
   </template>
