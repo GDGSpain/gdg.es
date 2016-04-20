@@ -1,0 +1,69 @@
+<!--
+@license
+Copyright (c) 2016 GDG Spain
+This code may only be used under the MIT style license found at LICENSE.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-in-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/transform-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
+
+<script>
+  Polymer.GDGSpainPagesAnimationImpl = {
+    properties: {
+      animationConfig: {
+        value: function() {
+          return {
+            'entry': [{
+              name: 'fade-in-animation',
+              node: this,
+              timing: {
+                delay: 400,
+                duration: 500
+              }
+            }, {
+              name: 'transform-animation',
+              node: this.$$('.translate-animation'),
+              transformOrigin: '100%',
+              transformFrom: 'translateY(30%)',
+              transformTo: 'translateY(0%)',
+              timing: {
+                delay: 200,
+                duration: 800
+              }
+            }],
+            'exit': [{
+              name: 'fade-out-animation',
+              node: this,
+              timing: {
+                delay: 100,
+                duration: 500
+              }
+            }, {
+              name: 'transform-animation',
+              node: this.$$('.translate-animation'),
+              transformOrigin: '100%',
+              transformFrom: 'translateY(0%)',
+              transformTo: 'translateY(30%)',
+              timing: {
+                delay: 100,
+                duration: 800
+              }
+            }]
+          }
+        }
+      }
+    },
+
+    ready: function() {
+      this.playAnimation('entry');
+    }
+  }
+
+  Polymer.GDGSpainPagesAnimation = [
+    Polymer.GDGSpainPagesAnimationImpl,
+    Polymer.NeonAnimationRunnerBehavior
+  ]
+</script>

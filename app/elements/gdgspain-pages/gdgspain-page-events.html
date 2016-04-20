@@ -5,20 +5,30 @@ This code may only be used under the MIT style license found at LICENSE.txt
 -->
 
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="gdgspain-pages-animation.html">
+<link rel="import" href="gdgspain-pages-shared-styles.html">
 
 <dom-module id="gdgspain-page-events">
   <template>
-    <style>
+    <style include="gdgspain-pages-shared-styles">
       :host {
         display: block;
       }
     </style>
 
-    <p>Events page</p>
+    <h1>Eventos</h1>
+
+    <div class="translate-animation">
+      Contenido de eventos aquí.
+    </div>
   </template>
   <script>
     Polymer({
-      is: 'gdgspain-page-events'
+      is: 'gdgspain-page-events',
+
+      behaviors: [
+        Polymer.GDGSpainPagesAnimation
+      ]
     });
   </script>
 </dom-module>

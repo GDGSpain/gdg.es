@@ -1,19 +1,24 @@
 language: node_js
-sudo: false
+sudo: required
+dist: trusty
 node_js:
   - '5.1'
+cache:
+  directories:
+    - node_modules
 before_script:
   - 'export DISPLAY=:99.0'
   - sh -e /etc/init.d/xvfb start
   - sleep 3
-  - npm i -g bower gulp
-  - bower i
+  - npm install -g bower gulp
+  - bower install
+  - gulp lint
 before_deploy:
   - openssl aes-256-cbc -K $encrypted_7ef9aab2215d_key -iv $encrypted_7ef9aab2215d_iv
     -in service-account.json.enc -out service-account.json -d
   - gulp
   - cp app.yaml dist/app.yaml
-  - LAST_TAG=`git describe --abbrev=0`
+  - LAST_TAG=`git describe --abbrev=0` || LAST_TAG="develop"; echo $LAST_TAG
   - DEPLOY_VERSION=${LAST_TAG//.}
 deploy:
   - provider: gae

@@ -18,6 +18,7 @@
   ],
   "globals": {
     "Polymer": false,
+    "module": false,
     "require": false
   }
 }

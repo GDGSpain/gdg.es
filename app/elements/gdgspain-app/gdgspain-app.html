@@ -21,21 +21,25 @@ This code may only be used under the MIT style license found at LICENSE.txt
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../../bower_components/iron-selector/iron-selector.html">
 
+<link rel="import" href="../../bower_components/neon-animation/neon-animated-pages.html">
+
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/paper-item/paper-item.html">
 <link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
 
 <link rel="import" href="../gdgspain-pages/gdgspain-page-events.html">
 <link rel="import" href="../gdgspain-pages/gdgspain-page-groups.html">
 <link rel="import" href="../gdgspain-pages/gdgspain-page-home.html">
 <link rel="import" href="../gdgspain-pages/gdgspain-page-logo.html">
+<link rel="import" href="../gdgspain-pages/gdgspain-page-404.html">
 
 <dom-module id="gdgspain-app">
-
   <template>
     <style>
       :host {
@@ -52,51 +56,17 @@ This code may only be used under the MIT style license found at LICENSE.txt
         display: none !important;
       }
 
-      app-header {
-        height: 212px;
+      .drawer-content {
+        overflow-y: auto;
 
-        color: #fff;
-        background-color: #3f51b5;
+        height: 100%;
       }
 
-      app-toolbar.tall {
-        height: 148px;
-      }
-
-      [title],
-      [condensed-title] {
-        font-weight: 400;
-      }
-
-      [title] {
-        margin-left: 50px;
-      }
-
-      [condensed-title] {
-        margin-left: 24px;
-      }
-
-      paper-tabs {
-        --paper-tabs-selection-bar-color: #ffffff;
-
-        width: 350px;
-      }
-
-      paper-tab a {
-        @apply(--layout-horizontal);
-        @apply(--layout-center-center);
-
-        text-decoration: none;
-        text-transform: uppercase;
-
-        color: #ffffff;
-      }
-
-      iron-selector {
+      .drawer-menu {
         display: block;
       }
 
-      iron-selector a {
+      .drawer-menu a {
         display: block;
 
         text-decoration: none;
@@ -106,77 +76,138 @@ This code may only be used under the MIT style license found at LICENSE.txt
         font-weight: 500;
       }
 
-      iron-selector a.iron-selected {
+      .drawer-menu a.iron-selected {
         background-color: #d3d5d7;
+      }
+
+      .main-header {
+        color: var(--primary-color);
+        background-color: #FFFFFF;
+      }
+
+      .main-toolbar {
+        height: 56px;
+        padding: 0 8px;
+      }
+
+      .logo-container {
+        @apply(--layout-horizontal);
+        @apply(--layout-flex);
+        @apply(--layout-center);
+
+        height: 100%;
+      }
+
+      .logo-container a {
+        display: inline-block;
+
+        width: 164px;
+        height: 34px;
+      }
+
+      .logo-container a iron-image {
+        width: 100%;
+        height: 100%;
+      }
+
+      .main-menu {
+        --paper-tabs-selection-bar-color: var(--primary-color);
+
+        width: 250px;
+        height: 100%;
+      }
+
+      .main-menu paper-tab {
+        --paper-tab-ink: var(--accent-color);
+
+        color: var(--primary-color);
+      }
+
+      .main-menu paper-tab a {
+        @apply(--layout-horizontal);
+        @apply(--layout-center-center);
+
+        text-decoration: none;
+        text-transform: uppercase;
+
+        color: inherit;
       }
     </style>
 
     <carbon-location route="{{_route}}" use-hash-as-path></carbon-location>
     <carbon-route route="{{_route}}" pattern="/:page" data="{{_routeData}}"></carbon-route>
 
+    <app-scrollpos-control selected="[[_routeData.page]]"></app-scrollpos-control>
+
+    <iron-media-query query="min-width: 600px" query-matches="{{wideLayout}}"></iron-media-query>
+
     <app-drawer-layout force-narrow>
-      <app-drawer id="drawer" swipe-open>
-        <app-header-layout has-scrolling-region>
+      <app-drawer id="drawer" swipe-open="{{!wideLayout}}">
+        <div class="drawer-content">
+          <paper-toolbar class="tall">
+            <span class="bottom">GDG Spain</span>
+          </paper-toolbar>
           <iron-selector
               selected="{{_routeData.page}}"
               attr-for-selected="data-route"
-              on-iron-activate="_drawerSelected">
+              on-iron-activate="_drawerSelected"
+              class="drawer-menu">
             <a href="#/home" data-route="home" tabindex="-1">
-              <paper-item>Home</paper-item>
+              <paper-item>Inicio</paper-item>
             </a>
             <a href="#/groups" data-route="groups" tabindex="-1">
-              <paper-item>Groups</paper-item>
+              <paper-item>Grupos</paper-item>
             </a>
             <a href="#/events" data-route="events" tabindex="-1">
-              <paper-item>Events</paper-item>
+              <paper-item>Eventos</paper-item>
             </a>
             <a href="#/logo" data-route="logo" tabindex="-1">
               <paper-item>Logo</paper-item>
             </a>
           </iron-selector>
-        </app-header-layout>
+        </div>
       </app-drawer>
 
       <app-header-layout>
-        <app-header condenses reveals effects="waterfall resize-title">
-          <app-toolbar>
+        <app-header condenses reveals effects="waterfall" class="main-header">
+          <app-toolbar class="main-toolbar">
             <paper-icon-button icon="menu" drawer-toggle hidden$="{{wideLayout}}"></paper-icon-button>
-            <span condensed-title>GDG Spain</span>
-            <paper-tabs selected="[[_routeData.page]]" attr-for-selected="data-route" hidden$="{{!wideLayout}}">
-              <paper-tab data-route="home" link>
-                <a href="#/home" tabindex="-1">Home</a>
-              </paper-tab>
+            <div class="logo-container" hidden$="{{!wideLayout}}">
+              <a href="#/home">
+                <iron-image src="../../images/gdgspain-logo.png" preload sizing="cover"></iron-image>
+              </a>
+            </div>
+            <paper-tabs
+                selected="[[_routeData.page]]"
+                attr-for-selected="data-route"
+                hidden$="{{!wideLayout}}"
+                class="main-menu">
               <paper-tab data-route="groups" link>
-                <a href="#/groups" tabindex="-1">Groups</a>
+                <a href="#/groups" tabindex="-1">Grupos</a>
               </paper-tab>
               <paper-tab data-route="events" link>
-                <a href="#/events" tabindex="-1">Events</a>
+                <a href="#/events" tabindex="-1">Eventos</a>
               </paper-tab>
               <paper-tab data-route="logo" link>
                 <a href="#/logo" tabindex="-1">Logo</a>
               </paper-tab>
             </paper-tabs>
           </app-toolbar>
-
-          <app-toolbar class="tall">
-            <h1 title>GDG Spain</h1>
-          </app-toolbar>
         </app-header>
 
-        <iron-pages selected="[[_routeData.page]]" attr-for-selected="data-route">
+        <neon-animated-pages
+            selected="[[_routeData.page]]"
+            attr-for-selected="data-route"
+            fallback-selection="404">
           <gdgspain-page-home data-route="home"></gdgspain-page-home>
           <gdgspain-page-groups data-route="groups"></gdgspain-page-groups>
           <gdgspain-page-events data-route="events"></gdgspain-page-events>
           <gdgspain-page-logo data-route="logo"></gdgspain-page-logo>
-        </iron-pages>
+          <gdgspain-page-404 data-route="404"></gdgspain-page-404>
+        </neon-animated-pages>
       </app-header-layout>
     </app-drawer-layout>
-
-    <app-scrollpos-control selected="[[_routeData.page]]"></app-scrollpos-control>
-
-    <iron-media-query query="min-width: 600px" query-matches="{{wideLayout}}"></iron-media-query>
   </template>
-
   <script>
     Polymer({
       is: 'gdgspain-app',
@@ -189,17 +220,19 @@ This code may only be used under the MIT style license found at LICENSE.txt
         }
       },
 
-      ready: function() {
+      attached: function() {
         // TODO: Remove this async https://github.com/PolymerElements/carbon-route/issues/44
         this.async(function() {
           if (!this._route.path) {
             this.set('_route.path', '/home');
           }
-        }, 10);
+        });
       },
 
       _drawerSelected: function() {
-        if (!this.$.drawer.persistent) this.$.drawer.close();
+        if (!this.$.drawer.persistent) {
+          this.$.drawer.close();
+        }
       },
 
       _onLayoutChange: function(wide) {
@@ -210,5 +243,4 @@ This code may only be used under the MIT style license found at LICENSE.txt
       }
     });
   </script>
-
 </dom-module>

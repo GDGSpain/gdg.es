@@ -6,20 +6,18 @@ handlers:
 - url: /bower_components
   static_dir: bower_components
 
-- url: /(.*)\.(html|js|css)
+- url: /images
+  static_dir: images
+
+- url: /(.*)\.(html|js|json|css)
   static_files: \1.\2
-  upload: (.*)\.(html|js|css)
+  upload: (.*)\.(html|js|json|css)
 
 - url: /
   static_files: index.html
   upload: index\.html
   http_headers:
-    Link: '</scripts/app.js>; rel=preload; as=script, </elements/gdgspain-app/gdgspain-app.html>; rel=preload; as=document, </styles/main.css>; rel=preload; as=style'
-    # Access-Control-Allow-Origin: "*"
-
-- url: /.*
-  static_files: 404.html
-  upload: 404\.html
+    Link: '</elements/gdgspain-app/gdgspain-app.html>; rel=preload; as=document'
 
 skip_files:
 - ^(.*/)?app\.yaml
