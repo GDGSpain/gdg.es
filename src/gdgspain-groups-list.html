@@ -61,9 +61,8 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
         }
       }
     </style>
-
     <ul id="list" class="groups-list">
-      <template is="dom-repeat" items="[[groups]]" as="group" on-dom-change="_domChanged">
+      <template id="groups" is="dom-repeat" items="[[groups]]" as="group" on-dom-change="_domChanged" filter="_isSearch">
         <li>
           <gdgspain-group-item group="[[group]]"></gdgspain-group-item>
         </li>
@@ -80,17 +79,33 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
           type: Array
         }
       },
-
+      searchGroup:{
+        type: String
+      },
       behaviors: [
         Polymer.GDGSpainCascadedAnimation
       ],
-
+      observers: [
+        '_updateSearchFilter(searchGroup)'
+      ],
       _domChanged: function() {
         if (this.groups.length > 0) {
           var nodes = Polymer.dom(this.$.list).querySelectorAll('li');
           this.animationConfig['entry'][1].nodes = nodes;
           this.playAnimation('entry');
         }
+      },
+      _isSearch: function(group){
+        let groupName = group.name.toLowerCase();
+        console.l
+        if (groupName.indexOf(this.searchGroup.toLowerCase()) === -1 ){ 
+          return false;
+        } else {
+          return group;
+        }      
+      },
+      _updateSearchFilter: function() {
+        this.$.groups.render();
       }
     });
   </script>
