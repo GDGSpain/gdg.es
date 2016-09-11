@@ -5,10 +5,12 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
 -->
 
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../../../bower_components/app-storage/app-indexeddb-mirror/app-indexeddb-mirror.html">
 <link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../../bower_components/polymerfire/firebase-query.html">
 <link rel="import" href="../../gdgspain-animate-page.html">
+
 <link rel="import" href="../../gdgspain-shared-styles.html">
 <link rel="import" href="gdgspain-groups-list.html">
 
@@ -20,6 +22,12 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
 
         display: block;
       }
+        }
+      .searchGroup{
+        float:right;
+        margin-top: 2%;
+        width: 30%;
+      }           }
     </style>
 
     <firebase-query
@@ -33,10 +41,15 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
         persisted-data="{{persistedGroups}}">
     </app-indexeddb-mirror>
 
+    <paper-input class="searchGroup" label="Buscar grupo" type="text" value="{{searchGroup}}">
+    </paper-input>
+
+
     <h1>Grupos</h1>
 
     <div id="transformedContent">
-      <gdgspain-groups-list groups="[[persistedGroups]]"></gdgspain-groups-list>
+   <gdgspain-groups-list groups="[[persistedGroups]]" search-group="{{searchGroup}}">
+   </gdgspain-groups-list>
     </div>
   </template>
 
@@ -48,7 +61,10 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
         visible: {
           type: Boolean,
           observer: '_visibleChanged'
-        }
+        },
+        searchGroup:{
+          type: String
+        } 
       },
 
       behaviors: [
