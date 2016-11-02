@@ -8,13 +8,13 @@
     "src/pages/groups/page-groups.html",
     "src/pages/home/page-home.html"
   ],
-  "sourceGlobs": [
+  "sources": [
     "data/**/*",
     "images/**/*",
     "src/**/*",
     "bower.json"
   ],
-  "includeDependencies": [
+  "extraDependencies": [
     "bower_components/webcomponentsjs/webcomponents-lite.min.js",
     "LICENSE.txt",
     "manifest.json"

@@ -31,7 +31,7 @@ const unbundledPath = path.join(global.config.build.rootDirectory, global.config
 
 // Returns a ReadableStream of all the source files
 // Source files are those in src/** as well as anything
-// added to the sourceGlobs property of polymer.json
+// added to the sources property of polymer.json
 function splitSource() {
   return project.sources().pipe(project.splitHtml());
 }
@@ -113,8 +113,8 @@ function writeBundledServiceWorker() {
   return polymer.addServiceWorker({
     project: project,
     buildRoot: bundledPath,
-    swConfig: global.config.swPrecacheConfig,
-    serviceWorkerPath: global.config.serviceWorkerPath,
+    swPrecacheConfig: global.config.swPrecacheConfig,
+    path: global.config.serviceWorkerPath,
     bundled: true
   });
 }
@@ -124,8 +124,8 @@ function writeUnbundledServiceWorker() {
   return polymer.addServiceWorker({
     project: project,
     buildRoot: unbundledPath,
-    swConfig: global.config.swPrecacheConfig,
-    serviceWorkerPath: global.config.serviceWorkerPath
+    swPrecacheConfig: global.config.swPrecacheConfig,
+    path: global.config.serviceWorkerPath
   });
 }
 
