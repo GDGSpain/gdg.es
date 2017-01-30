@@ -82,7 +82,6 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
       properties: {
         groups: {
           type: Array,
-          observer: 'spinnerVisibility'
         },
 
         showSpinner: {
@@ -133,11 +132,6 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
 
       detached: function() {
         window.removeEventListener('resize', this._updateGridStyles);
-      },
-
-      spinnerVisibility: function() {
-        console.log(this.groups.length);
-        this.groups.length > 0 ? this.set('showSpiner', false) : this.set('showSpiner', true);
       }
     });
   </script>
