@@ -33,7 +33,8 @@
     "paper-styles": "PolymerElements/paper-styles#~1.1.0",
     "paper-tabs": "PolymerElements/paper-tabs#~1.5.0",
     "polymer": "Polymer/polymer#^1.7.0",
-    "polymerfire": "firebase/polymerfire#^0.10.0"
+    "polymerfire": "firebase/polymerfire#^0.10.0",
+    "paper-spinner": "PolymerElements/paper-spinner#^1.2.1"
   },
   "resolutions": {
     "app-storage": "patch-1"

@@ -7,6 +7,7 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/app-layout/app-grid/app-grid-style.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/paper-spinner/paper-spinner.html">
 <link rel="import" href="../app-elements/gdgspain-cascaded-animation.html">
 <link rel="import" href="group-item.html">
 
@@ -38,6 +39,12 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
         text-decoration: none;
       }
 
+      .spinner{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
       @media (min-width: 500px) {
         :host {
           --app-grid-columns: 2;
@@ -50,7 +57,9 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
         }
       }
     </style>
-
+    <div class="spinner">
+      <paper-spinner class="spinner" active="{{showSpinner}}"></paper-spinner>
+    </div>
     <ul id="list" class="groups-list app-grid">
       <template
           id="groups"
@@ -72,7 +81,13 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
 
       properties: {
         groups: {
-          type: Array
+          type: Array,
+          observer: 'spinnerVisibility'
+        },
+
+        showSpinner: {
+          type: Boolean,
+          type: true
         },
 
         filterGroups: {
@@ -86,9 +101,13 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
 
       _domChanged: function() {
         if (this.groups.length > 0) {
+          this.set('showSpinner', false);
           var nodes = Polymer.dom(this.$.list).querySelectorAll('li');
           this.animationConfig['entry'][1].nodes = nodes;
           this.playAnimation('entry');
+        }
+        else {
+          this.set('showSpinner', true);
         }
       },
 
@@ -114,6 +133,11 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
 
       detached: function() {
         window.removeEventListener('resize', this._updateGridStyles);
+      },
+
+      spinnerVisibility: function() {
+        console.log(this.groups.length);
+        this.groups.length > 0 ? this.set('showSpiner', false) : this.set('showSpiner', true);
       }
     });
   </script>
