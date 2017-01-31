@@ -30,7 +30,7 @@
     "paper-card": "PolymerElements/paper-card#~1.1.0",
     "paper-icon-button": "PolymerElements/paper-icon-button#~1.1.0",
     "paper-input": "PolymerElements/paper-input#^1.1.0",
-    "paper-spinner": "PolymerElements/paper-spinner#^1.2.1",
+    "paper-spinner": "PolymerElements/paper-spinner#^1.2.0",
     "paper-styles": "PolymerElements/paper-styles#~1.1.0",
     "paper-tabs": "PolymerElements/paper-tabs#~1.5.0",
     "polymer": "Polymer/polymer#^1.7.0",
