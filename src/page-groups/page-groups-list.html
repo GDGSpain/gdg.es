@@ -63,7 +63,7 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
       }
     </style>
     <div class="spinner-container">
-      <paper-spinner class="spinner" active="[[showSpinner]]"></paper-spinner>
+      <paper-spinner active="[[activeSpinner]]"></paper-spinner>
     </div>
 
     <ul id="list" class="groups-list app-grid">
@@ -90,7 +90,7 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
           type: Array
         },
 
-        showSpinner: {
+        activeSpinner: {
           type: Boolean,
           value: true
         },
@@ -109,9 +109,9 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
           var nodes = Polymer.dom(this.$.list).querySelectorAll('li');
           this.animationConfig['entry'][1].nodes = nodes;
           this.playAnimation('entry');
-          this.set('showSpinner', false);
+          this.set('activeSpinner', false);
         } else {
-          this.set('showSpinner', true);
+          this.set('activeSpinner', true);
         }
       },
 
