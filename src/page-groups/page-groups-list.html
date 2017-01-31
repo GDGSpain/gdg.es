@@ -17,7 +17,7 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
       :host {
         --app-grid-columns: 1;
         --app-grid-gutter: var(--margin-size);
-
+        position: relative;
         display: block;
       }
 
@@ -38,11 +38,16 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
 
         text-decoration: none;
       }
+      [hidden] {
+        display: none !important;
+      }
+      .spinner-container{
+        @apply --layout-vertical;
+        @apply --layout-center;
 
-      .spinner{
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        position: absolute;
+        top: 0;
+        width: 100%;
       }
 
       @media (min-width: 500px) {
@@ -57,9 +62,10 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
         }
       }
     </style>
-    <div class="spinner">
-      <paper-spinner class="spinner" active="{{showSpinner}}"></paper-spinner>
+    <div class="spinner-container">
+      <paper-spinner class="spinner" active="[[showSpinner]]"></paper-spinner>
     </div>
+
     <ul id="list" class="groups-list app-grid">
       <template
           id="groups"
@@ -81,12 +87,12 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
 
       properties: {
         groups: {
-          type: Array,
+          type: Array
         },
 
         showSpinner: {
           type: Boolean,
-          type: true
+          value: true
         },
 
         filterGroups: {
@@ -100,10 +106,10 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
 
       _domChanged: function() {
         if (this.groups.length > 0) {
-          this.set('showSpinner', false);
           var nodes = Polymer.dom(this.$.list).querySelectorAll('li');
           this.animationConfig['entry'][1].nodes = nodes;
           this.playAnimation('entry');
+          this.set('showSpinner', false);
         }
         else {
           this.set('showSpinner', true);

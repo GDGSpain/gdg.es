@@ -15,7 +15,6 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
 <link rel="import" href="../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
-<link rel="import" href="../bower_components/polymerfire/firebase-query.html">
 <link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-styles/typography.html">
@@ -24,6 +23,11 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
 <link rel="import" href="app-icons.html">
 <link rel="import" href="app-styles.html">
 
++<!-- TODO: Remove the firebase-query.html from here.
+ +Now, if we remove it, Firebase doesn't work, although it's already imported by
+ +page-groups.html and page-events.html -->
+ +<link rel="import" href="../bower_components/polymerfire/firebase-query.html">
+ 
 <dom-module id="app-shell">
   <template>
     <style include="app-styles">
