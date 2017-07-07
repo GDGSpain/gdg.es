@@ -65,3 +65,15 @@ application. Each new demand-loaded fragment should be added to the list of
 `fragments` in the included `polymer.json` file. This will ensure those
 components and their dependencies are added to the list of pre-cached components
 and will be included in the `bundled` build.
+
+
+### How to contribute
+
+Here are the steps to contribute to the project:
+
+1. Choose an unassigned issue or create new one.
+2. Fork the repo
+3. Create a branch in your repo with the id of the issue (we recomend call the brach like fix/123-issue-name)
+4. Make a pull request to branch master
+
+**And Remember** Make sure your fork is up to date [Syncing a fork](https://help.github.com/articles/syncing-a-fork/)
