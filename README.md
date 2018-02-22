@@ -57,7 +57,7 @@ against the browsers currently installed on your machine:
 
     polymer test
 
-### Adding a new view
+## Adding a new view
 
 You can extend the app by adding more views that will be demand-loaded
 e.g. based on the route, or to progressively render non-critical sections of the
@@ -65,3 +65,8 @@ application. Each new demand-loaded fragment should be added to the list of
 `fragments` in the included `polymer.json` file. This will ensure those
 components and their dependencies are added to the list of pre-cached components
 and will be included in the `bundled` build.
+
+
+## How to contribute
+
+The GDG Spain team loves contributions from the community! Take a look at our [contributing guide](CONTRIBUTING.md) for more information on how to contribute.
