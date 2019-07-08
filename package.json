@@ -22,11 +22,14 @@
     "gulp-replace": "^1.0.0",
     "gulp-uglify": "^3.0.0",
     "merge-stream": "^2.0.0",
-    "polymer-build": "^3.1.0"
+    "polymer-build": "^3.1.0",
+    "polymer-cli": "^1.9.10"
   },
   "scripts": {
     "postinstall": "bower install",
+    "start": "polymer serve",
     "lint": "eslint . --ext js,html --ignore-path .gitignore",
+    "test": "polymer test",
     "test:integration": "npm run build",
     "build": "gulp build",
     "build:production": "NODE_ENV=production gulp build"
