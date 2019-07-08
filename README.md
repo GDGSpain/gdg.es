@@ -43,8 +43,7 @@ This command serves the minified version of the app at `http://localhost:8080`:
 
 ## Run lint
 
-This command will run [ESLint](https://github.com/eslint/eslint) with the
-[IBM Research ESLint shareable config](https://github.com/IBMResearch/eslint-config-ibmresearch):
+This command will run [ESLint](https://github.com/eslint/eslint):
 
 ```
 npm run lint
