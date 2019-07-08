@@ -9,8 +9,6 @@ branches:
     - /^v\d/
 install:
   - yarn install
-  - yarn global add bower
-  - bower install
 script:
   - yarn run lint
   # - yarn run test

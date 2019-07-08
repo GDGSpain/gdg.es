@@ -13,7 +13,7 @@ First, install [Polymer CLI](https://github.com/Polymer/polymer-cli) using
 
 And install the dependencies:
 
-    npm install && bower install
+    npm install
 
 ## Start the development server
 
