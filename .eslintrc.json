@@ -1,6 +1,16 @@
 {
-  "extends": "ibmresearch/html",
+  "extends": "eslint:recommended",
   "globals": {
     "Polymer": true
+  },
+  "plugins": [
+    "html"
+  ],
+  "env": {
+    "browser": true
+  },
+  "settings": {
+    "html/indent": "+2",
+    "html/report-bad-indent": "error"
   }
 }
