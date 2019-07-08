@@ -1,6 +1,6 @@
 {
   "name": "gdg.es",
-  "version": "0.19.1",
+  "version": "0.20.0",
   "description": "The GDG Spain official website",
   "author": "Abdón Rodríguez Davila <a@abdonrd.com> (https://abdonrd.com)",
   "homepage": "https://gdg.es",
@@ -10,28 +10,32 @@
     "url": "https://github.com/GDGSpain/gdg.es/issues"
   },
   "devDependencies": {
-    "del": "^3.0.0",
-    "eslint": "^4.2.0",
-    "eslint-config-ibmresearch": "^0.7.0",
-    "eslint-plugin-html": "^3.1.0",
-    "gulp": "gulpjs/gulp#4.0",
-    "gulp-htmlmin": "^3.0.0",
+    "bower": "^1.8.8",
+    "del": "^5.0.0",
+    "eslint": "^6.0.0",
+    "eslint-plugin-html": "^6.0.0",
+    "gulp": "^4.0.0",
+    "gulp-htmlmin": "^5.0.0",
     "gulp-if": "^2.0.0",
-    "gulp-imagemin": "^3.3.0",
-    "gulp-jsonmin": "^1.1.0",
-    "gulp-replace": "^0.6.0",
+    "gulp-imagemin": "^6.0.0",
+    "gulp-jsonmin": "^1.2.0",
+    "gulp-replace": "^1.0.0",
     "gulp-uglify": "^3.0.0",
-    "merge-stream": "^1.0.0",
-    "polymer-build": "^1.6.0"
+    "merge-stream": "^2.0.0",
+    "polymer-build": "^3.1.0",
+    "polymer-cli": "^1.9.10"
   },
   "scripts": {
+    "postinstall": "bower install",
+    "start": "polymer serve",
     "lint": "eslint . --ext js,html --ignore-path .gitignore",
+    "test": "polymer test",
     "test:integration": "npm run build",
     "build": "gulp build",
     "build:production": "NODE_ENV=production gulp build"
   },
   "engines": {
-    "node": ">=6.0"
+    "node": "^10.0.0"
   },
   "private": true
 }

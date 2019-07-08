@@ -2,15 +2,13 @@ language: node_js
 dist: trusty
 sudo: false
 node_js:
-  - "6"
+  - "10"
 cache: yarn
 branches:
   except:
     - /^v\d/
 install:
   - yarn install
-  - yarn global add bower
-  - bower install
 script:
   - yarn run lint
   # - yarn run test

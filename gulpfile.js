@@ -76,13 +76,11 @@ function build() {
           // Let's do the some changes for production
           .pipe(gulpif(environment === 'production', replace(
             settings.authDomain.develop,
-            settings.authDomain.production,
-            { skipBinary: true }
+            settings.authDomain.production
           )))
           .pipe(gulpif(environment === 'production', replace(
             settings.databaseUrl.develop,
-            settings.databaseUrl.production,
-            { skipBinary: true }
+            settings.databaseUrl.production
           )))
 
           // Rejoin your source files.

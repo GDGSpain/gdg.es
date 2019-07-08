@@ -6,21 +6,16 @@
 
 ## Prerequisites
 
-First, install [Polymer CLI](https://github.com/Polymer/polymer-cli) using
-[npm](https://www.npmjs.com) (we assume you have pre-installed [node.js](https://nodejs.org)).
+First, install the dependencies:
 
-    npm install -g polymer-cli
-
-And install the dependencies:
-
-    npm install && bower install
+    npm install
 
 ## Start the development server
 
 This command serves the app at `http://localhost:8080` and provides basic URL
 routing for the app:
 
-    polymer serve --open
+    npm start
 
 ## Build
 
@@ -38,13 +33,12 @@ based on the entrypoint and fragments specified in `polymer.json`.
 
 This command serves the minified version of the app at `http://localhost:8080`:
 
-    polymer serve build/
+    npm start -- build/
 
 
 ## Run lint
 
-This command will run [ESLint](https://github.com/eslint/eslint) with the
-[IBM Research ESLint shareable config](https://github.com/IBMResearch/eslint-config-ibmresearch):
+This command will run [ESLint](https://github.com/eslint/eslint):
 
 ```
 npm run lint
@@ -55,7 +49,7 @@ npm run lint
 This command will run [Web Component Tester](https://github.com/Polymer/web-component-tester)
 against the browsers currently installed on your machine:
 
-    polymer test
+    npm test
 
 ## Adding a new view
 
