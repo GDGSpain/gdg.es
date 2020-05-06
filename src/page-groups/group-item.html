@@ -52,7 +52,7 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
       }
     </style>
 
-    <paper-card heading="[[group.name]]" image="[[group.image]]">
+    <paper-card heading="[[group.name]]" image="[[groupImage]]">
       <div class="card-actions">
         <div class="social-networks">
           <template is="dom-if" if="[[group.googlePlus]]">
@@ -117,7 +117,16 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
       properties: {
         group: {
           type: Object
+        },
+
+        groupImage: {
+          type: String,
+          computed: 'computeGroupImage(group)'
         }
+      },
+
+      computeGroupImage: function(group) {
+        return '../data/images/cities/' + group.imageFile;
       }
     });
   </script>
