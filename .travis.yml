@@ -1,24 +1,20 @@
 language: node_js
 dist: trusty
-sudo: false
 node_js:
-  - "10"
-cache: yarn
+  - "12"
 branches:
   except:
     - /^v\d/
-install:
-  - yarn install
 script:
-  - yarn run lint
-  # - yarn run test
-  - yarn run test:integration
+  - npm run lint
+  # - npm run test
+  - npm run test:integration
 before_deploy:
   - >
     if [ "${TRAVIS_BRANCH}" = "develop" ]; then
-      yarn run build;
+      npm run build;
     elif [ "${TRAVIS_BRANCH}" = "master" ]; then
-      yarn run build:production;
+      npm run build:production;
     fi
 deploy:
   - provider: firebase
