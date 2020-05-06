@@ -1,317 +1,318 @@
-[ {
-  "active" : true,
-  "city" : "A Coruña",
-  "facebook" : "",
-  "googlePlus" : "https://plus.google.com/110167920940975646358",
-  "id" : "110167920940975646358",
-  "imageFile" : "a-coruna.jpg",
-  "meetup" : "https://www.meetup.com/GDGCoruna",
-  "name" : "GDG A Coruña",
-  "twitter" : ""
-}, {
-  "active" : true,
-  "city" : "Alicante",
-  "facebook" : "",
-  "googlePlus" : "",
-  "id" : "",
-  "imageFile" : "alicante.jpg",
-  "meetup" : "https://www.meetup.com/GDG-Alicante",
-  "name" : "GDG Alicante",
-  "twitter" : "https://twitter.com/GDGAlicante"
-}, {
-  "active" : true,
-  "city" : "Almería",
-  "facebook" : "https://www.facebook.com/GDGAlmeria",
-  "googlePlus" : "https://plus.google.com/100779332357161488372",
-  "id" : "100779332357161488372",
-  "imageFile" : "almeria.jpg",
-  "meetup" : "https://www.meetup.com/GDGAlmeria",
-  "name" : "GDG Almería",
-  "twitter" : "https://twitter.com/GDGAlmeria"
-}, {
-  "active" : true,
-  "city" : "Asturias",
-  "facebook" : "https://www.facebook.com/GDGAsturias",
-  "googlePlus" : "https://plus.google.com/101359474493518761310",
-  "id" : "101359474493518761310",
-  "imageFile" : "asturias.jpg",
-  "meetup" : "https://www.meetup.com/GDG-Asturias",
-  "name" : "GDG Asturias",
-  "twitter" : "https://twitter.com/GDGAsturias"
-}, {
-  "active" : true,
-  "city" : "Barcelona",
-  "facebook" : "https://www.facebook.com/GDGBarcelona",
-  "googlePlus" : "https://plus.google.com/103861605362659114750",
-  "id" : "103861605362659114750",
-  "imageFile" : "barcelona.jpg",
-  "meetup" : "https://www.meetup.com/GDG-Barcelona",
-  "name" : "GDG Barcelona",
-  "twitter" : "https://twitter.com/GDGBarcelona"
-}, {
-  "active" : true,
-  "city" : "Bilbao",
-  "facebook" : "",
-  "googlePlus" : "https://plus.google.com/112983420398182870109",
-  "id" : "112983420398182870109",
-  "imageFile" : "bilbao.jpg",
-  "meetup" : "https://www.meetup.com/GDG-Bilbao",
-  "name" : "GDG Bilbao",
-  "twitter" : "http://twitter.com/GDGBilbao"
-}, {
-  "active" : true,
-  "city" : "Burgos",
-  "facebook" : "https://www.facebook.com/GDG-Burgos-776860412369012",
-  "googlePlus" : "https://plus.google.com/105194801788903823438",
-  "id" : "105194801788903823438",
-  "imageFile" : "burgos.jpg",
-  "meetup" : "https://www.meetup.com/GDG-Burgos",
-  "name" : "GDG Burgos",
-  "twitter" : "https://twitter.com/GDGBurgos"
-}, {
-  "active" : true,
-  "city" : "Castellón",
-  "facebook" : "",
-  "googlePlus" : "https://plus.google.com/108304194216355971829",
-  "id" : "108304194216355971829",
-  "imageFile" : "castellon.jpg",
-  "meetup" : "https://www.meetup.com/decharlas",
-  "name" : "GDG Castellón",
-  "twitter" : ""
-}, {
-  "active" : true,
-  "city" : "Cáceres",
-  "facebook" : "",
-  "googlePlus" : "https://plus.google.com/110029291185137285136",
-  "id" : "110029291185137285136",
-  "imageFile" : "caceres.jpg",
-  "meetup" : "https://www.meetup.com/GDGCaceres",
-  "name" : "GDG Cáceres",
-  "twitter" : "https://twitter.com/GDGCaceres"
-}, {
-  "active" : true,
-  "city" : "Cádiz",
-  "facebook" : "https://www.facebook.com/GDGCadiz",
-  "googlePlus" : "https://plus.google.com/112866714526515716260",
-  "id" : "112866714526515716260",
-  "imageFile" : "cadiz.jpg",
-  "meetup" : "https://www.meetup.com/GDGCadiz",
-  "name" : "GDG Cádiz",
-  "twitter" : "https://twitter.com/GDGCadiz"
-}, {
-  "active" : true,
-  "city" : "Córdoba",
-  "facebook" : "https://www.facebook.com/GDGCordobaESP",
-  "googlePlus" : "https://plus.google.com/106302567584201009963",
-  "id" : "106302567584201009963",
-  "imageFile" : "cordoba.jpg",
-  "meetup" : "https://www.meetup.com/GDGCordoba",
-  "name" : "GDG Córdoba",
-  "twitter" : "https://twitter.com/GDGCordobaESP"
-}, {
-  "active" : true,
-  "city" : "Las Palmas de Gran Canaria",
-  "facebook" : "",
-  "googlePlus" : "https://plus.google.com/118027875298659982093",
-  "id" : "118027875298659982093",
-  "imageFile" : "las-palmas-de-gran-canaria.jpg",
-  "meetup" : "https://www.meetup.com/GDG-GranCanaria",
-  "name" : "GDG Gran Canaria",
-  "twitter" : "https://twitter.com/GDGGranCanaria"
-}, {
-  "active" : true,
-  "city" : "Granada",
-  "facebook" : "",
-  "googlePlus" : "https://plus.google.com/107621838547829286968",
-  "id" : "107621838547829286968",
-  "imageFile" : "granada.jpg",
-  "meetup" : "https://www.meetup.com/GranadaGDG",
-  "name" : "GDG Granada",
-  "twitter" : "https://twitter.com/GDGGranada",
-  "web" : "http://gdggranada.com"
-}, {
-  "active" : true,
-  "city" : "Huelva",
-  "facebook" : "",
-  "googlePlus" : "https://plus.google.com/115953329800113550104",
-  "id" : "115953329800113550104",
-  "imageFile" : "huelva.jpg",
-  "meetup" : "https://www.meetup.com/GDG-Huelva",
-  "name" : "GDG Huelva",
-  "twitter" : ""
-}, {
-  "active" : true,
-  "city" : "Jaén",
-  "facebook" : "https://www.facebook.com/GDGJaen",
-  "googlePlus" : "https://plus.google.com/116243063925737679471",
-  "id" : "116243063925737679471",
-  "imageFile" : "jaen.jpg",
-  "meetup" : "https://www.meetup.com/GDG-Jaen",
-  "name" : "GDG Jaén",
-  "twitter" : "https://twitter.com/GDGJaen"
-}, {
-  "active" : true,
-  "city" : "Logroño",
-  "facebook" : "",
-  "googlePlus" : "https://plus.google.com/107567067338388204476",
-  "id" : "107567067338388204476",
-  "imageFile" : "logrono.jpg",
-  "meetup" : "https://www.meetup.com/GDG-La-Rioja",
-  "name" : "GDG La Rioja",
-  "twitter" : "https://twitter.com/GDGLaRioja",
-  "web" : "https://gdglarioja.blogspot.com.es"
-}, {
-  "active" : true,
-  "city" : "Lleida",
-  "facebook" : "",
-  "googlePlus" : "https://plus.google.com/107962088655881499591",
-  "id" : "107962088655881499591",
-  "imageFile" : "lleida.jpg",
-  "meetup" : "https://www.meetup.com/Google-Developer-Group-Lleida",
-  "name" : "GDG Lleida",
-  "twitter" : "https://twitter.com/GDGLleida",
-  "web" : "http://gdglleida.com"
-}, {
-  "active" : true,
-  "city" : "Madrid",
-  "facebook" : "",
-  "googlePlus" : "https://plus.google.com/112952310970563894279",
-  "id" : "112952310970563894279",
-  "imageFile" : "madrid.jpg",
-  "meetup" : "https://www.meetup.com/GDGMadrid",
-  "name" : "GDG Madrid",
-  "twitter" : "https://twitter.com/GDGMadrid",
-  "web" : "https://gdgmadrid.com"
-}, {
-  "active" : true,
-  "city" : "Mallorca",
-  "facebook" : "",
-  "googlePlus" : "https://plus.google.com/101769406777537927870",
-  "id" : "101769406777537927870",
-  "imageFile" : "mallorca.jpg",
-  "meetup" : "https://www.meetup.com/Google-Developer-Group-Mallorca",
-  "name" : "GDG Mallorca",
-  "twitter" : "https://twitter.com/GDGMallorca",
-  "web" : "https://github.com/GDGMallorca"
-}, {
-  "active" : true,
-  "city" : "Marbella",
-  "facebook" : "",
-  "googlePlus" : "",
-  "id" : "",
-  "imageFile" : "marbella.jpg",
-  "meetup" : "https://www.meetup.com/GDG-Marbella",
-  "name" : "GDG Marbella",
-  "twitter" : "https://twitter.com/GDGMarbella"
-}, {
-  "active" : true,
-  "city" : "Malaga",
-  "facebook" : "",
-  "googlePlus" : "https://plus.google.com/105524274802890643642",
-  "id" : "105524274802890643642",
-  "imageFile" : "malaga.jpg",
-  "meetup" : "https://www.meetup.com/Google-Developer-Group-Malaga",
-  "name" : "GDG Málaga",
-  "twitter" : "https://twitter.com/GDGMalaga"
-}, {
-  "active" : true,
-  "city" : "Ourense",
-  "facebook" : "",
-  "googlePlus" : "https://plus.google.com/110532659286437537057",
-  "id" : "110532659286437537057",
-  "imageFile" : "ourense.jpg",
-  "meetup" : "https://www.meetup.com/GDGOurense",
-  "name" : "GDG Ourense",
-  "twitter" : "https://twitter.com/GDGOurense"
-}, {
-  "active" : true,
-  "city" : "Salamanca",
-  "facebook" : "https://www.facebook.com/GDGSalamanca",
-  "googlePlus" : "https://plus.google.com/107931642576280918674",
-  "id" : "107931642576280918674",
-  "imageFile" : "salamanca.jpg",
-  "meetup" : "https://www.meetup.com/GDGSalamanca",
-  "name" : "GDG Salamanca",
-  "twitter" : "https://twitter.com/GDGSalamanca"
-}, {
-  "active" : true,
-  "city" : "Santiago de Compostela",
-  "facebook" : "",
-  "googlePlus" : "https://plus.google.com/106226686422101121625",
-  "id" : "106226686422101121625",
-  "imageFile" : "santiago-de-compostela.jpg",
-  "meetup" : "https://www.meetup.com/GDGSantiagoES",
-  "name" : "GDG Santiago",
-  "twitter" : "https://twitter.com/GDGSantiagoES"
-}, {
-  "active" : true,
-  "city" : "Tarragona",
-  "facebook" : "https://www.facebook.com/GDGTarragona",
-  "googlePlus" : "https://plus.google.com/110881000795710392242",
-  "id" : "110881000795710392242",
-  "imageFile" : "tarragona.jpg",
-  "meetup" : "https://www.meetup.com/GDG-Tarragona",
-  "name" : "GDG Tarragona",
-  "twitter" : "https://twitter.com/GDGTarragona",
-  "web" : "http://gdgtarragona.net"
-}, {
-  "active" : true,
-  "city" : "Santa Cruz de Tenerife",
-  "facebook" : "",
-  "googlePlus" : "https://plus.google.com/114098393732890092873",
-  "id" : "114098393732890092873",
-  "imageFile" : "santa-cruz-de-tenerife.jpg",
-  "meetup" : "https://www.meetup.com/GDG-Tenerife",
-  "name" : "GDG Tenerife",
-  "twitter" : "https://twitter.com/GDGTenerife"
-}, {
-  "active" : true,
-  "city" : "Toledo",
-  "facebook" : "",
-  "googlePlus" : "",
-  "id" : "",
-  "imageFile" : "toledo.jpg",
-  "meetup" : "https://www.meetup.com/GDGToledo_ES",
-  "name" : "GDG Toledo",
-  "twitter" : "http://www.twitter.com/GDGToledo_ES"
-}, {
-  "active" : true,
-  "city" : "Valencia",
-  "facebook" : "https://www.facebook.com/GDGValencia",
-  "googlePlus" : "https://plus.google.com/116293275669380237550",
-  "id" : "116293275669380237550",
-  "imageFile" : "valencia.jpg",
-  "meetup" : "https://www.meetup.com/GDGValencia",
-  "name" : "GDG Valencia",
-  "twitter" : "https://twitter.com/GDGValencia"
-}, {
-  "active" : true,
-  "city" : "Valladolid",
-  "facebook" : "",
-  "googlePlus" : "",
-  "id" : "",
-  "imageFile" : "valladolid.jpg",
-  "meetup" : "https://www.meetup.com/GDG-Valladolid",
-  "name" : "GDG Valladolid",
-  "twitter" : "https://twitter.com/GDGValladolid"
-}, {
-  "active" : true,
-  "city" : "Vigo",
-  "facebook" : "",
-  "googlePlus" : "https://plus.google.com/106284181570326060854",
-  "id" : "106284181570326060854",
-  "imageFile" : "vigo.jpg",
-  "meetup" : "https://www.meetup.com/GDGVigo",
-  "name" : "GDG Vigo",
-  "twitter" : "https://twitter.com/GDGVigo"
-}, {
-  "active" : true,
-  "city" : "Zaragoza",
-  "facebook" : "",
-  "googlePlus" : "https://plus.google.com/112270092409297528723",
-  "id" : "112270092409297528723",
-  "imageFile" : "zaragoza.jpg",
-  "meetup" : "https://www.meetup.com/GDGZaragoza",
-  "name" : "GDG Zaragoza",
-  "twitter" : "https://twitter.com/GDGZaragoza"
-} ]
+[
+  {
+    "city": "A Coruña",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/110167920940975646358",
+    "id": "110167920940975646358",
+    "imageFile": "a-coruna.jpg",
+    "meetup": "https://www.meetup.com/GDGCoruna",
+    "name": "GDG A Coruña",
+    "twitter": ""
+  },
+  {
+    "city": "Alicante",
+    "facebook": "",
+    "googlePlus": "",
+    "id": "",
+    "imageFile": "alicante.jpg",
+    "meetup": "https://www.meetup.com/GDG-Alicante",
+    "name": "GDG Alicante",
+    "twitter": "https://twitter.com/GDGAlicante"
+  },
+  {
+    "city": "Almería",
+    "facebook": "https://www.facebook.com/GDGAlmeria",
+    "googlePlus": "https://plus.google.com/100779332357161488372",
+    "id": "100779332357161488372",
+    "imageFile": "almeria.jpg",
+    "meetup": "https://www.meetup.com/GDGAlmeria",
+    "name": "GDG Almería",
+    "twitter": "https://twitter.com/GDGAlmeria"
+  },
+  {
+    "city": "Asturias",
+    "facebook": "https://www.facebook.com/GDGAsturias",
+    "googlePlus": "https://plus.google.com/101359474493518761310",
+    "id": "101359474493518761310",
+    "imageFile": "asturias.jpg",
+    "meetup": "https://www.meetup.com/GDG-Asturias",
+    "name": "GDG Asturias",
+    "twitter": "https://twitter.com/GDGAsturias"
+  },
+  {
+    "city": "Barcelona",
+    "facebook": "https://www.facebook.com/GDGBarcelona",
+    "googlePlus": "https://plus.google.com/103861605362659114750",
+    "id": "103861605362659114750",
+    "imageFile": "barcelona.jpg",
+    "meetup": "https://www.meetup.com/GDG-Barcelona",
+    "name": "GDG Barcelona",
+    "twitter": "https://twitter.com/GDGBarcelona"
+  },
+  {
+    "city": "Bilbao",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/112983420398182870109",
+    "id": "112983420398182870109",
+    "imageFile": "bilbao.jpg",
+    "meetup": "https://www.meetup.com/GDG-Bilbao",
+    "name": "GDG Bilbao",
+    "twitter": "http://twitter.com/GDGBilbao"
+  },
+  {
+    "city": "Burgos",
+    "facebook": "https://www.facebook.com/GDG-Burgos-776860412369012",
+    "googlePlus": "https://plus.google.com/105194801788903823438",
+    "id": "105194801788903823438",
+    "imageFile": "burgos.jpg",
+    "meetup": "https://www.meetup.com/GDG-Burgos",
+    "name": "GDG Burgos",
+    "twitter": "https://twitter.com/GDGBurgos"
+  },
+  {
+    "city": "Castellón",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/108304194216355971829",
+    "id": "108304194216355971829",
+    "imageFile": "castellon.jpg",
+    "meetup": "https://www.meetup.com/decharlas",
+    "name": "GDG Castellón",
+    "twitter": ""
+  },
+  {
+    "city": "Cáceres",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/110029291185137285136",
+    "id": "110029291185137285136",
+    "imageFile": "caceres.jpg",
+    "meetup": "https://www.meetup.com/GDGCaceres",
+    "name": "GDG Cáceres",
+    "twitter": "https://twitter.com/GDGCaceres"
+  },
+  {
+    "city": "Cádiz",
+    "facebook": "https://www.facebook.com/GDGCadiz",
+    "googlePlus": "https://plus.google.com/112866714526515716260",
+    "id": "112866714526515716260",
+    "imageFile": "cadiz.jpg",
+    "meetup": "https://www.meetup.com/GDGCadiz",
+    "name": "GDG Cádiz",
+    "twitter": "https://twitter.com/GDGCadiz"
+  },
+  {
+    "city": "Córdoba",
+    "facebook": "https://www.facebook.com/GDGCordobaESP",
+    "googlePlus": "https://plus.google.com/106302567584201009963",
+    "id": "106302567584201009963",
+    "imageFile": "cordoba.jpg",
+    "meetup": "https://www.meetup.com/GDGCordoba",
+    "name": "GDG Córdoba",
+    "twitter": "https://twitter.com/GDGCordobaESP"
+  },
+  {
+    "city": "Las Palmas de Gran Canaria",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/118027875298659982093",
+    "id": "118027875298659982093",
+    "imageFile": "las-palmas-de-gran-canaria.jpg",
+    "meetup": "https://www.meetup.com/GDG-GranCanaria",
+    "name": "GDG Gran Canaria",
+    "twitter": "https://twitter.com/GDGGranCanaria"
+  },
+  {
+    "city": "Granada",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/107621838547829286968",
+    "id": "107621838547829286968",
+    "imageFile": "granada.jpg",
+    "meetup": "https://www.meetup.com/GranadaGDG",
+    "name": "GDG Granada",
+    "twitter": "https://twitter.com/GDGGranada",
+    "web": "http://gdggranada.com"
+  },
+  {
+    "city": "Huelva",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/115953329800113550104",
+    "id": "115953329800113550104",
+    "imageFile": "huelva.jpg",
+    "meetup": "https://www.meetup.com/GDG-Huelva",
+    "name": "GDG Huelva",
+    "twitter": ""
+  },
+  {
+    "city": "Jaén",
+    "facebook": "https://www.facebook.com/GDGJaen",
+    "googlePlus": "https://plus.google.com/116243063925737679471",
+    "id": "116243063925737679471",
+    "imageFile": "jaen.jpg",
+    "meetup": "https://www.meetup.com/GDG-Jaen",
+    "name": "GDG Jaén",
+    "twitter": "https://twitter.com/GDGJaen"
+  },
+  {
+    "city": "Logroño",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/107567067338388204476",
+    "id": "107567067338388204476",
+    "imageFile": "logrono.jpg",
+    "meetup": "https://www.meetup.com/GDG-La-Rioja",
+    "name": "GDG La Rioja",
+    "twitter": "https://twitter.com/GDGLaRioja",
+    "web": "https://gdglarioja.blogspot.com.es"
+  },
+  {
+    "city": "Lleida",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/107962088655881499591",
+    "id": "107962088655881499591",
+    "imageFile": "lleida.jpg",
+    "meetup": "https://www.meetup.com/Google-Developer-Group-Lleida",
+    "name": "GDG Lleida",
+    "twitter": "https://twitter.com/GDGLleida",
+    "web": "http://gdglleida.com"
+  },
+  {
+    "city": "Madrid",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/112952310970563894279",
+    "id": "112952310970563894279",
+    "imageFile": "madrid.jpg",
+    "meetup": "https://www.meetup.com/GDGMadrid",
+    "name": "GDG Madrid",
+    "twitter": "https://twitter.com/GDGMadrid",
+    "web": "https://gdgmadrid.com"
+  },
+  {
+    "city": "Mallorca",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/101769406777537927870",
+    "id": "101769406777537927870",
+    "imageFile": "mallorca.jpg",
+    "meetup": "https://www.meetup.com/Google-Developer-Group-Mallorca",
+    "name": "GDG Mallorca",
+    "twitter": "https://twitter.com/GDGMallorca",
+    "web": "https://github.com/GDGMallorca"
+  },
+  {
+    "city": "Marbella",
+    "facebook": "",
+    "googlePlus": "",
+    "id": "",
+    "imageFile": "marbella.jpg",
+    "meetup": "https://www.meetup.com/GDG-Marbella",
+    "name": "GDG Marbella",
+    "twitter": "https://twitter.com/GDGMarbella"
+  },
+  {
+    "city": "Malaga",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/105524274802890643642",
+    "id": "105524274802890643642",
+    "imageFile": "malaga.jpg",
+    "meetup": "https://www.meetup.com/Google-Developer-Group-Malaga",
+    "name": "GDG Málaga",
+    "twitter": "https://twitter.com/GDGMalaga"
+  },
+  {
+    "city": "Ourense",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/110532659286437537057",
+    "id": "110532659286437537057",
+    "imageFile": "ourense.jpg",
+    "meetup": "https://www.meetup.com/GDGOurense",
+    "name": "GDG Ourense",
+    "twitter": "https://twitter.com/GDGOurense"
+  },
+  {
+    "city": "Salamanca",
+    "facebook": "https://www.facebook.com/GDGSalamanca",
+    "googlePlus": "https://plus.google.com/107931642576280918674",
+    "id": "107931642576280918674",
+    "imageFile": "salamanca.jpg",
+    "meetup": "https://www.meetup.com/GDGSalamanca",
+    "name": "GDG Salamanca",
+    "twitter": "https://twitter.com/GDGSalamanca"
+  },
+  {
+    "city": "Santiago de Compostela",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/106226686422101121625",
+    "id": "106226686422101121625",
+    "imageFile": "santiago-de-compostela.jpg",
+    "meetup": "https://www.meetup.com/GDGSantiagoES",
+    "name": "GDG Santiago",
+    "twitter": "https://twitter.com/GDGSantiagoES"
+  },
+  {
+    "city": "Tarragona",
+    "facebook": "https://www.facebook.com/GDGTarragona",
+    "googlePlus": "https://plus.google.com/110881000795710392242",
+    "id": "110881000795710392242",
+    "imageFile": "tarragona.jpg",
+    "meetup": "https://www.meetup.com/GDG-Tarragona",
+    "name": "GDG Tarragona",
+    "twitter": "https://twitter.com/GDGTarragona",
+    "web": "http://gdgtarragona.net"
+  },
+  {
+    "city": "Santa Cruz de Tenerife",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/114098393732890092873",
+    "id": "114098393732890092873",
+    "imageFile": "santa-cruz-de-tenerife.jpg",
+    "meetup": "https://www.meetup.com/GDG-Tenerife",
+    "name": "GDG Tenerife",
+    "twitter": "https://twitter.com/GDGTenerife"
+  },
+  {
+    "city": "Toledo",
+    "facebook": "",
+    "googlePlus": "",
+    "id": "",
+    "imageFile": "toledo.jpg",
+    "meetup": "https://www.meetup.com/GDGToledo_ES",
+    "name": "GDG Toledo",
+    "twitter": "http://www.twitter.com/GDGToledo_ES"
+  },
+  {
+    "city": "Valencia",
+    "facebook": "https://www.facebook.com/GDGValencia",
+    "googlePlus": "https://plus.google.com/116293275669380237550",
+    "id": "116293275669380237550",
+    "imageFile": "valencia.jpg",
+    "meetup": "https://www.meetup.com/GDGValencia",
+    "name": "GDG Valencia",
+    "twitter": "https://twitter.com/GDGValencia"
+  },
+  {
+    "city": "Valladolid",
+    "facebook": "",
+    "googlePlus": "",
+    "id": "",
+    "imageFile": "valladolid.jpg",
+    "meetup": "https://www.meetup.com/GDG-Valladolid",
+    "name": "GDG Valladolid",
+    "twitter": "https://twitter.com/GDGValladolid"
+  },
+  {
+    "city": "Vigo",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/106284181570326060854",
+    "id": "106284181570326060854",
+    "imageFile": "vigo.jpg",
+    "meetup": "https://www.meetup.com/GDGVigo",
+    "name": "GDG Vigo",
+    "twitter": "https://twitter.com/GDGVigo"
+  },
+  {
+    "city": "Zaragoza",
+    "facebook": "",
+    "googlePlus": "https://plus.google.com/112270092409297528723",
+    "id": "112270092409297528723",
+    "imageFile": "zaragoza.jpg",
+    "meetup": "https://www.meetup.com/GDGZaragoza",
+    "name": "GDG Zaragoza",
+    "twitter": "https://twitter.com/GDGZaragoza"
+  }
+]
