@@ -6,9 +6,9 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
 
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/app-storage/app-indexeddb-mirror/app-indexeddb-mirror.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
-<link rel="import" href="../../bower_components/polymerfire/firebase-query.html">
 <link rel="import" href="../app-elements/gdgspain-animate-page.html">
 <link rel="import" href="../app-styles.html">
 <link rel="import" href="page-groups-list.html">
@@ -33,12 +33,12 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
       }
     </style>
 
-    <firebase-query
-        path="/groups"
-        order-by-child="active"
-        equal-to="true"
-        data="{{groups}}">
-    </firebase-query>
+    <iron-ajax
+        auto
+        url="[[rootPath]]data/groups.json"
+        last-response="{{groups}}"
+        handle-as="json">
+    </iron-ajax>
 
     <app-indexeddb-mirror
         key="groups"

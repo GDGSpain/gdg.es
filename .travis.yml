@@ -1,37 +1,33 @@
 language: node_js
 dist: trusty
-sudo: false
 node_js:
-  - "10"
-cache: yarn
+  - "12"
 branches:
   except:
     - /^v\d/
-install:
-  - yarn install
 script:
-  - yarn run lint
-  # - yarn run test
-  - yarn run test:integration
+  - npm run lint
+  # - npm run test
+  - npm run test:integration
 before_deploy:
   - >
     if [ "${TRAVIS_BRANCH}" = "develop" ]; then
-      yarn run build;
+      npm run build;
     elif [ "${TRAVIS_BRANCH}" = "master" ]; then
-      yarn run build:production;
+      npm run build:production;
     fi
 deploy:
   - provider: firebase
     skip_cleanup: true
     token:
-      secure: NvVH4QWMWT1CPDvPVPcT/Acn1mmU2WpkCg8j1rVjioDXX2aUEUVad7fKUsEXvkgOBAR1NSk5BpkhQXO6t1tt5fFrwOq60+pOe0Awy/p8BwsfMGFLOa9Kh/BDLYntqpmLrOFM37U/DIxmlPpevajFX+pNs4Iu4LkLvWR5fSce8aQBORgUyZSwvdbjgYmPmr5zEvchcV7UUBlC6g9x/KtktkvWe1jrucUeYqGcvTnG1WxRp5hB0b5pjS32MOoFhbVNL1wAJnvwZj9rO9l+E8fY2RzUA2PnYscm3oCpsAyYOTRUyscjRnVUm0exqoIz8PuLTQle4R7NVxFVNx3+pzifz0Xl5NskGkuUqumYXrCS9jeFGk1O0TaGyfvQ9s5ycKPq66L2Drpg5dyCEkPp/6UjAc2eQwsby3M40EqQnMUx5u5Wp+R+/XvSmC96loGRmEelgQY964TU1Gq74U8yhPV/IfMgFZ32SmhoOvzfpP4p99aklaDY4MBkEumGefVRQweqsDjL8TLTgD6bBvHHIcvU8Iudt5bR5sYDgf+x4JEN5jSCtNzNeLyBUkExqamAJ3xvlhVnTkBE8sjgeHh1+ovZ25oV7ozzsDS6uKMlKPfk6gYvABbBIi/tkYzQgQJwsAs0VMX29aXgwGLk8aGq+uNcWIhXNVfadl8e/KPNtkkX+pI=
+      secure: YBQ/zuofUTM5iYNlNlHmAYoQu1jMrJITVGwmicZtW+YnL011V1tiMv7kez0tyBY5u5YAw/nPHnojVRRyEhYTISHq64dRrgfZSSipo2WWuA33V+Dc4pnNQXKYbuLEDr2GpTUQBHylTKBIHM5Qrm1tfLLjgSOQ6QEV7bokErB4St3Fv3oa3MnH6N17sYvyxAUu+DZu7ovj2lFLLUDb0SMINbGIbdrVsaatRwti4DfUNUWzImLtmdTIPjYWfcDlHbUHCYuzWvmo6eWWEU0IJXbW8BtQsRGnNo9RWunHWZjz6u0/e9HxLDigkRsEWXx2qSLFT6LoUeypOXQC0aCQe/38vMqyWGiPsTB2Orw1iPIUxalQ3ETC9fcUjtuBMmLeplEAvEN702WCSJwlK5ezGhzWmWrrbUsEC9vmGl3PCQnt86w6AIiPnFs3CtAP1kQjpbprSa3+Ok32uHfVfryfkY9MViwKCkQ6tgtiZoYNgVaCQN5QqdNjKy+xoPBlE3wgwIqmUWY0LdPpmoA8K7hoIW1zF/VKKQxFGiCKPhGP/jMVusipZY21JIcYg7+5h+qKjk26TmxSox2TvlexYNexP1cvVISOGzowqKHJUuO0IAaxvTHX//0sgs10T5oNJioyj4nc8x0WXnARKpuNaUVMjpupiDsy74WyPFOhsLtN5u2ShIQ=
     project: gdg-es-develop
     on:
       branch: develop
   - provider: firebase
     skip_cleanup: true
     token:
-      secure: NvVH4QWMWT1CPDvPVPcT/Acn1mmU2WpkCg8j1rVjioDXX2aUEUVad7fKUsEXvkgOBAR1NSk5BpkhQXO6t1tt5fFrwOq60+pOe0Awy/p8BwsfMGFLOa9Kh/BDLYntqpmLrOFM37U/DIxmlPpevajFX+pNs4Iu4LkLvWR5fSce8aQBORgUyZSwvdbjgYmPmr5zEvchcV7UUBlC6g9x/KtktkvWe1jrucUeYqGcvTnG1WxRp5hB0b5pjS32MOoFhbVNL1wAJnvwZj9rO9l+E8fY2RzUA2PnYscm3oCpsAyYOTRUyscjRnVUm0exqoIz8PuLTQle4R7NVxFVNx3+pzifz0Xl5NskGkuUqumYXrCS9jeFGk1O0TaGyfvQ9s5ycKPq66L2Drpg5dyCEkPp/6UjAc2eQwsby3M40EqQnMUx5u5Wp+R+/XvSmC96loGRmEelgQY964TU1Gq74U8yhPV/IfMgFZ32SmhoOvzfpP4p99aklaDY4MBkEumGefVRQweqsDjL8TLTgD6bBvHHIcvU8Iudt5bR5sYDgf+x4JEN5jSCtNzNeLyBUkExqamAJ3xvlhVnTkBE8sjgeHh1+ovZ25oV7ozzsDS6uKMlKPfk6gYvABbBIi/tkYzQgQJwsAs0VMX29aXgwGLk8aGq+uNcWIhXNVfadl8e/KPNtkkX+pI=
+      secure: YBQ/zuofUTM5iYNlNlHmAYoQu1jMrJITVGwmicZtW+YnL011V1tiMv7kez0tyBY5u5YAw/nPHnojVRRyEhYTISHq64dRrgfZSSipo2WWuA33V+Dc4pnNQXKYbuLEDr2GpTUQBHylTKBIHM5Qrm1tfLLjgSOQ6QEV7bokErB4St3Fv3oa3MnH6N17sYvyxAUu+DZu7ovj2lFLLUDb0SMINbGIbdrVsaatRwti4DfUNUWzImLtmdTIPjYWfcDlHbUHCYuzWvmo6eWWEU0IJXbW8BtQsRGnNo9RWunHWZjz6u0/e9HxLDigkRsEWXx2qSLFT6LoUeypOXQC0aCQe/38vMqyWGiPsTB2Orw1iPIUxalQ3ETC9fcUjtuBMmLeplEAvEN702WCSJwlK5ezGhzWmWrrbUsEC9vmGl3PCQnt86w6AIiPnFs3CtAP1kQjpbprSa3+Ok32uHfVfryfkY9MViwKCkQ6tgtiZoYNgVaCQN5QqdNjKy+xoPBlE3wgwIqmUWY0LdPpmoA8K7hoIW1zF/VKKQxFGiCKPhGP/jMVusipZY21JIcYg7+5h+qKjk26TmxSox2TvlexYNexP1cvVISOGzowqKHJUuO0IAaxvTHX//0sgs10T5oNJioyj4nc8x0WXnARKpuNaUVMjpupiDsy74WyPFOhsLtN5u2ShIQ=
     project: gdg-es
     on:
       branch: master
