@@ -100,6 +100,16 @@
     "twitter": "https://twitter.com/GDGCadiz"
   },
   {
+    "city": "Cartagena",
+    "facebook": "",
+    "googlePlus": "",
+    "id": "",
+    "imageFile": "cartagena.jpg",
+    "meetup": "https://www.meetup.com/GDGCartagena",
+    "name": "GDG Cartagena",
+    "twitter": "https://twitter.com/GDGCartagena"
+  },
+  {
     "city": "Córdoba",
     "facebook": "https://www.facebook.com/GDGCordobaESP",
     "googlePlus": "https://plus.google.com/106302567584201009963",
@@ -213,6 +223,16 @@
     "meetup": "https://www.meetup.com/Google-Developer-Group-Malaga",
     "name": "GDG Málaga",
     "twitter": "https://twitter.com/GDGMalaga"
+  },
+  {
+    "city": "Murcia",
+    "facebook": "",
+    "googlePlus": "",
+    "id": "",
+    "imageFile": "murcia.jpg",
+    "meetup": "https://www.meetup.com/GDGMurcia",
+    "name": "GDG Murcia",
+    "twitter": "https://twitter.com/GDGMurcia"
   },
   {
     "city": "Ourense",
