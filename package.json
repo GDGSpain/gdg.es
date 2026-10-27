@@ -1,0 +1,45 @@
+{
+  "name": "gdg-es",
+  "version": "0.21.0",
+  "private": true,
+  "description": "Directorio dinámico de los Google Developer Groups de España (gdg.es)",
+  "license": "MIT",
+  "repository": "GDGSpain/gdg.es",
+  "homepage": "https://gdg.es",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "lefthook install || true"
+  },
+  "dependencies": {
+    "next": "16.4.3",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
+    "@types/node": "^22.20.5",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitest/coverage-v8": "^5.0.5",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.3",
+    "lefthook": "^2.2.2",
+    "prettier": "^3.9.10",
+    "typescript": "^5",
+    "vitest": "^5.0.5"
+  }
+}
