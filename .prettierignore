@@ -3,3 +3,5 @@ legacy/
 coverage/
 package-lock.json
 docs/context/*.json
+*.md
+.claude/

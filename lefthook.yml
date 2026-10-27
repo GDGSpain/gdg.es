@@ -1,42 +1,38 @@
-# EXAMPLE USAGE:
-#
-#   Refer for explanation to following link:
-#   https://lefthook.dev/configuration/
-#
-# pre-push:
-#   jobs:
-#     - name: packages audit
-#       tags:
-#         - frontend
-#         - security
-#       run: yarn audit
-#
-#     - name: gems audit
-#       tags:
-#         - backend
-#         - security
-#       run: bundle audit
-#
-# pre-commit:
-#   parallel: true
-#   jobs:
-#     - run: yarn eslint {staged_files}
-#       glob: "*.{js,ts,jsx,tsx}"
-#
-#     - name: rubocop
-#       glob: "*.rb"
-#       exclude:
-#         - config/application.rb
-#         - config/routes.rb
-#       run: bundle exec rubocop --force-exclusion -- {all_files}
-#
-#     - name: govet
-#       files: git ls-files -m
-#       glob: "*.go"
-#       run: go vet -- {files}
-#
-#     - script: "hello.js"
-#       runner: node
-#
-#     - script: "hello.go"
-#       runner: go run
+# Hooks de git (lefthook). Se activan con `npm install` (script `prepare`) o `npx lefthook install`.
+# pre-commit: rápido y solo sobre lo staged. pre-push: tests completos y build. commit-msg: commitlint.
+# Saltar un hook puntualmente solo con permiso explícito: `LEFTHOOK=0 git commit ...`.
+min_version: 1.10.0
+
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: "*.{ts,tsx,js,mjs,json,css,yml,yaml}"
+      exclude: "legacy/**"
+      run: npx prettier --write {staged_files}
+      stage_fixed: true
+    lint:
+      glob: "*.{ts,tsx,mjs}"
+      exclude: "legacy/**"
+      run: npx eslint {staged_files}
+    typecheck:
+      glob: "*.{ts,tsx}"
+      run: npm run typecheck
+    test:
+      glob: "src/**/*.{ts,tsx}"
+      run: npm test -- --reporter=dot
+    context:
+      glob: "{db/**,src/app/api/**}"
+      run: sh scripts/context-hook.sh
+
+pre-push:
+  commands:
+    test-coverage:
+      run: npm run test:coverage
+    build:
+      run: npm run build
+
+commit-msg:
+  commands:
+    commitlint:
+      run: npx commitlint --edit {1}
