@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "gdg-es-develop",
+    "staging": "gdg-es-develop",
+    "production": "gdg-es"
+  }
+}

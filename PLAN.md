@@ -24,7 +24,8 @@ Si una fase se retrasa, se recorta de abajo arriba; nunca los tests de las regla
       proveedor Google, Storage; Maps JavaScript API y Geocoding API activadas, dos claves restringidas,
       Map ID, presupuesto y alertas.
 - [x] Rama `feat/tfm-directorio` en GDGSpain/gdg.es desde `develop`; app Polymer movida a `legacy/`.
-- [ ] Proteger `develop` y `master` (PR obligatoria y CI en verde).
+- [ ] Proteger `develop` y `master` (PR obligatoria y CI en verde) — lo hace Rei, ver `docs/tech/github.md`.
+- [x] Proyectos de Firebase: se reutilizan `gdg-es-develop` y `gdg-es` (`.firebaserc`).
 - [x] Next.js (App Router, TS estricto), ESLint con la regla de dependencias (ADR-0006), Vitest,
       lefthook + commitlint.
 - [x] `src/shared/`: `config.ts` (zod, fail-fast), `result.ts` con tests.
@@ -93,11 +94,11 @@ directorio → ficha de capítulo con organizadores y eventos.
 No pegues credenciales en el chat: guárdalas tú en `.env.local` (ignorado por git) con las variables de
 `.env.example`, y dime solo que están.
 
-1. **Firebase**: ¿usamos los proyectos existentes `gdg-es-develop` (staging) y `gdg-es` (producción), a
-   los que desplegaba la web anterior? Id del proyecto, config de la app web (es pública) y el JSON de una cuenta de servicio
+1. **Firebase**: se reutilizan los proyectos existentes `gdg-es-develop` (staging) y `gdg-es`
+   (producción), con alias en `.firebaserc`. Necesito config de la app web (es pública) y el JSON de una cuenta de servicio
    con permisos de Firestore, Auth y Storage (va a `.env.local`).
 2. **Región de Firestore** elegida (propuesta: `europe-southwest1`, Madrid). No se puede cambiar después.
 3. **Google Maps**: las dos claves (navegador y Geocoding) con sus restricciones y un Map ID.
-4. **GitHub**: tu usuario (para `CODEOWNERS`) y acceso de administración al repo para proteger ramas y
-   añadir secretos de Actions.
+4. **GitHub**: proteger `develop` y `master` (ver `docs/tech/github.md`) y, cuando toque desplegar,
+   añadir los secretos de Actions.
 5. **Horas por semana** que puedes dedicar, para ajustar el recorte del MoSCoW.

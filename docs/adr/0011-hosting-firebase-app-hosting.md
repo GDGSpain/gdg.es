@@ -13,7 +13,7 @@ Firebase Hosting clásico a dos proyectos: `gdg-es-develop` (desde `develop`) y 
 ## Decisión propuesta
 
 - **Firebase App Hosting** despliega la app Next.js (Cloud Run por debajo), reutilizando los dos
-  proyectos: `gdg-es-develop` desde `develop` (staging) y `gdg-es` desde `master` (producción).
+  proyectos existentes (confirmado por el autor; alias en `.firebaserc`): `gdg-es-develop` desde `develop` (staging) y `gdg-es` desde `master` (producción).
 - **Cloud Scheduler** llama una vez al día a `POST /api/sync/run`, protegido con `SYNC_SECRET` (o con
   token OIDC de una cuenta de servicio). El mismo caso de uso lo dispara el botón del panel.
 - Secretos en **Cloud Secret Manager**, referenciados desde `apphosting.yaml`.
