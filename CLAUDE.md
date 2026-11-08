@@ -18,6 +18,20 @@ Definidas en `.claude/skills/` (invocables con `/nombre`):
 - **commit** - Preparar y crear commits Conventional Commits en la rama de trabajo
 - **create-pr** - Preparar la PR a `develop` (pide confirmación antes de hacer push o abrirla)
 
+Skills de diseño de terceros (sin modificar; origen y licencias en `.claude/skills/THIRD_PARTY.md`):
+
+- **design-taste-frontend** - Dirección de arte de las páginas públicas (directorio, fichas, agenda,
+  mapa): referencias reales de diseño para evitar el aspecto genérico de "hecho por IA". No para `/admin`
+- **impeccable** - Auditar, criticar y pulir UI (`/impeccable audit|critique|polish|typeset|layout…`):
+  espaciado, tipografía, jerarquía, accesibilidad y casos límite. Vale para web pública y `/admin`
+- **emil-design-eng** - Animaciones y microdetalles (botones, transiciones, estados) con criterio:
+  cuándo animar, curvas y duraciones, y respetar `prefers-reduced-motion`
+
+Cómo combinarlas: `design-taste-frontend` decide la dirección visual de una página nueva →
+`impeccable` la pule → `emil-design-eng` añade el movimiento. Mientras no exista un sistema de diseño
+propio, el primero que se fije (tokens en `src/app/globals.css`) manda sobre las sugerencias de las
+skills; los ejemplos en otros stacks se traducen a Next.js + CSS Modules.
+
 ## 🧩 Subagentes
 
 Definidos en `.claude/agents/`:
