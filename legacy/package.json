@@ -1,0 +1,41 @@
+{
+  "name": "gdg.es",
+  "version": "0.21.0",
+  "private": true,
+  "description": "The GDG Spain official website",
+  "license": "MIT",
+  "repository": "GDGSpain/gdg.es",
+  "author": "Abdón Rodríguez Davila <a@abdonrd.com> (https://abdonrd.com)",
+  "homepage": "https://gdg.es",
+  "bugs": {
+    "url": "https://github.com/GDGSpain/gdg.es/issues"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "build:production": "NODE_ENV=production gulp build",
+    "lint": "eslint . --ext js,html --ignore-path .gitignore",
+    "postinstall": "bower install",
+    "start": "polymer serve",
+    "test": "polymer test",
+    "test:integration": "npm run build"
+  },
+  "devDependencies": {
+    "bower": "^1.8.8",
+    "del": "^6.0.0",
+    "eslint": "^7.14.0",
+    "eslint-plugin-html": "^6.1.1",
+    "gulp": "^4.0.2",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-jsonmin": "^1.2.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-uglify": "^3.0.2",
+    "merge-stream": "^2.0.0",
+    "polymer-build": "^3.1.4",
+    "polymer-cli": "^1.9.11"
+  }
+}

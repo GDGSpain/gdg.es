@@ -1,0 +1,168 @@
+/*
+ * Tokens de diseño de gdg.es.
+ *
+ * Base: el sistema visual de gdg.community.dev (variables --theme-palette-*, --Spacing*, --Radius*,
+ * botones y tipografía medidos el 2026-11-09) para que gdg.es se sienta parte del ecosistema GDG.
+ * Ajustes propios documentados en docs/design/README.md (contraste AA, modo oscuro y movimiento).
+ *
+ * Capas: primitivos (--gdg-*) → semánticos (--color-*, --font-*, --space-*…). Los componentes usan
+ * solo semánticos; los primitivos no se usan fuera de este fichero.
+ */
+
+:root {
+  /* ── Primitivos: color ─────────────────────────────────────────────── */
+  /* Marca Google / GDG */
+  --gdg-blue-500: #4285f4; /* --theme-palette-primary */
+  --gdg-blue-600: #1a73e8; /* --theme-palette-secondary, botón principal */
+  --gdg-blue-700: #1967d2; /* hover propio: #4285f4 con texto blanco no llega a AA */
+  --gdg-blue-50: #e8f0fe; /* hover del botón secundario */
+  --gdg-blue-100: #d2e3fc;
+  --gdg-blue-200: #8ab4f8; /* acción en modo oscuro */
+  --gdg-red-500: #ea4335;
+  --gdg-yellow-500: #fbbc04;
+  --gdg-green-500: #34a853;
+
+  /* Grises (paleta de gdg.community.dev) */
+  --gdg-grey-900: #202124; /* --theme-palette-dark */
+  --gdg-grey-800: #292a2d;
+  --gdg-grey-750: #303134; /* superficie atenuada en oscuro */
+  --gdg-grey-700: #3c4043;
+  --gdg-grey-600: #5f6368; /* --theme-palette-soft-dark, texto general */
+  --gdg-grey-550: #80868b; /* borde de controles: #9aa0a6 no llega a 3:1 */
+  --gdg-grey-500: #9aa0a6; /* --theme-palette-dark-borders */
+  --gdg-grey-300: #dadce0; /* --theme-palette-light-borders */
+  --gdg-grey-200: #e8eaed;
+  --gdg-grey-100: #f1f3f4; /* --theme-palette-soft-light */
+  --gdg-white: #ffffff;
+
+  /* Estados */
+  --gdg-success: #008a00;
+  --gdg-warning: #f3be02;
+  --gdg-error: #e3000f;
+
+  /* ── Semánticos: color (modo claro) ───────────────────────────────── */
+  --color-bg: var(--gdg-white);
+  --color-surface: var(--gdg-white);
+  --color-surface-muted: var(--gdg-grey-100);
+  --color-text: var(--gdg-grey-900); /* títulos y texto principal */
+  --color-text-muted: var(--gdg-grey-600); /* texto secundario (como el cuerpo de gdg.community.dev) */
+  --color-text-on-action: var(--gdg-white);
+  --color-border: var(--gdg-grey-300);
+  --color-border-strong: var(--gdg-grey-550); /* bordes de inputs y controles (3:1) */
+  --color-link: var(--gdg-blue-600);
+  --color-action: var(--gdg-blue-600);
+  --color-action-hover: var(--gdg-blue-700);
+  --color-action-subtle: var(--gdg-blue-50); /* fondo hover de botón secundario y chips activos */
+  --color-action-subtle-border: var(--gdg-blue-100);
+  --color-focus: var(--gdg-blue-500);
+  --color-success: var(--gdg-success);
+  --color-warning: var(--gdg-warning);
+  --color-error: var(--gdg-error);
+  /* Acentos de marca: decoración (barras, marcadores del mapa, ilustraciones), nunca texto sobre blanco */
+  --color-accent-blue: var(--gdg-blue-500);
+  --color-accent-red: var(--gdg-red-500);
+  --color-accent-yellow: var(--gdg-yellow-500);
+  --color-accent-green: var(--gdg-green-500);
+
+  /* ── Tipografía ───────────────────────────────────────────────────── */
+  --font-sans: "Google Sans", "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Google Sans Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --font-size-xs: 0.75rem; /* 12 */
+  --font-size-sm: 0.875rem; /* 14: botones, chips, navegación */
+  --font-size-md: 1rem; /* 16: párrafo */
+  --font-size-lg: 1.125rem; /* 18 */
+  --font-size-xl: 1.375rem; /* 22 */
+  --font-size-2xl: 1.75rem; /* 28: h2 (gdg.community.dev usa 29.4) */
+  --font-size-3xl: 2.25rem; /* 36 */
+  --font-size-4xl: 2.75rem; /* 44: h1 de portada */
+
+  --font-weight-regular: 400; /* gdg.community.dev usa 400 también en títulos */
+  --font-weight-medium: 500; /* botones */
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.1; /* títulos grandes (44/48.4) */
+  --line-height-snug: 1.25;
+  --line-height-normal: 1.5; /* párrafo (16/24) */
+
+  /* ── Espaciado (escala de 4 px de gdg.community.dev: --SpacingGap01…25) ── */
+  --space-1: 0.25rem; /* 4 */
+  --space-2: 0.5rem; /* 8 */
+  --space-3: 0.75rem; /* 12 */
+  --space-4: 1rem; /* 16 */
+  --space-5: 1.25rem; /* 20 */
+  --space-6: 1.5rem; /* 24 */
+  --space-8: 2rem; /* 32 */
+  --space-10: 2.5rem; /* 40 */
+  --space-12: 3rem; /* 48 */
+  --space-16: 4rem; /* 64 */
+  --space-25: 6.25rem; /* 100 */
+
+  /* ── Forma ────────────────────────────────────────────────────────── */
+  --radius-xs: 4px; /* botones */
+  --radius-sm: 6px;
+  --radius-md: 8px; /* tarjetas y paneles */
+  --radius-lg: 12px;
+  --radius-xl: 16px; /* chips de filtro */
+  --radius-2xl: 24px;
+  --radius-full: 9999px; /* avatares */
+  --border-width: 1px;
+
+  /* Elevación: gdg.community.dev usa bordes, no sombras; estas solo para capas flotantes */
+  --shadow-1: 0 1px 2px rgb(60 64 67 / 0.3), 0 1px 3px 1px rgb(60 64 67 / 0.15);
+  --shadow-2: 0 1px 2px rgb(60 64 67 / 0.3), 0 2px 6px 2px rgb(60 64 67 / 0.15);
+
+  /* ── Componentes ──────────────────────────────────────────────────── */
+  --button-padding: 15px 20px; /* --general-button-tb-pad / lr-pad */
+  --button-padding-compact: 8px 12px;
+  --button-font-size: var(--font-size-sm);
+  --button-font-weight: var(--font-weight-medium);
+  --button-radius: var(--radius-xs);
+  --chip-radius: var(--radius-xl);
+  --card-radius: var(--radius-md);
+
+  /* ── Layout ───────────────────────────────────────────────────────── */
+  --container-max: 1170px;
+  --container-gutter: var(--space-4);
+  --header-height: 64px;
+
+  /* ── Movimiento (ver skill emil-design-eng) ──────────────────────── */
+  --duration-fast: 120ms; /* hover, pulsado */
+  --duration-normal: 200ms; /* aparición de menús y tarjetas */
+  --duration-slow: 300ms; /* paneles y modales */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-out: cubic-bezier(0.05, 0.7, 0.1, 1); /* entradas */
+  --ease-in: cubic-bezier(0.3, 0, 0.8, 0.15); /* salidas */
+
+  color-scheme: light;
+}
+
+/* Modo oscuro propio (gdg.community.dev no tiene): grises de Google y azul 200 para la acción */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: var(--gdg-grey-900);
+    --color-surface: var(--gdg-grey-800);
+    --color-surface-muted: var(--gdg-grey-750);
+    --color-text: var(--gdg-grey-200);
+    --color-text-muted: var(--gdg-grey-500);
+    --color-text-on-action: var(--gdg-grey-900);
+    --color-border: var(--gdg-grey-700);
+    --color-border-strong: var(--gdg-grey-550);
+    --color-link: var(--gdg-blue-200);
+    --color-action: var(--gdg-blue-200);
+    --color-action-hover: var(--gdg-blue-100);
+    --color-action-subtle: rgb(138 180 248 / 0.12);
+    --color-action-subtle-border: rgb(138 180 248 / 0.32);
+    --color-focus: var(--gdg-blue-200);
+
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+  }
+}

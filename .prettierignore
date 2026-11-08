@@ -1,0 +1,7 @@
+legacy/
+.next/
+coverage/
+package-lock.json
+docs/context/*.json
+*.md
+.claude/

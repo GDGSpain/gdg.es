@@ -1,0 +1,22 @@
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: var(--space-8) var(--container-gutter);
+  text-align: center;
+}
+
+.main h1 {
+  font-size: var(--font-size-4xl);
+}
+
+@media (max-width: 600px) {
+  .main h1 {
+    font-size: var(--font-size-2xl);
+  }
+}

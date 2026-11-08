@@ -1,0 +1,38 @@
+# Hooks de git (lefthook). Se activan con `npm install` (script `prepare`) o `npx lefthook install`.
+# pre-commit: rápido y solo sobre lo staged. pre-push: tests completos y build. commit-msg: commitlint.
+# Saltar un hook puntualmente solo con permiso explícito: `LEFTHOOK=0 git commit ...`.
+min_version: 1.10.0
+
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: "*.{ts,tsx,js,mjs,json,css,yml,yaml}"
+      exclude: "legacy/**"
+      run: npx prettier --write {staged_files}
+      stage_fixed: true
+    lint:
+      glob: "*.{ts,tsx,mjs}"
+      exclude: "legacy/**"
+      run: npx eslint {staged_files}
+    typecheck:
+      glob: "*.{ts,tsx}"
+      run: npm run typecheck
+    test:
+      glob: "src/**/*.{ts,tsx}"
+      run: npm test -- --reporter=dot
+    context:
+      glob: "{db/**,src/app/api/**}"
+      run: sh scripts/context-hook.sh
+
+pre-push:
+  commands:
+    test-coverage:
+      run: npm run test:coverage
+    build:
+      run: npm run build
+
+commit-msg:
+  commands:
+    commitlint:
+      run: npx commitlint --edit {1}

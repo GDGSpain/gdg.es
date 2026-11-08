@@ -1,66 +1,51 @@
-# [gdg.es](https://gdg.es) [![Build Status](https://travis-ci.org/GDGSpain/gdg.es.svg?branch=master)](https://travis-ci.org/GDGSpain/gdg.es)
+# [gdg.es](https://gdg.es) — Directorio de los Google Developer Groups de España
 
-> The GDG Spain official website.
->
-> Deployed in Firebase with Travis CI.
+[![CI](https://github.com/GDGSpain/gdg.es/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/GDGSpain/gdg.es/actions/workflows/ci.yml)
 
-## Prerequisites
+> La web oficial de GDG Spain, en reconstrucción.
 
-First, install the dependencies:
+Web dinámica que reúne los **capítulos GDG de España**, los **perfiles de sus organizadores**, los
+**sponsors compartidos** entre capítulos y un **mapa de eventos**. Los datos se importan de
+[gdg.community.dev](https://gdg.community.dev/chapters/) y se sirven desde una base de datos propia.
+Se desarrolla como trabajo de fin de máster sobre este repositorio, que lleva activo desde 2016.
 
-    npm install
+## Qué hace
 
-## Start the development server
+| | |
+|---|---|
+| **Capítulos** | Directorio de los GDG de España con búsqueda y filtro por comunidad autónoma, y ficha de cada capítulo |
+| **Organizadores** | Perfil público de cada organizador con sus capítulos |
+| **Eventos y mapa** | Agenda de eventos y mapa dinámico filtrable por fecha, capítulo y formato |
+| **Sponsors** | Catálogo de sponsors y qué capítulos o eventos apoyan |
+| **Sincronización** | Job programado que importa capítulos, organizadores y eventos de España |
 
-This command serves the app at `http://localhost:8080` and provides basic URL
-routing for the app:
+## Stack
 
-    npm start
+Next.js (App Router, TypeScript) · Firebase (Cloud Firestore, Authentication con Google, Storage) ·
+Google Maps Platform · Vitest · GitHub Actions. Decisiones en [`docs/adr/`](docs/adr/README.md).
 
-## Build
+## Puesta en marcha
 
-The included `gulpfile.js` relies on [the `polymer-build` library](https://github.com/Polymer/polymer-build),
-the same library that powers Polymer CLI. Out of the box it will clean the
-`build` directory, and provide image minification. Follow the comments in the
-`gulpfile.js` to add additional steps like JS transpilers or CSS preprocessors.
-
-Also, generates a service-worker.js file with code to pre-cache the dependencies
-based on the entrypoint and fragments specified in `polymer.json`.
-
-    npm run build
-
-## Preview the build
-
-This command serves the minified version of the app at `http://localhost:8080`:
-
-    npm start -- build/
-
-
-## Run lint
-
-This command will run [ESLint](https://github.com/eslint/eslint):
-
-```
-npm run lint
+```bash
+npm install
+cp .env.example .env.local   # y rellena las variables
+npm run dev                  # http://localhost:3000
+npm run lint && npm run typecheck && npm test
 ```
 
-## Run tests
+Más detalle en [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
-This command will run [Web Component Tester](https://github.com/Polymer/web-component-tester)
-against the browsers currently installed on your machine:
+## Cómo se construye
 
-    npm test
+Requisitos antes que código ([`docs/reqs/`](docs/reqs)), decisiones escritas
+([`docs/adr/`](docs/adr/README.md)) y reglas comunes para personas y agentes de código en
+[`AGENTS.md`](AGENTS.md). Plan hasta la entrega (18/11/2026): [`PLAN.md`](PLAN.md).
 
-## Adding a new view
+## La web anterior
 
-You can extend the app by adding more views that will be demand-loaded
-e.g. based on the route, or to progressively render non-critical sections of the
-application. Each new demand-loaded fragment should be added to the list of
-`fragments` in the included `polymer.json` file. This will ensure those
-components and their dependencies are added to the list of pre-cached components
-and will be included in the `bundled` build.
+La app Polymer que sirvió gdg.es entre 2016 y 2020 está en [`legacy/`](legacy/LEGACY.md). Gracias a
+todas las personas que la construyeron y mantuvieron.
 
+## Licencia
 
-## How to contribute
-
-The GDG Spain team loves contributions from the community! Take a look at our [contributing guide](CONTRIBUTING.md) for more information on how to contribute.
+[MIT](LICENSE.txt).
