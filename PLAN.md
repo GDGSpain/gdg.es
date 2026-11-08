@@ -55,9 +55,9 @@ directorio → ficha de capítulo con organizadores y eventos.
 - [ ] RF-MAP-002 mapa dinámico de eventos · RF-MAP-001 mapa de capítulos (Google Maps).
 - [ ] RF-AUTH-002 roles con custom claims.
 - [ ] RF-SYNC-005 sync programado + `syncRuns`.
-- [ ] Despliegue en Firebase App Hosting y Cloud Scheduler → ADR-0011 aceptada; `docs/tech/deploy.md`.
+- [ ] Despliegue en **DEV** (`gdg-es-develop`) con App Hosting y Cloud Scheduler → ADR-0011 aceptada.
 
-**Hecha cuando:** la web está publicada con datos reales y se refresca sola cada día.
+**Hecha cuando:** la web está publicada en DEV con datos reales y se refresca sola cada día.
 
 ## Fase 3 — Gestión y RGPD (13–15 nov)
 
@@ -74,7 +74,7 @@ directorio → ficha de capítulo con organizadores y eventos.
 - [ ] Revisión con el subagente `security-reviewer` y hallazgos corregidos o aceptados por escrito.
 - [ ] Auditoría de RF: casillas de `Estado` e `Implementación` contra el código.
 - [ ] README con cifras (RF, ADR, tests, cobertura) y capturas.
-- [ ] Release `v1.0.0` con release-please.
+- [ ] **Paso a producción** (`gdg-es`) con la checklist de `docs/tech/deploy.md` y release `v1.0.0`.
 - [ ] Memoria y presentación del TFM (fuera del repo).
 
 ---
@@ -89,16 +89,16 @@ directorio → ficha de capítulo con organizadores y eventos.
 | Timeout del sync en App Hosting | Sync incompleto | Partir por capítulos o mover a Cloud Function (ADR-0011) |
 | Tiempo (3 semanas, un autor) | Funcionalidad sin terminar | MoSCoW de arriba; recortar "Podría" primero |
 
-## Qué necesito de ti para la Fase 0
+## Qué necesito de ti
 
-No pegues credenciales en el chat: guárdalas tú en `.env.local` (ignorado por git) con las variables de
-`.env.example`, y dime solo que están.
+Entornos: DEV `gdg-es-develop` (se usa ya) y PRO `gdg-es` (congelado hasta el final). Detalle y checklist
+en `docs/tech/firebase.md`. No pegues credenciales en el chat: lo público (config web, IDs) puede ir en el
+chat; las claves de Maps, en `.env.local`.
 
-1. **Firebase**: se reutilizan los proyectos existentes `gdg-es-develop` (staging) y `gdg-es`
-   (producción), con alias en `.firebaserc`. Necesito config de la app web (es pública) y el JSON de una cuenta de servicio
-   con permisos de Firestore, Auth y Storage (va a `.env.local`).
-2. **Región de Firestore** elegida (propuesta: `europe-southwest1`, Madrid). No se puede cambiar después.
-3. **Google Maps**: las dos claves (navegador y Geocoding) con sus restricciones y un Map ID.
-4. **GitHub**: proteger `develop` y `master` (ver `docs/tech/github.md`) y, cuando toque desplegar,
-   añadir los secretos de Actions.
-5. **Horas por semana** que puedes dedicar, para ajustar el recorte del MoSCoW.
+1. **DEV**: completar la columna DEV de `docs/tech/firebase.md` (Blaze, Firestore en `europe-southwest1`,
+   Auth con Google, Storage, app web, Maps, presupuesto) y pasarme la `firebaseConfig` pública.
+2. **PRO**: por ahora solo confirmar Blaze y presupuesto, y anotar qué sirve hoy el Hosting y dónde está
+   el DNS de `gdg.es`. Nada más hasta el paso a producción.
+3. **GitHub**: instalar la app de Firebase App Hosting en la organización GDGSpain (solo para este repo) y
+   proteger `develop` y `master` (`docs/tech/github.md`).
+4. **Horas por semana** que puedes dedicar, para ajustar el recorte del MoSCoW.

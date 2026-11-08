@@ -38,6 +38,7 @@ Consultar antes de proponer nada; no releer enteras, buscar lo concreto.
 | **Cómo encaja** todo | `docs/arquitectura/` (C4 en Mermaid) |
 | **Cómo** se despliega y opera | `docs/tech/` |
 | Obligaciones legales (RGPD) | `docs/legal/` |
+| Entornos y despliegue | `docs/tech/firebase.md`, `docs/tech/deploy.md` |
 
 Dominios: `SYNC`, `CHAPTERS`, `ORGANIZERS`, `EVENTS`, `MAP`, `SPONSORS`, `AUTH`, `ADMIN`.
 
@@ -61,7 +62,10 @@ Dominios: `SYNC`, `CHAPTERS`, `ORGANIZERS`, `EVENTS`, `MAP`, `SPONSORS`, `AUTH`,
    ([ADR-0008](docs/adr/0008-firestore.md), [ADR-0009](docs/adr/0009-firebase-auth-google.md)).
 8. **Datos personales mínimos**: de los organizadores solo lo que ya es público en gdg.community.dev
    (nombre, foto, rol, capítulo, enlaces públicos). Nada de emails ni teléfonos. Ver `docs/legal/`.
-9. **Trazabilidad**: todo fichero o clase creado para un RF lo cita en su comentario de cabecera (todos
+9. **Solo DEV hasta el paso a producción.** Todo despliegue, prueba y sync va a `gdg-es-develop`. Nadie
+   (persona ni agente) despliega, cambia reglas ni escribe datos en `gdg-es` (PRO) hasta ejecutar la
+   checklist de `docs/tech/deploy.md`. En local, emuladores o DEV; nunca credenciales de PRO.
+10. **Trazabilidad**: todo fichero o clase creado para un RF lo cita en su comentario de cabecera (todos
    los RF si son varios). Documentación y comentarios **en español**.
 
 ## Flujo de un cambio
@@ -104,8 +108,9 @@ Los tests nunca llaman a gdg.community.dev de verdad: usan fixtures en `src/sync
 
 - **Secretos**: nunca en el repo; `.env` ignorado y `.env.example` sin valores reales.
 - **Entrada**: todo body y query se valida con zod; el error handler nunca devuelve detalles internos.
-- **Credenciales de Firebase/GCP**: la cuenta de servicio y las claves van en `.env.local` (ignorado) o en
-  el gestor de secretos del hosting; nunca en el repo ni en el chat con agentes.
+- **Credenciales de Firebase/GCP**: sin claves JSON. En local, ADC del usuario contra DEV o emuladores;
+  en App Hosting, la cuenta de ejecución; en GitHub Actions, Workload Identity Federation. Los secretos
+  (`SYNC_SECRET`, clave de Geocoding) en Secret Manager; nunca en el repo ni en el chat con agentes.
 - **Claves de Google Maps**: una clave de navegador restringida por referrer HTTP y solo a Maps JavaScript
   API; otra de servidor restringida a Geocoding API. Cuotas y alertas de facturación en GCP.
 - **Panel `/admin`**: solo rol `admin` (custom claim de Firebase); un organizador solo edita lo suyo.

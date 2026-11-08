@@ -23,7 +23,9 @@ Un ruleset para `develop` y `master` con:
 
 `.github/CODEOWNERS` asigna `@reiaguilera` como revisor de todo el repositorio.
 
-## Secretos de Actions (cuando se despliegue)
+## Environments y despliegue
 
-Se definen con ADR-0011. Preferir Workload Identity Federation (sin claves JSON) frente a
-`FIREBASE_TOKEN`, que es el método que usaba el workflow anterior y está obsoleto.
+Environments `dev` (ahora) y `production` (al final, con aprobación obligatoria y solo desde `master`).
+Autenticación con Workload Identity Federation: sin secretos en GitHub, solo identificadores. Detalle en
+[`deploy.md`](deploy.md). El `FIREBASE_TOKEN` que usaba el workflow anterior está obsoleto y se borra de
+los secretos del repo.
