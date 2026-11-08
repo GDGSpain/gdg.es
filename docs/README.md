@@ -11,6 +11,7 @@ misma verdad.
 | ¿Cómo **encaja** todo? | [`arquitectura/`](arquitectura/README.md) |
 | ¿Cómo se **despliega y opera**? | [`tech/`](tech/README.md) |
 | ¿Qué exige el **RGPD**? | [`legal/`](legal/README.md) |
+| ¿Cómo se **ve**? | [`design/`](design/README.md) |
 
 ## El flujo de un cambio
 

@@ -33,6 +33,9 @@ Si una fase se retrasa, se recorta de abajo arriba; nunca los tests de las regla
 - [ ] Firebase Emulator Suite (`npm run emulators`) y `db/firestore.rules` denegando todo a cliente.
 - [x] CI (`.github/workflows/ci.yml`): commitlint, lint, typecheck, test con cobertura, build.
 - [ ] Añadir los emuladores de Firebase al CI con el primer adaptador de Firestore.
+- [x] **Tokens de diseño** basados en gdg.community.dev (`src/app/tokens.css`, `docs/design/README.md`),
+      con test de contraste AA en claro y oscuro.
+- [ ] Decidir la fuente: licencia de Google Sans o Open Sans con `next/font`.
 - [ ] **RF-SYNC-001** (spike de la fuente) → ADR-0005 aceptada y fixtures guardados.
 
 **Hecha cuando:** `npm run dev` arranca con los emuladores, el CI está en verde y sabemos de dónde sale

@@ -33,7 +33,7 @@ description: Preparar y crear commits de gdg.es con Conventional Commits en la r
    ```
    - Tipos: `feat`, `fix`, `docs`, `refactor`, `test`, `perf`, `ci`, `build`, `chore`, `style`, `revert`.
    - Ámbitos (`commitlint.config.mjs`): `sync`, `chapters`, `organizers`, `events`, `map`, `sponsors`,
-     `auth`, `admin`, `web`, `db`, `ci`, `docs`, `deps`, `legacy`.
+     `auth`, `admin`, `web`, `db`, `ci`, `docs`, `deps`, `legacy`, `design`.
    - `feat` → versión menor, `fix` → parche, `!` o `BREAKING CHANGE:` → mayor (release-please).
 5. `git add <ficheros concretos>` (no `git add -A` a ciegas) y `git commit -F -` con el mensaje.
 6. Mostrar `git log --oneline -5` y resumir. Recordar que el push lo confirma el usuario.

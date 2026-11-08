@@ -28,9 +28,9 @@ Skills de diseño de terceros (sin modificar; origen y licencias en `.claude/ski
   cuándo animar, curvas y duraciones, y respetar `prefers-reduced-motion`
 
 Cómo combinarlas: `design-taste-frontend` decide la dirección visual de una página nueva →
-`impeccable` la pule → `emil-design-eng` añade el movimiento. Mientras no exista un sistema de diseño
-propio, el primero que se fije (tokens en `src/app/globals.css`) manda sobre las sugerencias de las
-skills; los ejemplos en otros stacks se traducen a Next.js + CSS Modules.
+`impeccable` la pule → `emil-design-eng` añade el movimiento. Los tokens de `src/app/tokens.css`
+(basados en gdg.community.dev, ver `docs/design/README.md`) mandan sobre las sugerencias de las skills;
+un valor nuevo se añade primero como token; los ejemplos en otros stacks se traducen a Next.js + CSS Modules.
 
 ## 🧩 Subagentes
 
