@@ -114,8 +114,9 @@ Los tests nunca llaman a gdg.community.dev de verdad: usan fixtures en `src/sync
 - **Claves de Google Maps**: una clave de navegador restringida por referrer HTTP y solo a Maps JavaScript
   API; otra de servidor restringida a Geocoding API. Cuotas y alertas de facturación en GCP.
 - **Panel `/admin`**: solo rol `admin` (custom claim de Firebase); un organizador solo edita lo suyo.
-- **Scraping responsable**: respetar `robots.txt` y términos de la fuente, `User-Agent` identificable,
-  ritmo limitado y caché. Ver [ADR-0005](docs/adr/0005-metodo-de-extraccion.md).
+- **Scraping responsable**: solo sitemaps y páginas públicas; **nunca** `/api/` ni `/u/` de
+  gdg.community.dev (prohibidos por su `robots.txt`); 2 s entre peticiones, `User-Agent` identificable y
+  caché. Ver [ADR-0005](docs/adr/0005-metodo-de-extraccion.md) y `docs/tech/sync.md`.
 - **RGPD**: un cambio que trate datos personales nuevos se refleja en `docs/legal/` en el mismo cambio.
 
 ## Git

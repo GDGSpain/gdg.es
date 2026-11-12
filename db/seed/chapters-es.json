@@ -1,0 +1,348 @@
+{
+  "$comment": "Capítulos de España en gdg.community.dev (country = ES) a 2026-11-12. Semilla de RF-SYNC-002: el sync verifica cada uno en su página y descubre nuevos con sitemap-chapters.xml. Ver docs/tech/sync.md.",
+  "generatedAt": "2026-11-12",
+  "chapters": [
+    {
+      "sourceId": 1694,
+      "slug": "gdg-a-coruna",
+      "title": "GDG A Coruña",
+      "city": "A Coruña",
+      "state": "Galicia",
+      "latitude": 43.3637626,
+      "longitude": -8.4103923
+    },
+    {
+      "sourceId": 1597,
+      "slug": "gdg-alicante",
+      "title": "GDG Alicante",
+      "city": "Alicante",
+      "state": "VC",
+      "latitude": 38.3459963,
+      "longitude": -0.4906855
+    },
+    {
+      "sourceId": 1593,
+      "slug": "gdg-aranjuez",
+      "title": "GDG Aranjuez",
+      "city": "Aranjuez",
+      "state": "MD",
+      "latitude": 40.0305018,
+      "longitude": -3.6040527
+    },
+    {
+      "sourceId": 996,
+      "slug": "gdg-barcelona",
+      "title": "GDG Barcelona",
+      "city": "Barcelona",
+      "state": "Catalonia",
+      "latitude": 41.4,
+      "longitude": 2.17
+    },
+    {
+      "sourceId": 869,
+      "slug": "gdg-burgos",
+      "title": "GDG Burgos",
+      "city": "Burgos",
+      "state": "Castille and León",
+      "latitude": 42.35,
+      "longitude": -3.69
+    },
+    {
+      "sourceId": 353,
+      "slug": "gdg-cloud-espanol",
+      "title": "GDG Cloud Español",
+      "city": "Madrid",
+      "state": "Madrid",
+      "latitude": 40.42,
+      "longitude": -3.71
+    },
+    {
+      "sourceId": 3007,
+      "slug": "gdg-cordoba",
+      "title": "GDG Córdoba",
+      "city": "Córdoba",
+      "state": "AN",
+      "latitude": 37.8893025,
+      "longitude": -4.7792753
+    },
+    {
+      "sourceId": 384,
+      "slug": "gdg-girona",
+      "title": "GDG Girona",
+      "city": "Girona",
+      "state": "Catalonia",
+      "latitude": 41.98,
+      "longitude": 2.81
+    },
+    {
+      "sourceId": 1019,
+      "slug": "gdg-granada",
+      "title": "GDG Granada",
+      "city": "Granada",
+      "state": "Andalusia",
+      "latitude": 37.17,
+      "longitude": -3.59
+    },
+    {
+      "sourceId": 879,
+      "slug": "gdg-jaen",
+      "title": "GDG Jaén",
+      "city": "Jaen",
+      "state": "Andalusia",
+      "latitude": 37.77,
+      "longitude": -3.8
+    },
+    {
+      "sourceId": 3459,
+      "slug": "gdg-jerez-de-la-frontera",
+      "title": "GDG Jerez de la Frontera",
+      "city": "Jerez de la Frontera",
+      "state": "AN",
+      "latitude": 36.6963391,
+      "longitude": -6.1200046
+    },
+    {
+      "sourceId": 911,
+      "slug": "gdg-la-rioja",
+      "title": "GDG La Rioja",
+      "city": "La Rioja",
+      "state": "La Rioja",
+      "latitude": 42.47,
+      "longitude": -2.44
+    },
+    {
+      "sourceId": 863,
+      "slug": "gdg-lleida",
+      "title": "GDG Lleida",
+      "city": "Lleida",
+      "state": "Catalonia",
+      "latitude": 41.62,
+      "longitude": 0.63
+    },
+    {
+      "sourceId": 975,
+      "slug": "gdg-madrid",
+      "title": "GDG Madrid",
+      "city": "Madrid",
+      "state": "Madrid",
+      "latitude": 40.42,
+      "longitude": -3.71
+    },
+    {
+      "sourceId": 1016,
+      "slug": "gdg-malaga",
+      "title": "GDG Málaga",
+      "city": "Malaga",
+      "state": "Andalusia",
+      "latitude": 36.72,
+      "longitude": -4.42
+    },
+    {
+      "sourceId": 3416,
+      "slug": "gdg-mallorca",
+      "title": "GDG Mallorca",
+      "city": "Nord de Palma District",
+      "state": "IB",
+      "latitude": 39.5726566,
+      "longitude": 2.6568459
+    },
+    {
+      "sourceId": 263,
+      "slug": "gdg-marbella",
+      "title": "GDG Marbella",
+      "city": "Marbella",
+      "state": "Andalusia",
+      "latitude": 36.52,
+      "longitude": -4.89
+    },
+    {
+      "sourceId": 972,
+      "slug": "gdg-menorca",
+      "title": "GDG Menorca",
+      "city": "Mahon",
+      "state": "Balearic Islands",
+      "latitude": 39.89,
+      "longitude": 4.25
+    },
+    {
+      "sourceId": 3076,
+      "slug": "gdg-on-campus-autonomous-university-of-madrid-madrid-spain",
+      "title": "GDG on Campus Autonomous University of Madrid - Madrid, Spain",
+      "city": "Madrid",
+      "state": "MD",
+      "latitude": 40.4167279,
+      "longitude": -3.7032905
+    },
+    {
+      "sourceId": 3520,
+      "slug": "gdg-on-campus-huelva-university-huelva-spain",
+      "title": "GDG on Campus Huelva University - Huelva, Spain",
+      "city": "Huelva",
+      "state": "AN",
+      "latitude": 37.2619585,
+      "longitude": -6.9427327
+    },
+    {
+      "sourceId": 2488,
+      "slug": "gdg-on-campus-ie-university-madrid-spain",
+      "title": "GDG on Campus IE University - Madrid, Spain",
+      "city": "Madrid",
+      "state": "Community of Madrid",
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "sourceId": 2406,
+      "slug": "gdg-on-campus-polytechnic-university-of-valencia-valencia-spain",
+      "title": "GDG on Campus Polytechnic University of Valencia - Valencia, Spain",
+      "city": "València",
+      "state": "Valencia",
+      "latitude": 39.4699075,
+      "longitude": -0.3762881
+    },
+    {
+      "sourceId": 3414,
+      "slug": "gdg-on-campus-uab-barcelona-spain",
+      "title": "GDG on Campus UAB - Barcelona, Spain",
+      "city": "Barcelona",
+      "state": "CT",
+      "latitude": 41.3874374,
+      "longitude": 2.1686496
+    },
+    {
+      "sourceId": 2621,
+      "slug": "gdg-on-campus-ucam-murcia-spain",
+      "title": "GDG on Campus UCAM - Murcia, Spain",
+      "city": "UCAM Catholic University of Murcia",
+      "state": "Murcia",
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "sourceId": 3466,
+      "slug": "gdg-on-campus-universidad-pablo-de-olavide-seville-spain",
+      "title": "GDG on Campus Universidad Pablo de Olavide - Seville, Spain",
+      "city": "Seville",
+      "state": "AN",
+      "latitude": 37.3890924,
+      "longitude": -5.9844589
+    },
+    {
+      "sourceId": 2490,
+      "slug": "gdg-on-campus-university-of-girona-girona-spain",
+      "title": "GDG on Campus University of Girona - Girona, Spain",
+      "city": "Girona",
+      "state": "Catalonia",
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "sourceId": 3374,
+      "slug": "gdg-on-campus-uoc-barcelona-spain",
+      "title": "GDG on Campus UOC - Barcelona, Spain",
+      "city": "Barcelona",
+      "state": "CT",
+      "latitude": 41.3874374,
+      "longitude": 2.1686496
+    },
+    {
+      "sourceId": 3069,
+      "slug": "gdg-ourense",
+      "title": "GDG Ourense",
+      "city": "Ourense",
+      "state": "Galicia",
+      "latitude": 42.3357893,
+      "longitude": -7.863881
+    },
+    {
+      "sourceId": 1616,
+      "slug": "gdg-ponferrada",
+      "title": "GDG Ponferrada",
+      "city": "Ponferrada",
+      "state": "CL",
+      "latitude": 42.5499958,
+      "longitude": -6.598259
+    },
+    {
+      "sourceId": 207,
+      "slug": "gdg-santander",
+      "title": "GDG Santander",
+      "city": "Santander",
+      "state": "Cantabria",
+      "latitude": 43.46,
+      "longitude": -3.81
+    },
+    {
+      "sourceId": 968,
+      "slug": "gdg-santiago-de-compostela",
+      "title": "GDG Santiago de Compostela",
+      "city": "Santiago de Compostela",
+      "state": "Galicia",
+      "latitude": 42.88,
+      "longitude": -8.54
+    },
+    {
+      "sourceId": 1008,
+      "slug": "gdg-sevilla",
+      "title": "GDG Sevilla",
+      "city": "Seville",
+      "state": "Andalusia",
+      "latitude": 37.4,
+      "longitude": -5.98
+    },
+    {
+      "sourceId": 908,
+      "slug": "gdg-tarragona",
+      "title": "GDG Tarragona",
+      "city": "Tarragona",
+      "state": "Catalonia",
+      "latitude": 41.12,
+      "longitude": 1.24
+    },
+    {
+      "sourceId": 3525,
+      "slug": "gdg-tenerife",
+      "title": "GDG Tenerife",
+      "city": "Santa Cruz de Tenerife",
+      "state": "CN",
+      "latitude": 28.4636296,
+      "longitude": -16.2518467
+    },
+    {
+      "sourceId": 477,
+      "slug": "gdg-toledo",
+      "title": "GDG Toledo",
+      "city": "Toledo",
+      "state": "Castille-La Mancha",
+      "latitude": 39.86,
+      "longitude": -4.03
+    },
+    {
+      "sourceId": 736,
+      "slug": "gdg-valencia",
+      "title": "GDG Valencia",
+      "city": "Valencia",
+      "state": "Valencia",
+      "latitude": 39.48,
+      "longitude": -0.39
+    },
+    {
+      "sourceId": 1407,
+      "slug": "gdg-valladolid",
+      "title": "GDG Valladolid",
+      "city": "Valladolid",
+      "state": "CL",
+      "latitude": 41.652251,
+      "longitude": -4.7245321
+    },
+    {
+      "sourceId": 855,
+      "slug": "gdg-zaragoza",
+      "title": "GDG Zaragoza",
+      "city": "Zaragoza",
+      "state": "Aragon",
+      "latitude": 41.65,
+      "longitude": -0.89
+    }
+  ]
+}

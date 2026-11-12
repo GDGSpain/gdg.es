@@ -36,7 +36,7 @@ Si una fase se retrasa, se recorta de abajo arriba; nunca los tests de las regla
 - [x] **Tokens de diseño** basados en gdg.community.dev (`src/app/tokens.css`, `docs/design/README.md`),
       con test de contraste AA en claro y oscuro.
 - [ ] Decidir la fuente: licencia de Google Sans o Open Sans con `next/font`.
-- [ ] **RF-SYNC-001** (spike de la fuente) → ADR-0005 aceptada y fixtures guardados.
+- [x] **RF-SYNC-001** (spike de la fuente) → ADR-0005 aceptada y fixtures guardados.
 
 **Hecha cuando:** `npm run dev` arranca con los emuladores, el CI está en verde y sabemos de dónde sale
 cada dato de gdg.community.dev.

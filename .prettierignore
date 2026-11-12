@@ -5,3 +5,5 @@ package-lock.json
 docs/context/*.json
 *.md
 .claude/
+src/sync/__fixtures__/
+db/seed/

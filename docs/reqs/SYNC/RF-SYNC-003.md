@@ -24,7 +24,9 @@ Para cada capítulo importado se obtienen sus organizadores y se guardan como pe
 - Ninguno detectado
 
 ## Notas Técnicas
-- **Pendiente de decidir**: criterio de deduplicación entre capítulos (id de perfil de la fuente si existe; si no, nombre + foto).
+- Deduplicación por `user.profile_url` (`/u/{id}/`) de `chapterTeam`; el sync guarda ese id pero nunca
+  pide `/u/` (prohibido por `robots.txt`).
+- No se importan `company`, `title` (puesto) ni `bio`, aunque la fuente los publique (minimización).
 - Ver `docs/legal/` (datos personales).
 
 ## Implementación

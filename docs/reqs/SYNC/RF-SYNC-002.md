@@ -26,7 +26,10 @@ El sistema importa todos los capítulos GDG de España desde la fuente y los gua
 ## Notas Técnicas
 - Coordenadas: las de la fuente; si faltan, Google Geocoding API (ADR-0010).
 - Documento `chapters/{sourceId}` en Firestore (ADR-0008).
-- La comunidad autónoma puede no venir en la fuente: derivarla de la provincia/ciudad con una tabla propia.
+- La fuente no normaliza `state` (`Andalusia`, `AN`, `Community of Madrid`…): tabla propia `state` →
+  comunidad autónoma, con test que cubra todos los valores de la semilla.
+- Origen: página del capítulo (`__NEXT_DATA__`) y semilla `db/seed/chapters-es.json`; descubrimiento de nuevos
+  por `sitemap-chapters.xml` (ver `docs/tech/sync.md`).
 - Cumple AGENTS.md regla 4 (solo España).
 
 ## Implementación

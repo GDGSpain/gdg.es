@@ -9,6 +9,8 @@ Pendiente de redactar en esta carpeta:
 - [ ] **Minimización**: solo los campos de arriba; nunca email ni teléfono (AGENTS.md, regla 7).
 - [ ] **Derecho de oposición y supresión**: un organizador puede pedir ocultar su perfil (RF-ADMIN-003)
       y el sync debe respetarlo (no reimportar).
+- [x] **Fixtures de tests anonimizados**: los datos de organizadores en `src/sync/__fixtures__/` son
+      ficticios.
 - [ ] **Información**: página de privacidad que explique origen de los datos y cómo ejercer derechos.
 - [ ] **Registro de actividades de tratamiento**.
 - [ ] **Encargados del tratamiento**: Google (Firebase, GCP y Google Maps Platform); aceptar los términos

@@ -24,7 +24,10 @@ Se importan los eventos próximos y pasados de cada capítulo de España con su 
 - Ninguno detectado
 
 ## Notas Técnicas
-- **Pendiente de decidir**: ventana de histórico (12 meses propuesto).
+- Ventana: futuros + 12 meses. Próximos desde la página del capítulo; pasados desde los sitemaps mensuales
+  `sitemap-events-AAAA-MM.xml` filtrando `/google-{slug}-presents-`; detalle en la página del evento.
+- Formato: `is_virtual_event` con dirección → híbrido; sin dirección → online; si no → presencial.
+- La fuente no da coordenadas de eventos, solo dirección.
 - Si el lugar no trae coordenadas, geocodificar en la ingesta con Google Geocoding API (ADR-0010), una vez
   por lugar y respetando los términos sobre cuánto tiempo se guarda el resultado.
 

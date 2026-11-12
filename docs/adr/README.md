@@ -11,7 +11,7 @@ pasa a `Reemplazada por ADR-NNNN`.
 | [0002](0002-nextjs-full-stack.md) | Next.js (App Router, TypeScript) como aplicación full-stack única | Aceptada |
 | [0003](0003-postgresql.md) | PostgreSQL como base de datos; ORM por decidir | Reemplazada por ADR-0008 |
 | [0004](0004-ingesta-a-bd-propia.md) | Los datos se importan a una BD propia; la web nunca consulta la fuente al servir | Aceptada |
-| [0005](0005-metodo-de-extraccion.md) | Método de extracción de gdg.community.dev | Propuesta |
+| [0005](0005-metodo-de-extraccion.md) | Extraer de gdg.community.dev con páginas públicas y sitemaps, nunca con su API | Aceptada |
 | [0006](0006-arquitectura-por-capas.md) | Casos de uso con puertos y `Result<T,E>` dentro de Next.js | Aceptada |
 | [0007](0007-contexto-generado-desde-codigo.md) | `docs/context/` se genera desde el código y se comprueba en CI | Aceptada |
 | [0008](0008-firestore.md) | Cloud Firestore como base de datos, accedida solo desde el servidor | Aceptada |

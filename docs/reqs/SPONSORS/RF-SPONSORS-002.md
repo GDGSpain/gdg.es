@@ -24,7 +24,9 @@ Los admins (y organizadores, para su capítulo) gestionan la relación sponsor �
 - Ninguno detectado
 
 ## Notas Técnicas
-- **Pendiente de decidir**: ¿se intenta importar sponsors de la fuente si los expone?
+- La fuente publica los sponsors de cada capítulo (`chapterSponsors`, `chapterPartners` en la página del
+  capítulo): se pueden importar como dato de origen además de los propios. **Pendiente de decidir** si entra
+  en esta versión.
 
 ## Implementación
 <!-- Se rellena al implementar -->

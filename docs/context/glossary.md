@@ -18,4 +18,9 @@ mismo cambio.
 - **Sync / sincronización**: ejecución del job que importa datos de la fuente (RF-SYNC-*).
 - **Id de origen** (`sourceId`): identificador del elemento en la fuente; clave del upsert.
 - **Capítulo inactivo**: estaba en la fuente y ya no aparece; se oculta, no se borra (RF-SYNC-005).
-- **Formato de evento**: presencial, online o híbrido.
+- **Formato de evento**: presencial, online o híbrido. La fuente no lo da: se deduce de `is_virtual_event` y
+  de si hay dirección (`docs/tech/sync.md`).
+- **Semilla de capítulos**: `db/seed/chapters-es.json`, lista versionada de capítulos de España de la que
+  parte el sync.
+- **GDG on Campus**: capítulo universitario; es un capítulo más (mismo tipo de dato), con slug
+  `gdg-on-campus-…`.
