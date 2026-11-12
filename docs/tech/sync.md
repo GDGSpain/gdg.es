@@ -64,6 +64,17 @@ plataforma) un acceso o permiso explícito; mientras tanto se aplican las reglas
 Volumen diario aproximado: 40–60 peticiones, 2–3 minutos con la pausa de 2 s. `User-Agent` identificable
 (`SYNC_USER_AGENT`) y caché HTTP (ETag/Last-Modified cuando la fuente los dé).
 
+## Cómo ejecutarlo
+
+```bash
+npm run emulators   # en otra terminal
+npm run sync        # capítulos de la semilla → Firestore (emulador o DEV según .env.local)
+```
+
+Implementado (RF-SYNC-002): capítulos. Pendiente: organizadores (RF-SYNC-003), eventos (RF-SYNC-004),
+programación, registro en `syncRuns` y descubrimiento semanal de capítulos nuevos (RF-SYNC-005; el
+cliente ya sabe listar el sitemap con `listChapterSlugs`).
+
 ## Si la fuente cambia
 
 Los tests de `src/sync/` usan los fixtures; si `__NEXT_DATA__` cambia de forma, el parseo (validado con

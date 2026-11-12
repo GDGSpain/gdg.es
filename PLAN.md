@@ -29,10 +29,10 @@ Si una fase se retrasa, se recorta de abajo arriba; nunca los tests de las regla
 - [x] Next.js (App Router, TS estricto), ESLint con la regla de dependencias (ADR-0006), Vitest,
       lefthook + commitlint.
 - [x] `src/shared/`: `config.ts` (zod, fail-fast), `result.ts` con tests.
-- [ ] `src/composition.ts` (cuando exista el primer puerto).
-- [ ] Firebase Emulator Suite (`npm run emulators`) y `db/firestore.rules` denegando todo a cliente.
+- [x] `src/composition.ts`.
+- [x] Firebase Emulator Suite (`npm run emulators`) y `db/firestore.rules` denegando todo a cliente.
 - [x] CI (`.github/workflows/ci.yml`): commitlint, lint, typecheck, test con cobertura, build.
-- [ ] Añadir los emuladores de Firebase al CI con el primer adaptador de Firestore.
+- [x] Emulador de Firestore en el CI (job `Firestore (emulador)`).
 - [x] **Tokens de diseño** basados en gdg.community.dev (`src/app/tokens.css`, `docs/design/README.md`),
       con test de contraste AA en claro y oscuro.
 - [ ] Decidir la fuente: licencia de Google Sans o Open Sans con `next/font`.
@@ -43,7 +43,8 @@ cada dato de gdg.community.dev.
 
 ## Fase 1 — Datos y directorio (31 oct – 6 nov)
 
-- [ ] RF-SYNC-002 capítulos de España · RF-SYNC-003 organizadores · RF-SYNC-004 eventos.
+- [x] RF-SYNC-002 capítulos de España (geocodificación de los 3 sin coordenadas pendiente de la clave).
+- [ ] RF-SYNC-003 organizadores · RF-SYNC-004 eventos.
 - [ ] `npm run context` genera `docs/context/data-model.md` y `api.md` (ADR-0007) y entra en el pre-commit.
 - [ ] RF-CHAPTERS-001 directorio · RF-CHAPTERS-002 ficha de capítulo.
 - [ ] RF-AUTH-001 login con Google (Firebase Auth + cookie de sesión).
