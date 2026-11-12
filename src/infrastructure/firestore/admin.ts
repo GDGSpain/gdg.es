@@ -11,6 +11,9 @@ import type { AppConfig } from "@/shared/config/config";
 
 const APP_NAME = "gdg-es-server";
 
+/** Proyecto que usan los emuladores (`--project demo-gdg-es` en package.json). */
+export const EMULATOR_PROJECT_ID = "demo-gdg-es";
+
 /**
  * Devuelve la app de Firebase Admin, creándola una sola vez.
  * @param config configuración validada
@@ -18,8 +21,12 @@ const APP_NAME = "gdg-es-server";
 export function getAdminApp(config: AppConfig): App {
   const existing = getApps().find((a) => a.name === APP_NAME);
   if (existing) return existing;
-  const projectId =
-    config.FIREBASE_PROJECT_ID ?? (config.FIRESTORE_EMULATOR_HOST ? "demo-gdg-es" : undefined);
+  // Con el emulador: proyecto de demostración y sin credenciales (no se toca ningún proyecto real y
+  // los datos se ven en la interfaz de `npm run emulators`).
+  if (config.FIRESTORE_EMULATOR_HOST) {
+    return initializeApp({ projectId: EMULATOR_PROJECT_ID }, APP_NAME);
+  }
+  const projectId = config.FIREBASE_PROJECT_ID;
   const credential =
     config.FIREBASE_CLIENT_EMAIL && config.FIREBASE_PRIVATE_KEY
       ? cert({
@@ -27,10 +34,8 @@ export function getAdminApp(config: AppConfig): App {
           clientEmail: config.FIREBASE_CLIENT_EMAIL,
           privateKey: config.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n"),
         })
-      : config.FIRESTORE_EMULATOR_HOST
-        ? undefined
-        : applicationDefault();
-  return initializeApp({ projectId, ...(credential ? { credential } : {}) }, APP_NAME);
+      : applicationDefault();
+  return initializeApp({ projectId, credential }, APP_NAME);
 }
 
 /**
