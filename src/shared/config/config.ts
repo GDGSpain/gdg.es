@@ -18,6 +18,12 @@ export const configSchema = z.object({
   FIREBASE_PRIVATE_KEY: optionalString,
   GOOGLE_GEOCODING_API_KEY: optionalString,
   SYNC_USER_AGENT: z.string().trim().min(1).default("gdg.es-directory"),
+  /** Base de la fuente (ADR-0005); solo se cambia en tests. */
+  GDG_SOURCE_BASE_URL: z.url().default("https://gdg.community.dev"),
+  /** Pausa mínima entre peticiones a la fuente; nunca por debajo del Crawl-delay de su robots.txt. */
+  SYNC_DELAY_MS: z.coerce.number().int().min(2000).default(2000),
+  /** Si está definida, el Admin SDK usa el emulador de Firestore (lo lee el propio SDK). */
+  FIRESTORE_EMULATOR_HOST: optionalString,
   SYNC_SECRET: optionalString,
   ADMIN_EMAILS: z
     .string()

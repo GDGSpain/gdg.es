@@ -20,9 +20,13 @@
     "test:coverage": "vitest run --coverage",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "lefthook install || true"
+    "prepare": "lefthook install || true",
+    "emulators": "firebase emulators:start --only firestore,auth --project demo-gdg-es",
+    "test:emulator": "firebase emulators:exec --only firestore --project demo-gdg-es \"vitest run src/infrastructure/firestore\"",
+    "sync": "tsx --env-file-if-exists=.env.local src/sync/run-chapters.ts"
   },
   "dependencies": {
+    "firebase-admin": "^14.5.0",
     "next": "16.4.3",
     "react": "19.3.0",
     "react-dom": "19.3.0",
@@ -37,8 +41,10 @@
     "@vitest/coverage-v8": "^5.0.5",
     "eslint": "^9",
     "eslint-config-next": "16.4.3",
+    "firebase-tools": "^15.36.0",
     "lefthook": "^2.2.2",
     "prettier": "^3.9.10",
+    "tsx": "^4.23.15",
     "typescript": "^5",
     "vitest": "^5.0.5"
   }

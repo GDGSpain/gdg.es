@@ -48,3 +48,9 @@ next-env.d.ts
 legacy/node_modules/
 legacy/bower_components/
 legacy/build/
+
+# firebase
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+.firebase/

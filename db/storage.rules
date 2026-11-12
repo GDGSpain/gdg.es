@@ -1,0 +1,10 @@
+rules_version = '2';
+
+// ADR-0008: sin acceso de cliente. Los logos se suben y sirven desde el servidor (RF-ADMIN-002).
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

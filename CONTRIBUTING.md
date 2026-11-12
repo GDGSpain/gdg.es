@@ -19,6 +19,16 @@ cp .env.example .env.local   # y rellena las variables (nunca se suben)
 npm run dev                  # web en http://localhost:3000
 ```
 
+Firestore y el sync en local (emuladores; necesitan Java 21):
+
+```bash
+npm run emulators            # Firestore :8080, Auth :9099, interfaz en http://localhost:4000
+npm run sync                 # importa los capítulos de España en el emulador (FIRESTORE_EMULATOR_HOST)
+npm run test:emulator        # tests de los adaptadores de Firestore contra el emulador
+```
+
+Sin `FIRESTORE_EMULATOR_HOST` en `.env.local`, `npm run sync` escribe en DEV. Nunca contra PRO.
+
 ## 2. Antes de escribir código
 
 1. **Todo cambio parte de un requisito** (`docs/reqs/<DOMINIO>/RF-<DOMINIO>-NNN.md`). Si no existe, se crea
