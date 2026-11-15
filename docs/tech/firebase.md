@@ -29,7 +29,7 @@ Mismo checklist para los dos. DEV ahora; PRO al pasar a producción.
 |---|---|---|---|---|
 | 1 | Plan **Blaze** con cuenta de facturación (App Hosting, Scheduler, Secret Manager y Maps lo exigen) | Consola → Uso y facturación | [ ] | [ ] |
 | 2 | **Presupuesto y alertas** (p. ej. 20 € DEV / 50 € PRO, avisos al 50/90/100 %) | GCP → Facturación → Presupuestos | [ ] | [ ] |
-| 3 | **Firestore** modo nativo, base `(default)`, región `europe-southwest1` (Madrid). La región no se puede cambiar | Firestore Database | [ ] | [ ] |
+| 3 | **Firestore** modo nativo, región `europe-southwest1` (Madrid). La región no se puede cambiar. Si `(default)` está en modo Datastore, ver más abajo | Firestore Database | [ ] | [ ] |
 | 4 | **Authentication**: proveedor Google activo; dominios autorizados: `localhost`, dominio de App Hosting y dominio propio | Authentication → Sign-in method / Settings | [ ] | [ ] |
 | 5 | **Storage**: bucket por defecto en la misma región | Storage | [ ] | [ ] |
 | 6 | **App web** registrada (su `firebaseConfig` es pública) | Configuración del proyecto → Tus apps | [ ] | [ ] |
@@ -47,6 +47,34 @@ Solo lo que despliega el workflow: `Firebase Rules Admin` (reglas e índices de 
 `Cloud Datastore Index Admin`, `Firebase App Hosting Admin` (crear rollouts), `Service Account User`
 sobre la cuenta de ejecución de App Hosting. Nada de `Owner` ni `Editor`.
 
+## Base de datos en modo Datastore
+
+El sync necesita Firestore en **modo nativo**. En `gdg-es-develop` la base `(default)` ya existía en
+**modo Datastore** (heredada; el error es `FAILED_PRECONDITION: The Cloud Firestore API is not available
+for Firestore in Datastore Mode database`). Comprobar su estado:
+
+```bash
+gcloud firestore databases describe --database='(default)' --project=gdg-es-develop
+# type: DATASTORE_MODE | FIRESTORE_NATIVE · locationId: …
+```
+
+Dos salidas, por orden de preferencia:
+
+1. **Si `(default)` está vacía**, pasarla a modo nativo (solo se puede si nunca ha tenido datos):
+   ```bash
+   gcloud firestore databases update --database='(default)' --type=firestore-native --project=gdg-es-develop
+   ```
+   No hay que tocar nada más. Su región es la que ya tenga (`locationId`) y no se puede cambiar.
+2. **Si tiene datos o no deja cambiarla**, crear una base **con nombre** en modo nativo y en Madrid, y
+   apuntar la app a ella con `FIRESTORE_DATABASE_ID` (en `.env.local` y en `apphosting.yaml`):
+   ```bash
+   gcloud firestore databases create --database=gdg-es --location=europe-southwest1 --type=firestore-native --project=gdg-es-develop
+   ```
+   En `firebase.json`, `firestore` pasa a ser una lista con `"database": "gdg-es"` para desplegar reglas
+   e índices a esa base.
+
+Lo que se elija en DEV se replica igual en PRO (`gdg-es`), que hay que revisar antes del paso a producción.
+
 ## Credenciales en local
 
 - **Sin claves JSON**: en local se usan las Application Default Credentials del usuario
@@ -62,4 +90,5 @@ La web anterior (Polymer) desplegaba en **Firebase Hosting clásico** de ambos p
 nada hay que anotar aquí:
 
 - [ ] DEV: qué sirve hoy el Hosting y si había Firestore, Auth o Storage creados (y en qué región).
+      Hallazgo 2026-11-15: la base `(default)` está en **modo Datastore** (ver arriba).
 - [ ] PRO: lo mismo, más dónde está el DNS de `gdg.es` y a qué apunta.

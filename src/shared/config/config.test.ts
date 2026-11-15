@@ -26,6 +26,11 @@ describe("loadConfig", () => {
     ]);
   });
 
+  it("usa la base de datos (default) salvo que se indique otra", () => {
+    expect(loadConfig({}).FIRESTORE_DATABASE_ID).toBe("(default)");
+    expect(loadConfig({ FIRESTORE_DATABASE_ID: "gdg-es" }).FIRESTORE_DATABASE_ID).toBe("gdg-es");
+  });
+
   it("rechaza un email de administración mal formado", () => {
     expect(() => loadConfig({ ADMIN_EMAILS: "no-es-un-email" })).toThrow(/Configuración inválida/);
   });

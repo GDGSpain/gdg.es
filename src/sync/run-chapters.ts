@@ -70,7 +70,15 @@ async function main(): Promise<number> {
 main().then(
   (code) => process.exit(code),
   (e) => {
-    console.error("✖ Error inesperado:", e instanceof Error ? e.message : e);
+    const message = e instanceof Error ? e.message : String(e);
+    if (message.includes("Datastore Mode")) {
+      console.error(
+        "✖ La base de datos de Firestore de este proyecto está en modo Datastore y el sync necesita modo nativo.",
+      );
+      console.error("  Ver docs/tech/firebase.md § Base de datos en modo Datastore.");
+      process.exit(2);
+    }
+    console.error("✖ Error inesperado:", message);
     process.exit(1);
   },
 );

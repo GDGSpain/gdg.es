@@ -43,5 +43,8 @@ export function getAdminApp(config: AppConfig): App {
  * @param config configuración validada
  */
 export function getServerFirestore(config: AppConfig): Firestore {
-  return getFirestore(getAdminApp(config));
+  const app = getAdminApp(config);
+  return config.FIRESTORE_DATABASE_ID === "(default)"
+    ? getFirestore(app)
+    : getFirestore(app, config.FIRESTORE_DATABASE_ID);
 }

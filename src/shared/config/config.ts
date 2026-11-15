@@ -24,6 +24,11 @@ export const configSchema = z.object({
   SYNC_DELAY_MS: z.coerce.number().int().min(2000).default(2000),
   /** Si está definida, el Admin SDK usa el emulador de Firestore (lo lee el propio SDK). */
   FIRESTORE_EMULATOR_HOST: optionalString,
+  /**
+   * Base de datos de Firestore en modo nativo. "(default)" salvo que la del proyecto esté en modo
+   * Datastore (como en gdg-es-develop): entonces se usa una base con nombre (docs/tech/firebase.md).
+   */
+  FIRESTORE_DATABASE_ID: z.string().trim().min(1).default("(default)"),
   SYNC_SECRET: optionalString,
   ADMIN_EMAILS: z
     .string()
