@@ -1,7 +1,13 @@
 /** RF-SYNC-001, RF-SYNC-002: parseo de páginas reales de gdg.community.dev (fixtures). */
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { chapterSlugFromUrl, extractNextData, parseChapterPage, parseSitemapUrls } from "./next-data.parser";
+import {
+  chapterSlugFromUrl,
+  extractNextData,
+  parseChapterPage,
+  parseSitemapUrls,
+  parseTeam,
+} from "./next-data.parser";
 
 const fixture = (name: string) =>
   readFileSync(new URL(`../../sync/__fixtures__/${name}`, import.meta.url), "utf8");
@@ -92,5 +98,49 @@ describe("sitemaps", () => {
       chapterSlugFromUrl("https://gdg.community.dev/events/details/google-gdg-madrid-presents-x/"),
     ).toBeNull();
     expect(chapterSlugFromUrl("https://example.org/gdg-madrid/")).toBeNull();
+  });
+});
+
+describe("equipo organizador (RF-SYNC-003)", () => {
+  it("lee el equipo con id de perfil, nombre, avatar, X y rol, sin empresa ni puesto", () => {
+    const result = parseChapterPage(fixture("chapter-gdg-madrid.html"));
+    if (!result.ok) throw new Error(result.error.detail);
+    expect(result.value.team).toHaveLength(4);
+    expect(result.value.team[0]).toEqual({
+      profileId: "ejemplo1",
+      name: "Persona1 Ejemplo",
+      avatarUrl: "https://example.org/avatar-1-250.png",
+      twitter: "ejemplo1",
+      role: "GDG Organizer",
+    });
+    expect(result.value.team[1].twitter).toBeNull();
+    expect(Object.keys(result.value.team[0])).not.toContain("company");
+  });
+
+  it("la misma persona tiene el mismo id en dos capítulos", () => {
+    const madrid = parseChapterPage(fixture("chapter-gdg-madrid.html"));
+    const campus = parseChapterPage(fixture("chapter-gdg-on-campus-ie.html"));
+    if (!madrid.ok || !campus.ok) throw new Error("fixture inválido");
+    const ids = (t: { profileId: string }[]) => new Set(t.map((m) => m.profileId));
+    const shared = [...ids(madrid.value.team)].filter((id) => ids(campus.value.team).has(id));
+    expect(shared).toEqual(["ejemplo9"]);
+    expect(campus.value.team.find((m) => m.profileId === "ejemplo9")?.role).toBe("Organizer");
+  });
+
+  it("descarta miembros sin perfil válido o sin nombre y quita duplicados", () => {
+    const team = parseTeam([
+      { title: "Organizer", user: { full_name: "Ana", profile_url: "/u/ana1/" } },
+      { title: "Organizer", user: { full_name: "Ana otra vez", profile_url: "/u/ana1/" } },
+      { title: "Organizer", user: { full_name: "Sin perfil", profile_url: "/accounts/x/" } },
+      { title: "Organizer", user: { full_name: "", first_name: "", profile_url: "/u/vacio/" } },
+      "basura",
+    ]);
+    expect(team.map((m) => m.profileId)).toEqual(["ana1"]);
+  });
+
+  it("un capítulo sin equipo en la página tiene equipo vacío", () => {
+    const html = fixture("chapter-gdg-madrid.html").replace(/"chapterTeam": ?\[/, '"chapterTeamX": [');
+    const result = parseChapterPage(html);
+    expect(result.ok && result.value.team).toEqual([]);
   });
 });

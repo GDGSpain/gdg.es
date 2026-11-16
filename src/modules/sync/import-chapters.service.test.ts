@@ -4,7 +4,8 @@ import type { ChapterSourceFields } from "@db/schemas/chapter.schema";
 import { err, ok, type Result } from "@/shared/result";
 import { importChapters, toSourceFields } from "./import-chapters.service";
 import type { ChapterRepositoryPort, StoredChapterRef } from "./ports/chapter-repository.port";
-import type { GdgSourcePort, SourceChapter, SourceError } from "./ports/gdg-source.port";
+import type { GdgSourcePort, SourceChapter, SourceError, SourceTeamMember } from "./ports/gdg-source.port";
+import type { OrganizerRepositoryPort } from "./ports/organizer-repository.port";
 
 const NOW = new Date("2026-11-12T04:00:00Z");
 
@@ -28,6 +29,7 @@ function chapter(slug: string, overrides: Partial<SourceChapter> = {}): SourceCh
     membersCount: 10,
     active: true,
     url: `https://gdg.community.dev/${slug}/`,
+    team: [],
     ...overrides,
   };
 }
@@ -58,8 +60,28 @@ class FakeRepository implements ChapterRepositoryPort {
   }
 }
 
-const run = (source: GdgSourcePort, repository: ChapterRepositoryPort, seedSlugs: string[]) =>
-  importChapters({ source, repository, now: () => NOW }, { seedSlugs });
+class FakeOrganizers implements OrganizerRepositoryPort {
+  calls: { chapterSourceId: number; team: SourceTeamMember[] }[] = [];
+  async replaceChapterTeam(chapterSourceId: number, team: SourceTeamMember[]) {
+    this.calls.push({ chapterSourceId, team });
+    return { members: team.length, removed: 0 };
+  }
+}
+
+const member = (profileId: string, role = "GDG Organizer"): SourceTeamMember => ({
+  profileId,
+  name: `Persona ${profileId}`,
+  avatarUrl: null,
+  twitter: null,
+  role,
+});
+
+const run = (
+  source: GdgSourcePort,
+  repository: ChapterRepositoryPort,
+  seedSlugs: string[],
+  organizers: OrganizerRepositoryPort = new FakeOrganizers(),
+) => importChapters({ source, repository, organizers, now: () => NOW }, { seedSlugs });
 
 describe("importChapters", () => {
   it("guarda los capítulos de España de la semilla y cuenta altas y actualizaciones", async () => {
@@ -176,6 +198,47 @@ describe("importChapters", () => {
     expect(result).toMatchObject({
       error: { report: { failed: [{ slug: "api", reason: expect.stringContaining("robots.txt") }] } },
     });
+  });
+});
+
+describe("importChapters: equipos organizadores (RF-SYNC-003)", () => {
+  it("guarda el equipo de cada capítulo importado y cuenta personas distintas", async () => {
+    const organizers = new FakeOrganizers();
+    const source = new FakeSource({
+      "gdg-madrid": ok(chapter("gdg-madrid", { sourceId: 975, team: [member("ana"), member("luis")] })),
+      "gdg-ie": ok(chapter("gdg-ie", { sourceId: 2488, team: [member("ana", "Organizer")] })),
+    });
+
+    const result = await run(source, new FakeRepository(), ["gdg-madrid", "gdg-ie"], organizers);
+
+    expect(organizers.calls.map((c) => [c.chapterSourceId, c.team.map((m) => m.profileId)])).toEqual([
+      [2488, ["ana"]],
+      [975, ["ana", "luis"]],
+    ]);
+    expect(result).toMatchObject({ ok: true, value: { organizers: 2 } });
+  });
+
+  it("actualiza también un equipo vacío para quitar a quien ya no está", async () => {
+    const organizers = new FakeOrganizers();
+    const source = new FakeSource({ "gdg-x": ok(chapter("gdg-x", { sourceId: 7, team: [] })) });
+
+    await run(source, new FakeRepository(), ["gdg-x"], organizers);
+
+    expect(organizers.calls).toEqual([{ chapterSourceId: 7, team: [] }]);
+  });
+
+  it("no toca el equipo de capítulos descartados, inactivos o que fallan", async () => {
+    const organizers = new FakeOrganizers();
+    const source = new FakeSource({
+      "gdg-porto": ok(chapter("gdg-porto", { country: "PT", team: [member("pt")] })),
+      "gdg-dormido": ok(chapter("gdg-dormido", { active: false, team: [member("zz")] })),
+      "gdg-caido": err({ kind: "unavailable", detail: "503" }),
+      "gdg-ok": ok(chapter("gdg-ok", { team: [member("ok")] })),
+    });
+
+    await run(source, new FakeRepository(), ["gdg-porto", "gdg-dormido", "gdg-caido", "gdg-ok"], organizers);
+
+    expect(organizers.calls.map((c) => c.team.map((m) => m.profileId))).toEqual([["ok"]]);
   });
 });
 

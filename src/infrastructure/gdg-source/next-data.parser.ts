@@ -1,11 +1,11 @@
 /**
- * RF-SYNC-001, RF-SYNC-002: lectura de las páginas públicas de gdg.community.dev (ADR-0005).
+ * RF-SYNC-001, RF-SYNC-002, RF-SYNC-003: lectura de las páginas públicas de gdg.community.dev (ADR-0005).
  *
  * Los datos vienen en `<script id="__NEXT_DATA__">`, que no es un contrato público: se validan con zod
  * para que un cambio de forma falle con un error explícito en vez de guardar datos rotos.
  */
 import { z } from "zod";
-import type { SourceChapter } from "@/modules/sync/ports/gdg-source.port";
+import type { SourceChapter, SourceTeamMember } from "@/modules/sync/ports/gdg-source.port";
 import { err, ok, type Result } from "@/shared/result";
 
 /** Cadena vacía o nula → null. */
@@ -57,14 +57,58 @@ const chapterDataSchema = z.object({
   url: z.url(),
 });
 
+/** Miembro del equipo: se valida cada uno por separado para que uno raro no tumbe el capítulo. */
+const teamMemberSchema = z.object({
+  title: z.string().nullish(),
+  user: z.object({
+    full_name: z.string().nullish(),
+    first_name: z.string().nullish(),
+    last_name: z.string().nullish(),
+    profile_url: z.string().regex(/^\/u\/[a-z0-9]+\/?$/i),
+    cropped_avatar_url: urlOrNull,
+    twitter: emptyToNull,
+  }),
+});
+
 const chapterPageSchema = z.object({
   props: z.object({
     pageProps: z.object({
       chapterSlug: z.string().min(1),
       chapterData: chapterDataSchema,
+      prerenderData: z.object({ chapterTeam: z.array(z.unknown()).nullish() }).nullish(),
     }),
   }),
 });
+
+/** Avatar genérico de la plataforma: equivale a no tener foto. */
+const DEFAULT_AVATAR = /default|placeholder|blank/i;
+
+/**
+ * Convierte el equipo de la fuente en miembros, sin repetidos y descartando entradas inválidas.
+ * @param raw `prerenderData.chapterTeam`
+ */
+export function parseTeam(raw: unknown[]): SourceTeamMember[] {
+  const seen = new Set<string>();
+  const team: SourceTeamMember[] = [];
+  for (const item of raw) {
+    const parsed = teamMemberSchema.safeParse(item);
+    if (!parsed.success) continue;
+    const { user, title } = parsed.data;
+    const profileId = user.profile_url.split("/")[2].toLowerCase();
+    const name = (user.full_name || [user.first_name, user.last_name].filter(Boolean).join(" ")).trim();
+    if (!name || seen.has(profileId)) continue;
+    seen.add(profileId);
+    const avatar = user.cropped_avatar_url;
+    team.push({
+      profileId,
+      name,
+      avatarUrl: avatar && !DEFAULT_AVATAR.test(avatar) ? avatar : null,
+      twitter: user.twitter?.replace(/^@/, "") ?? null,
+      role: title?.trim() || "Organizer",
+    });
+  }
+  return team;
+}
 
 export type ParseError = { kind: "invalid"; detail: string };
 
@@ -97,7 +141,7 @@ export function parseChapterPage(html: string): Result<SourceChapter, ParseError
       .join("; ");
     return err({ kind: "invalid", detail: `forma inesperada del capítulo (${where})` });
   }
-  const { chapterSlug, chapterData: c } = parsed.data.props.pageProps;
+  const { chapterSlug, chapterData: c, prerenderData } = parsed.data.props.pageProps;
   return ok({
     sourceId: c.id,
     slug: chapterSlug,
@@ -117,6 +161,7 @@ export function parseChapterPage(html: string): Result<SourceChapter, ParseError
     membersCount: c.members_count,
     active: c.is_active && !c.is_hidden,
     url: c.url,
+    team: parseTeam(prerenderData?.chapterTeam ?? []),
   });
 }
 

@@ -9,6 +9,10 @@ Pendiente de redactar en esta carpeta:
 - [ ] **Minimización**: solo los campos de arriba; nunca email ni teléfono (AGENTS.md, regla 7).
 - [ ] **Derecho de oposición y supresión**: un organizador puede pedir ocultar su perfil (RF-ADMIN-003)
       y el sync debe respetarlo (no reimportar).
+- [x] **Datos de organizadores que se guardan** (RF-SYNC-003, `organizers/{profileId}`): nombre, foto,
+      rol en cada capítulo, usuario de X e id público de perfil de gdg.community.dev. No se guardan email,
+      teléfono, empresa, puesto ni bio, aunque la fuente publique algunos. Se muestran en la ficha del
+      capítulo; una persona con `hiddenAt` no se muestra y el sync no lo deshace.
 - [x] **Fixtures de tests anonimizados**: los datos de organizadores en `src/sync/__fixtures__/` son
       ficticios.
 - [ ] **Información**: página de privacidad que explique origen de los datos y cómo ejercer derechos.

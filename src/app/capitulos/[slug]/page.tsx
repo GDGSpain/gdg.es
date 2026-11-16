@@ -12,6 +12,7 @@ import { getConfig } from "@/shared/config/config";
 import { comunidadPorId } from "@/shared/geo/comunidades";
 import { sanitizeSourceHtml } from "@/shared/html/sanitize";
 import { ChapterLogo } from "../../_components/chapter-logo";
+import { PersonAvatar } from "../../_components/person-avatar";
 import styles from "./page.module.css";
 
 type Props = PageProps<"/capitulos/[slug]">;
@@ -97,6 +98,33 @@ async function ChapterView({ params }: { params: Props["params"] }) {
             <p>Este capítulo todavía no tiene descripción.</p>
           )}
         </section>
+
+        {c.team.length > 0 && (
+          <section aria-labelledby="equipo" className={styles.team}>
+            <h2 id="equipo">Equipo organizador</h2>
+            <ul className={styles.people}>
+              {c.team.map((m) => (
+                <li key={m.profileId} className={styles.person}>
+                  <PersonAvatar name={m.name} avatarUrl={m.avatarUrl} />
+                  <span className={styles.personText}>
+                    <span className={styles.personName}>{m.name}</span>
+                    <span className={styles.personRole}>{m.role}</span>
+                    {m.twitter && (
+                      <a
+                        href={`https://x.com/${encodeURIComponent(m.twitter)}`}
+                        target="_blank"
+                        rel="noopener noreferrer nofollow"
+                        className={styles.personLink}
+                      >
+                        @{m.twitter}
+                      </a>
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         <aside className={styles.aside}>
           {links.length > 0 && (

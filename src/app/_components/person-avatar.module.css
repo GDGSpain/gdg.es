@@ -1,0 +1,16 @@
+.avatar {
+  flex: none;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  background: var(--color-surface-muted);
+}
+
+.fallback {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  border-radius: var(--radius-full);
+  background: var(--color-surface-muted);
+  color: var(--color-text);
+  font-weight: var(--font-weight-medium);
+}

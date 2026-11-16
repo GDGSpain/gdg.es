@@ -1,8 +1,9 @@
 /**
- * RF-SYNC-002, RF-SYNC-005: caso de uso "importar capítulos de España".
+ * RF-SYNC-002, RF-SYNC-003, RF-SYNC-005: caso de uso "importar capítulos de España" y sus equipos.
  *
  * Recorre los slugs conocidos (semilla + ya guardados), lee cada capítulo de la fuente, descarta los
- * que no son de España (AGENTS.md regla 4), guarda el resto con upsert idempotente y marca inactivos
+ * que no son de España (AGENTS.md regla 4), guarda el resto con upsert idempotente junto con su equipo
+ * organizador (una persona por perfil, aunque organice varios capítulos) y marca inactivos
  * los que desaparecen. Si fallan demasiados capítulos, no marca bajas para no ocultar capítulos por
  * un problema temporal de la fuente.
  */
@@ -11,6 +12,7 @@ import { normalizarComunidad } from "@/shared/geo/comunidades";
 import { err, ok, type Result } from "@/shared/result";
 import type { ChapterRepositoryPort } from "./ports/chapter-repository.port";
 import type { GdgSourcePort, SourceChapter, SourceError } from "./ports/gdg-source.port";
+import type { OrganizerRepositoryPort } from "./ports/organizer-repository.port";
 
 /** Por encima de esta proporción de fallos la ejecución no marca bajas. */
 export const MAX_FAILURE_RATIO = 0.5;
@@ -18,6 +20,7 @@ export const MAX_FAILURE_RATIO = 0.5;
 export interface ImportChaptersDeps {
   source: GdgSourcePort;
   repository: ChapterRepositoryPort;
+  organizers: OrganizerRepositoryPort;
   now: () => Date;
 }
 
@@ -33,6 +36,8 @@ export interface ImportChaptersReport {
   discarded: string[];
   /** Slugs que no se pudieron leer, con el motivo. */
   failed: { slug: string; reason: string }[];
+  /** Personas distintas en los equipos de los capítulos importados. */
+  organizers: number;
   /** Capítulos que pasaron a inactivos en esta ejecución. */
   inactivated: number;
   /** true si no se marcaron bajas por exceso de fallos. */
@@ -60,7 +65,9 @@ export async function importChapters(
     failed: [],
     inactivated: 0,
     inactivationSkipped: false,
+    organizers: 0,
   };
+  const people = new Set<string>();
   const seenActive = new Set<number>();
   const gone = new Set<string>(); // slugs que la fuente ya no publica o no son de España
 
@@ -87,7 +94,11 @@ export async function importChapters(
     const outcome = await deps.repository.upsertFromSource(toSourceFields(chapter), syncedAt);
     report[outcome] += 1;
     seenActive.add(chapter.sourceId);
+    await deps.organizers.replaceChapterTeam(chapter.sourceId, chapter.team, syncedAt);
+    for (const m of chapter.team) people.add(m.profileId);
   }
+
+  report.organizers = people.size;
 
   const failureRatio = slugs.length === 0 ? 0 : report.failed.length / slugs.length;
   if (failureRatio > MAX_FAILURE_RATIO) {

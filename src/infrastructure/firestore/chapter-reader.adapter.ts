@@ -1,7 +1,8 @@
-/** RF-CHAPTERS-001/002, ADR-0008: lectura de `chapters` para la web pública. */
+/** RF-CHAPTERS-001/002, RF-SYNC-003, ADR-0008: lectura de capítulos y su equipo para la web pública. */
 import type { DocumentData, Firestore, Timestamp } from "firebase-admin/firestore";
 import { CHAPTERS_COLLECTION } from "@db/schemas/chapter.schema";
-import type { ChapterDetail, ChapterSummary } from "@/modules/chapters/chapter";
+import { ORGANIZERS_COLLECTION } from "@db/schemas/organizer.schema";
+import type { ChapterDetail, ChapterSummary, TeamMember } from "@/modules/chapters/chapter";
 import type { ChapterReaderPort } from "@/modules/chapters/ports/chapter-reader.port";
 
 const str = (v: unknown): string | null => (typeof v === "string" && v !== "" ? v : null);
@@ -22,7 +23,7 @@ function toSummary(d: DocumentData): ChapterSummary {
   };
 }
 
-function toDetail(d: DocumentData): ChapterDetail {
+function toDetail(d: DocumentData, team: TeamMember[]): ChapterDetail {
   return {
     ...toSummary(d),
     latitude: num(d.latitude),
@@ -35,6 +36,7 @@ function toDetail(d: DocumentData): ChapterDetail {
     instagram: str(d.instagram),
     sourceUrl: String(d.sourceUrl),
     syncedAt: (d.syncedAt as Timestamp | undefined)?.toDate?.() ?? new Date(0),
+    team,
   };
 }
 
@@ -64,6 +66,26 @@ export class FirestoreChapterReader implements ChapterReaderPort {
   /** {@inheritDoc ChapterReaderPort.findBySlug} */
   async findBySlug(slug: string): Promise<ChapterDetail | null> {
     const snap = await this.db.collection(CHAPTERS_COLLECTION).where("slug", "==", slug).limit(1).get();
-    return snap.empty ? null : toDetail(snap.docs[0].data());
+    if (snap.empty) return null;
+    const data = snap.docs[0].data();
+    return toDetail(data, await this.listTeam(Number(data.sourceId)));
+  }
+
+  private async listTeam(chapterSourceId: number): Promise<TeamMember[]> {
+    const snap = await this.db
+      .collection(ORGANIZERS_COLLECTION)
+      .where("chapterIds", "array-contains", chapterSourceId)
+      .get();
+    return snap.docs.map((doc) => {
+      const d = doc.data();
+      return {
+        profileId: doc.id,
+        name: String(d.name),
+        avatarUrl: str(d.avatarUrl),
+        twitter: str(d.twitter),
+        role: String(d.roles?.[String(chapterSourceId)] ?? "Organizer"),
+        hidden: d.hiddenAt != null,
+      };
+    });
   }
 }

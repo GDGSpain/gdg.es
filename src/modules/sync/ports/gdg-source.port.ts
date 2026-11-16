@@ -1,9 +1,23 @@
 /**
- * RF-SYNC-001, RF-SYNC-002: lo que el sync necesita de gdg.community.dev, en lenguaje de dominio.
+ * RF-SYNC-001, RF-SYNC-002, RF-SYNC-003: lo que el sync necesita de gdg.community.dev, en lenguaje de dominio.
  * La implementación (páginas públicas y sitemaps, nunca /api/) está en infrastructure/gdg-source
  * (ADR-0005).
  */
 import type { Result } from "@/shared/result";
+
+/**
+ * Persona del equipo organizador de un capítulo (RF-SYNC-003). Solo datos públicos y mínimos
+ * (AGENTS.md regla 8): la fuente publica también empresa, puesto y bio, que no se importan.
+ */
+export interface SourceTeamMember {
+  /** Id estable del perfil en la fuente (de `/u/{id}/`); identifica a la persona entre capítulos. */
+  profileId: string;
+  name: string;
+  avatarUrl: string | null;
+  twitter: string | null;
+  /** Rol en el capítulo ("GDG Organizer", "Co-Organizer"…). */
+  role: string;
+}
 
 /** Capítulo tal como lo publica la fuente, ya validado. */
 export interface SourceChapter {
@@ -27,6 +41,8 @@ export interface SourceChapter {
   /** Activo y visible en la fuente. */
   active: boolean;
   url: string;
+  /** Equipo organizador. */
+  team: SourceTeamMember[];
 }
 
 /** Por qué no se pudo leer un capítulo. */

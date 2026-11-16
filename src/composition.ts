@@ -1,12 +1,13 @@
 /**
  * Raíz de composición del servidor (ADR-0006): único sitio que conoce a la vez los casos de uso y los
- * adaptadores concretos. RF-SYNC-002: dependencias del sync de capítulos.
+ * adaptadores concretos. RF-SYNC-002/003: dependencias del sync de capítulos y organizadores.
  */
 import type { ChapterReaderPort } from "@/modules/chapters/ports/chapter-reader.port";
 import type { ImportChaptersDeps } from "@/modules/sync/import-chapters.service";
 import type { AppConfig } from "@/shared/config/config";
 import { FirestoreChapterReader } from "@/infrastructure/firestore/chapter-reader.adapter";
 import { FirestoreChapterRepository } from "@/infrastructure/firestore/chapter-repository.adapter";
+import { FirestoreOrganizerRepository } from "@/infrastructure/firestore/organizer-repository.adapter";
 import { getServerFirestore } from "@/infrastructure/firestore/admin";
 import { HttpGdgSource } from "@/infrastructure/gdg-source/http-gdg-source.adapter";
 
@@ -22,6 +23,7 @@ export function buildImportChaptersDeps(config: AppConfig): ImportChaptersDeps {
       minDelayMs: config.SYNC_DELAY_MS,
     }),
     repository: new FirestoreChapterRepository(getServerFirestore(config)),
+    organizers: new FirestoreOrganizerRepository(getServerFirestore(config)),
     now: () => new Date(),
   };
 }

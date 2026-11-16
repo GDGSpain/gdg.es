@@ -14,6 +14,16 @@ export interface ChapterSummary {
   hidden: boolean;
 }
 
+/** Persona del equipo organizador tal como se muestra en la ficha (RF-SYNC-003). */
+export interface TeamMember {
+  profileId: string;
+  name: string;
+  avatarUrl: string | null;
+  twitter: string | null;
+  role: string;
+  hidden: boolean;
+}
+
 /** Datos de la ficha. */
 export interface ChapterDetail extends ChapterSummary {
   latitude: number | null;
@@ -26,6 +36,7 @@ export interface ChapterDetail extends ChapterSummary {
   instagram: string | null;
   sourceUrl: string;
   syncedAt: Date;
+  team: TeamMember[];
 }
 
 /** Un capítulo es público si está activo en la fuente y nadie lo ha ocultado (RF-ADMIN-003). */

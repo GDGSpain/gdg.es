@@ -44,7 +44,8 @@ cada dato de gdg.community.dev.
 ## Fase 1 — Datos y directorio (31 oct – 6 nov)
 
 - [x] RF-SYNC-002 capítulos de España (geocodificación de los 3 sin coordenadas pendiente de la clave).
-- [ ] RF-SYNC-003 organizadores · RF-SYNC-004 eventos.
+- [x] RF-SYNC-003 organizadores (importados con los capítulos y mostrados en la ficha).
+- [ ] RF-SYNC-004 eventos.
 - [ ] `npm run context` genera `docs/context/data-model.md` y `api.md` (ADR-0007) y entra en el pre-commit.
 - [ ] RF-CHAPTERS-001 directorio · RF-CHAPTERS-002 ficha de capítulo.
 - [ ] RF-AUTH-001 login con Google (Firebase Auth + cookie de sesión).

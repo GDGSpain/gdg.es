@@ -24,6 +24,7 @@ const detail = (o: Partial<ChapterDetail> = {}): ChapterDetail => ({
   instagram: null,
   sourceUrl: "https://gdg.community.dev/gdg-madrid/",
   syncedAt: new Date(),
+  team: [],
   ...o,
 });
 
@@ -54,5 +55,28 @@ describe("getChapter", () => {
     const { deps: d, asked } = deps(detail());
     expect((await getChapter(d, "../admin")).ok).toBe(false);
     expect(asked).toEqual([]);
+  });
+
+  it("quita del equipo a las personas ocultas y pone primero a quien organiza", async () => {
+    const t = (profileId: string, role: string, hidden = false) => ({
+      profileId,
+      name: profileId,
+      avatarUrl: null,
+      twitter: null,
+      role,
+      hidden,
+    });
+    const { deps: d } = deps(
+      detail({
+        team: [
+          t("zoe", "Tech Guru"),
+          t("bea", "Co-Organizer"),
+          t("oculta", "Organizer", true),
+          t("mar", "GDG Organizer"),
+        ],
+      }),
+    );
+    const r = await getChapter(d, "gdg-madrid");
+    expect(r.ok && r.value.team.map((m) => m.profileId)).toEqual(["mar", "bea", "zoe"]);
   });
 });

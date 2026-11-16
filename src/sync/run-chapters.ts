@@ -1,5 +1,6 @@
 /**
- * RF-SYNC-002: comando `npm run sync` — importa los capítulos de España de gdg.community.dev.
+ * RF-SYNC-002, RF-SYNC-003: comando `npm run sync` — importa los capítulos de España de
+ * gdg.community.dev y sus equipos organizadores.
  *
  * Usa `.env.local`: con `FIRESTORE_EMULATOR_HOST` escribe en el emulador; sin él, en el proyecto de
  * `FIREBASE_PROJECT_ID` (DEV). Nunca contra PRO (AGENTS.md regla 9).
@@ -61,7 +62,9 @@ async function main(): Promise<number> {
   const result = await importChapters(buildImportChaptersDeps(config), { seedSlugs: slugs });
   const report = result.ok ? result.value : result.error.report;
 
-  console.log(`✔ Altas: ${report.created} · Actualizados: ${report.updated} · Bajas: ${report.inactivated}`);
+  console.log(
+    `✔ Altas: ${report.created} · Actualizados: ${report.updated} · Bajas: ${report.inactivated} · Organizadores: ${report.organizers}`,
+  );
   if (report.discarded.length)
     console.log(`  Descartados (no son de España): ${report.discarded.join(", ")}`);
   for (const f of report.failed) console.log(`  ✖ ${f.slug}: ${f.reason}`);
