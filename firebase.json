@@ -1,8 +1,11 @@
 {
-  "firestore": {
-    "rules": "db/firestore.rules",
-    "indexes": "db/firestore.indexes.json"
-  },
+  "firestore": [
+    {
+      "database": "gdg-es",
+      "rules": "db/firestore.rules",
+      "indexes": "db/firestore.indexes.json"
+    }
+  ],
   "storage": {
     "rules": "db/storage.rules"
   },

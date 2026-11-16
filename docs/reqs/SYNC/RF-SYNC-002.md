@@ -33,6 +33,7 @@ El sistema importa todos los capítulos GDG de España desde la fuente y los gua
 - Origen: página del capítulo (`__NEXT_DATA__`) y semilla `db/seed/chapters-es.json`; descubrimiento de nuevos
   por `sitemap-chapters.xml` (ver `docs/tech/sync.md`).
 - Cumple AGENTS.md regla 4 (solo España).
+- Primera importación real en DEV (`gdg-es-develop`, base `gdg-es`) el 2026-11-17: 38 altas, 0 fallos.
 
 ## Implementación
 - `db/schemas/chapter.schema.ts` — documento `chapters/{sourceId}`

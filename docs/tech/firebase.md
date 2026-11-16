@@ -29,7 +29,7 @@ Mismo checklist para los dos. DEV ahora; PRO al pasar a producción.
 |---|---|---|---|---|
 | 1 | Plan **Blaze** con cuenta de facturación (App Hosting, Scheduler, Secret Manager y Maps lo exigen) | Consola → Uso y facturación | [ ] | [ ] |
 | 2 | **Presupuesto y alertas** (p. ej. 20 € DEV / 50 € PRO, avisos al 50/90/100 %) | GCP → Facturación → Presupuestos | [ ] | [ ] |
-| 3 | **Firestore** modo nativo, región `europe-southwest1` (Madrid). La región no se puede cambiar. Si `(default)` está en modo Datastore, ver más abajo | Firestore Database | [ ] | [ ] |
+| 3 | **Firestore** modo nativo, región `europe-southwest1` (Madrid), base **`gdg-es`** (ver más abajo). La región no se puede cambiar | Firestore Database | [x] | [ ] |
 | 4 | **Authentication**: proveedor Google activo; dominios autorizados: `localhost`, dominio de App Hosting y dominio propio | Authentication → Sign-in method / Settings | [ ] | [ ] |
 | 5 | **Storage**: bucket por defecto en la misma región | Storage | [ ] | [ ] |
 | 6 | **App web** registrada (su `firebaseConfig` es pública) | Configuración del proyecto → Tus apps | [ ] | [ ] |
@@ -73,7 +73,11 @@ Dos salidas, por orden de preferencia:
    En `firebase.json`, `firestore` pasa a ser una lista con `"database": "gdg-es"` para desplegar reglas
    e índices a esa base.
 
-Lo que se elija en DEV se replica igual en PRO (`gdg-es`), que hay que revisar antes del paso a producción.
+**Decisión (2026-11-17):** en DEV se creó la base con nombre **`gdg-es`** (nativa, `europe-southwest1`);
+la `(default)` en modo Datastore se deja como está. `firebase.json` despliega reglas e índices a `gdg-es`
+y la app la usa con `FIRESTORE_DATABASE_ID=gdg-es`. En PRO se hará igual: base `gdg-es` en Madrid.
+
+Primera importación real en DEV el 2026-11-17: 38 capítulos creados, 0 fallos.
 
 ## Credenciales en local
 
