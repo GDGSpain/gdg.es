@@ -27,9 +27,10 @@
   },
   "dependencies": {
     "firebase-admin": "^14.5.0",
-    "next": "16.4.3",
+    "next": "16.4.5",
     "react": "19.3.0",
     "react-dom": "19.3.0",
+    "sanitize-html": "^2.18.1",
     "zod": "^4.6.7"
   },
   "devDependencies": {
@@ -38,9 +39,10 @@
     "@types/node": "^22.20.5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/sanitize-html": "^2.16.2",
     "@vitest/coverage-v8": "^5.0.5",
     "eslint": "^9",
-    "eslint-config-next": "16.4.3",
+    "eslint-config-next": "16.4.5",
     "firebase-tools": "^15.36.0",
     "lefthook": "^2.2.2",
     "prettier": "^3.9.10",
