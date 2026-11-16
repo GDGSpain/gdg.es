@@ -20,3 +20,19 @@
     font-size: var(--font-size-2xl);
   }
 }
+
+.cta {
+  display: inline-block;
+  padding: var(--button-padding);
+  border-radius: var(--button-radius);
+  background: var(--color-action);
+  color: var(--color-text-on-action);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: 1;
+}
+
+.cta:hover {
+  background: var(--color-action-hover);
+  text-decoration: none;
+}

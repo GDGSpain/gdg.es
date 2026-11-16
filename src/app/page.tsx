@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./page.module.css";
 
 /** Portada provisional mientras se implementan los RF de la Fase 1 (ver PLAN.md). */
@@ -12,8 +13,9 @@ export default function Home() {
         que los apoyan y un mapa de eventos.
       </p>
       <p>
-        Mientras tanto, encuentra tu capítulo en{" "}
-        <a href="https://gdg.community.dev/chapters/">gdg.community.dev</a>.
+        <Link href="/capitulos" className={styles.cta}>
+          Ver los capítulos de España
+        </Link>
       </p>
     </main>
   );

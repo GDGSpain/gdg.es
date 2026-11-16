@@ -1,0 +1,121 @@
+.main {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-6) var(--container-gutter) var(--space-16);
+}
+
+.back {
+  margin-bottom: var(--space-6);
+  font-size: var(--font-size-sm);
+}
+
+.article {
+  display: grid;
+  gap: var(--space-10);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-6);
+  padding-bottom: var(--space-8);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.heading {
+  display: grid;
+  gap: var(--space-2);
+  flex: 1 1 20rem;
+  min-width: 0;
+}
+
+.heading h1 {
+  font-size: var(--font-size-3xl);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.members {
+  font-size: var(--font-size-sm);
+}
+
+.badge {
+  padding: 2px var(--space-2);
+  border-radius: var(--chip-radius);
+  background: var(--color-action-subtle);
+  color: var(--color-link);
+  font-size: var(--font-size-xs);
+}
+
+.cta {
+  padding: var(--button-padding);
+  border-radius: var(--button-radius);
+  background: var(--color-action);
+  color: var(--color-text-on-action);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: 1;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.cta:hover {
+  background: var(--color-action-hover);
+  text-decoration: none;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(16rem, 1fr);
+  gap: var(--space-10);
+}
+
+@media (max-width: 800px) {
+  .body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.body h2 {
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-xl);
+}
+
+.description {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 44rem;
+}
+
+.description ul,
+.description ol {
+  padding-left: var(--space-6);
+}
+
+.aside {
+  display: grid;
+  align-content: start;
+  gap: var(--space-8);
+}
+
+.links {
+  display: grid;
+  gap: var(--space-2);
+  list-style: none;
+}
+
+.synced {
+  font-size: var(--font-size-xs);
+}
+
+.notFound {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-10) 0;
+}
