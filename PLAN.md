@@ -6,6 +6,13 @@ funcionalidad: **15/11**; el 16 y el 17 son para pruebas, documentación y colch
 Cada fase lleva: qué entra, cómo saber que está hecha. Las casillas `[ ]` se marcan según se completen.
 El detalle de cada funcionalidad está en su RF (`docs/reqs/`); aquí solo el orden.
 
+## Estado a 17/11/2026 (víspera de la entrega)
+
+Hecho: RF-SYNC-001, RF-SYNC-002 (38 capítulos importados en DEV), RF-SYNC-003, RF-CHAPTERS-001 y
+RF-CHAPTERS-002 (sin eventos ni sponsors). Se recortó a lo demostrable en local contra DEV; el resto de
+fases queda como hoja de ruta con sus RF escritos. Riesgo que se materializó: la base `(default)` de DEV
+estaba en modo Datastore y costó un día (ver `docs/tech/firebase.md`).
+
 ## Prioridad (MoSCoW)
 
 | | RF |
