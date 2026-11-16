@@ -10,4 +10,7 @@ mientras se construye la nueva app en la raíz del repositorio (TFM, rama `feat/
 - `ci-legacy.yml`: el workflow de GitHub Actions anterior (lint, build y despliegue a Firebase Hosting).
   Ya no se ejecuta: el nuevo está en `.github/workflows/`.
 
-No se mantiene: no tiene CI ni dependencias actualizadas. Se borrará cuando la nueva app esté en producción.
+No se mantiene: no tiene CI ni dependencias actualizadas. Su `package.json` y `package-lock.json` se
+retiraron (2026-11-17) porque Dependabot marcaba decenas de vulnerabilidades de esas dependencias de 2016
+que ya no se instalan ni se despliegan. Si hace falta volver a ejecutarla, se recuperan del historial:
+`git show 91b7ab3:package.json` y `git show 91b7ab3:package-lock.json`. Se borrará cuando la nueva app esté en producción.
