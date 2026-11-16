@@ -30,13 +30,20 @@ function canConnect(hostPort: string, timeoutMs = 1500): Promise<boolean> {
 
 async function main(): Promise<number> {
   const config = getConfig();
+  if (!config.FIRESTORE_EMULATOR_HOST && !config.FIREBASE_PROJECT_ID) {
+    console.error(
+      "✖ Falta FIREBASE_PROJECT_ID en .env.local (para DEV: FIREBASE_PROJECT_ID=gdg-es-develop).",
+    );
+    console.error("  O define FIRESTORE_EMULATOR_HOST para escribir en el emulador.");
+    return 2;
+  }
   if (config.FIREBASE_PROJECT_ID === "gdg-es" && !config.FIRESTORE_EMULATOR_HOST) {
     console.error("✖ Este comando no se ejecuta contra PRO (gdg-es). Usa DEV o el emulador.");
     return 2;
   }
   const target = config.FIRESTORE_EMULATOR_HOST
     ? `emulador (${config.FIRESTORE_EMULATOR_HOST})`
-    : `proyecto ${config.FIREBASE_PROJECT_ID}`;
+    : `proyecto ${config.FIREBASE_PROJECT_ID}, base ${config.FIRESTORE_DATABASE_ID}`;
   if (config.FIRESTORE_EMULATOR_HOST && !(await canConnect(config.FIRESTORE_EMULATOR_HOST))) {
     console.error(`✖ No hay ningún emulador de Firestore en ${config.FIRESTORE_EMULATOR_HOST}.`);
     console.error("  Arráncalo en otra terminal con `npm run emulators` (necesita Java 21) y espera a ver");
