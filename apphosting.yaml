@@ -1,0 +1,17 @@
+# Configuración de Firebase App Hosting (ADR-0011), común a DEV y PRO.
+# El proyecto (DEV o PRO) lo toma la app de GOOGLE_CLOUD_PROJECT. Sin claves: el Admin SDK usa la cuenta
+# de ejecución del backend, que necesita el rol "Usuario de Cloud Datastore" (docs/tech/deploy.md).
+runConfig:
+  minInstances: 0 # escala a cero cuando no hay visitas (coste mínimo en DEV)
+  maxInstances: 2
+  concurrency: 80
+  cpu: 1
+  memoryMiB: 512
+
+env:
+  - variable: FIRESTORE_DATABASE_ID
+    value: gdg-es
+  - variable: SYNC_USER_AGENT
+    value: "gdg.es-directory (+https://gdg.es)"
+  - variable: NEXT_TELEMETRY_DISABLED
+    value: "1"

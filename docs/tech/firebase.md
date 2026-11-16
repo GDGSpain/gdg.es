@@ -35,7 +35,7 @@ Mismo checklist para los dos. DEV ahora; PRO al pasar a producción.
 | 6 | **App web** registrada (su `firebaseConfig` es pública) | Configuración del proyecto → Tus apps | [ ] | [ ] |
 | 7 | **APIs de Maps**: Maps JavaScript API y Geocoding API | GCP → APIs y servicios | [ ] | [ ] |
 | 8 | **Claves de Maps**: navegador (referrers del entorno, solo Maps JS) y servidor (solo Geocoding) + **Map ID** | GCP → Credenciales / Google Maps Platform → Map management | [ ] | [ ] |
-| 9 | **App Hosting**: backend `gdg-es-web` en `europe-west4`, conectado a GitHub `GDGSpain/gdg.es` | App Hosting | [ ] | [ ] |
+| 9 | **App Hosting**: backend `gdg-es-web` en `europe-west4` (primero despliegue local; después conectado a GitHub) y rol *Usuario de Cloud Datastore* para su cuenta de ejecución. Ver `deploy.md` | App Hosting / IAM | [ ] | [ ] |
 | 10 | **Secret Manager**: `SYNC_SECRET`, `GOOGLE_GEOCODING_API_KEY` (se crean con `firebase apphosting:secrets:set`) | Secret Manager | [ ] | [ ] |
 | 11 | **Cloud Scheduler**: job diario `POST /api/sync/run` (cuando exista RF-SYNC-005) | Cloud Scheduler | [ ] | [ ] |
 | 12 | **CI sin claves** (Workload Identity Federation): pool `github`, proveedor limitado al repo `GDGSpain/gdg.es`, cuenta `github-deployer@…` con roles mínimos (ver abajo) | IAM → Workload Identity Federation | [ ] | [ ] |

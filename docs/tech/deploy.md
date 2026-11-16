@@ -19,6 +19,41 @@ flowchart LR
 - DEV no se indexa en buscadores (`X-Robots-Tag: noindex`) y muestra un aviso "Entorno de pruebas".
 - Los datos de DEV son reales (los importa el sync) pero desechables: se pueden borrar y reimportar.
 
+## Primer despliegue en DEV (manual, desde tu Mac)
+
+Resultado: la web en **https://gdg-es-develop.web.app** (Firebase Hosting reescribe todas las rutas al
+backend de App Hosting `gdg-es-web`, Cloud Run en `europe-west4`). También responde en
+`https://gdg-es-web--gdg-es-develop.europe-west4.hosted.app`.
+
+Ficheros: `apphosting.yaml` (recursos y variables; sin claves), `firebase.json` (`apphosting` con lo que no
+se sube —nunca `.env*`— y `hosting` con la reescritura), `hosting/` (carpeta pública vacía).
+
+Una sola vez:
+
+1. Plan **Blaze** en `gdg-es-develop` (App Hosting lo exige).
+2. Crear el backend:
+   ```bash
+   npx firebase apphosting:backends:create --project gdg-es-develop --backend gdg-es-web --primary-region europe-west4
+   ```
+   Si pregunta por GitHub, se puede saltar: de momento se despliega desde el código local.
+3. Dar a la cuenta de ejecución acceso a Firestore: en IAM de `gdg-es-develop`, a
+   `firebase-app-hosting-compute@gdg-es-develop.iam.gserviceaccount.com` el rol **Usuario de Cloud
+   Datastore** (`roles/datastore.user`).
+
+Cada despliegue:
+
+```bash
+npx firebase deploy --only firestore,apphosting --project gdg-es-develop   # reglas + web (5–10 min)
+npx firebase deploy --only hosting --project gdg-es-develop                # web.app → backend (solo si cambia la reescritura)
+```
+
+Comprobar: https://gdg-es-develop.web.app/capitulos debe listar los 38 capítulos. Si da error 500, mirar
+los registros del backend (consola → App Hosting → `gdg-es-web` → Registros): casi siempre es el rol del
+paso 3.
+
+Pendiente: despliegue automático desde `develop` (conectar GitHub en el backend o workflow con WIF) y el
+sync programado (Cloud Scheduler).
+
 ## Paso a producción (una vez, al final)
 
 Se hace cuando DEV cumple la Fase 4 de `PLAN.md`. Checklist:

@@ -9,6 +9,37 @@
   "storage": {
     "rules": "db/storage.rules"
   },
+  "apphosting": {
+    "backendId": "gdg-es-web",
+    "rootDir": ".",
+    "ignore": [
+      "node_modules",
+      ".git",
+      ".next",
+      "legacy",
+      ".env*",
+      "firebase-debug.log",
+      "firestore-debug.log",
+      "ui-debug.log",
+      "coverage",
+      "playwright-report",
+      "test-results",
+      ".firebase"
+    ]
+  },
+  "hosting": {
+    "public": "hosting",
+    "ignore": ["firebase.json", "**/.*", "README.md"],
+    "rewrites": [
+      {
+        "source": "**",
+        "run": {
+          "serviceId": "gdg-es-web",
+          "region": "europe-west4"
+        }
+      }
+    ]
+  },
   "emulators": {
     "firestore": {
       "host": "127.0.0.1",

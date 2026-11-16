@@ -9,10 +9,24 @@ describe("loadConfig", () => {
     expect(config.SYNC_USER_AGENT).toBe("gdg.es-directory");
   });
 
-  it("en producción exige las credenciales del Admin SDK", () => {
-    expect(() => loadConfig({ NODE_ENV: "production", FIREBASE_PROJECT_ID: "gdg-es" })).toThrow(
-      /FIREBASE_CLIENT_EMAIL, FIREBASE_PRIVATE_KEY/,
-    );
+  it("en producción exige el proyecto pero no claves (App Hosting usa su cuenta de ejecución)", () => {
+    expect(() => loadConfig({ NODE_ENV: "production" })).toThrow(/FIREBASE_PROJECT_ID/);
+    expect(
+      loadConfig({ NODE_ENV: "production", FIREBASE_PROJECT_ID: "gdg-es-develop" }).FIREBASE_CLIENT_EMAIL,
+    ).toBeUndefined();
+  });
+
+  it("toma el proyecto de GOOGLE_CLOUD_PROJECT si no se indica (App Hosting)", () => {
+    expect(
+      loadConfig({ NODE_ENV: "production", GOOGLE_CLOUD_PROJECT: "gdg-es-develop" }).FIREBASE_PROJECT_ID,
+    ).toBe("gdg-es-develop");
+    expect(
+      loadConfig({ FIREBASE_PROJECT_ID: "otro", GOOGLE_CLOUD_PROJECT: "gdg-es-develop" }).FIREBASE_PROJECT_ID,
+    ).toBe("otro");
+  });
+
+  it("rechaza una cuenta de servicio a medias", () => {
+    expect(() => loadConfig({ FIREBASE_CLIENT_EMAIL: "x@y.iam.gserviceaccount.com" })).toThrow(/van juntas/);
   });
 
   it("trata las variables vacías como ausentes", () => {

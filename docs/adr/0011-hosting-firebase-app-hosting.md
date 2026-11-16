@@ -1,6 +1,6 @@
 # ADR-0011: Firebase App Hosting para la web y Cloud Scheduler para el sync
 
-- **Estado**: Propuesta (pendiente del primer rollout en DEV)
+- **Estado**: Aceptada para DEV (despliegue manual); automático desde `develop` y Cloud Scheduler pendientes
 - **Fecha**: 2026-10-27 · actualizada 2026-11-09
 - **RF relacionados**: RF-SYNC-005
 
@@ -22,6 +22,10 @@ Firebase Hosting clásico a dos proyectos: `gdg-es-develop` (desde `develop`) y 
 - **Cloud Scheduler** llama una vez al día a `POST /api/sync/run`, protegido con `SYNC_SECRET` (o con
   token OIDC de una cuenta de servicio). El mismo caso de uso lo dispara el botón del panel.
 - Secretos en **Cloud Secret Manager**, referenciados desde `apphosting.yaml`.
+- Backend `gdg-es-web` en `europe-west4`. Mientras no esté conectado a GitHub se despliega desde el código
+  local (`firebase deploy --only apphosting`). **Firebase Hosting** reescribe todas las rutas al backend para
+  que la web se vea en el dominio de siempre (`gdg-es-develop.web.app`, y `gdg.es` en PRO).
+- El proyecto lo toma la app de `GOOGLE_CLOUD_PROJECT`, así un mismo `apphosting.yaml` vale para DEV y PRO.
 
 ## Alternativas
 
