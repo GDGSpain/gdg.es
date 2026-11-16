@@ -61,6 +61,11 @@ plataforma) un acceso o permiso explícito; mientras tanto se aplican las reglas
    Mensualmente, el sitemap del mes en curso y el anterior para no perder eventos.
 4. **Histórico** (una vez): sitemaps de los últimos 12 meses.
 
+Medidas de seguridad del cliente (revisión del 2026-11-17): redirecciones validadas a mano (mismo
+origen y permitidas por `robots.txt`, máximo 3), el slug de la página debe coincidir con el pedido, URL de
+capítulo solo `https://gdg.community.dev/…`, usuarios de X e Instagram con su formato y respuestas de
+más de 5 MB rechazadas.
+
 Volumen diario aproximado: 40–60 peticiones, 2–3 minutos con la pausa de 2 s. `User-Agent` identificable
 (`SYNC_USER_AGENT`) y caché HTTP (ETag/Last-Modified cuando la fuente los dé).
 

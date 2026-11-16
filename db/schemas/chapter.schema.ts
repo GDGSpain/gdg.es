@@ -28,7 +28,8 @@ export const chapterSourceFieldsSchema = z.object({
   instagram: z.string().nullable(),
   membersCount: z.number().int().nonnegative().nullable(),
   isCampus: z.boolean(),
-  sourceUrl: z.url(),
+  /** Solo https://gdg.community.dev/… (se pinta como enlace). */
+  sourceUrl: z.url({ protocol: /^https$/, hostname: /^gdg\.community\.dev$/ }),
 });
 
 export type ChapterSourceFields = z.infer<typeof chapterSourceFieldsSchema>;

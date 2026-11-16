@@ -144,3 +144,35 @@ describe("equipo organizador (RF-SYNC-003)", () => {
     expect(result.ok && result.value.team).toEqual([]);
   });
 });
+
+describe("revisión de seguridad", () => {
+  const withData = (patch: (d: string) => string) => patch(fixture("chapter-gdg-madrid.html"));
+
+  it("rechaza una URL de capítulo que no es https://gdg.community.dev", () => {
+    for (const bad of [
+      "javascript:alert(1)",
+      "https://evil.example/gdg-madrid/",
+      "http://gdg.community.dev/gdg-madrid/",
+    ]) {
+      const html = withData((d) =>
+        d.replace('"url": "https://gdg.community.dev/gdg-madrid/"', `"url": "${bad}"`),
+      );
+      expect(parseChapterPage(html).ok).toBe(false);
+    }
+  });
+
+  it("rechaza un slug con formato no válido", () => {
+    const html = withData((d) => d.replace('"chapterSlug": "gdg-madrid"', '"chapterSlug": "Foo Bar"'));
+    expect(parseChapterPage(html).ok).toBe(false);
+  });
+
+  it("descarta usuarios de X o Instagram que no tienen su formato", () => {
+    const html = withData((d) =>
+      d
+        .replace('"twitter_handle": "gdgmadrid"', '"twitter_handle": "<b>no</b>"')
+        .replace('"instagram_handle": null', '"instagram_handle": "@gdg.madrid"'),
+    );
+    const result = parseChapterPage(html);
+    expect(result.ok && [result.value.twitter, result.value.instagram]).toEqual([null, "gdg.madrid"]);
+  });
+});

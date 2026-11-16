@@ -12,7 +12,9 @@ Pendiente de redactar en esta carpeta:
 - [x] **Datos de organizadores que se guardan** (RF-SYNC-003, `organizers/{profileId}`): nombre, foto,
       rol en cada capítulo, usuario de X e id público de perfil de gdg.community.dev. No se guardan email,
       teléfono, empresa, puesto ni bio, aunque la fuente publique algunos. Se muestran en la ficha del
-      capítulo; una persona con `hiddenAt` no se muestra y el sync no lo deshace.
+      capítulo; una persona con `hiddenAt` no se muestra y el sync no lo deshace. Quien deja de organizar
+      todos sus capítulos se borra en el siguiente sync, salvo que tenga `hiddenAt` (para que su oposición
+      siga valiendo si reaparece en la fuente).
 - [x] **Fixtures de tests anonimizados**: los datos de organizadores en `src/sync/__fixtures__/` son
       ficticios.
 - [ ] **Información**: página de privacidad que explique origen de los datos y cómo ejercer derechos.

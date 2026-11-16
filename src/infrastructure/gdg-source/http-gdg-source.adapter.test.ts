@@ -6,7 +6,10 @@ import { HttpGdgSource } from "./http-gdg-source.adapter";
 const fixture = (name: string) =>
   readFileSync(new URL(`../../sync/__fixtures__/${name}`, import.meta.url), "utf8");
 
-function setup(routes: Record<string, { status: number; body?: string }>, minDelayMs = 2000) {
+function setup(
+  routes: Record<string, { status: number; body?: string; headers?: Record<string, string> }>,
+  minDelayMs = 2000,
+) {
   let clock = 0;
   const waits: number[] = [];
   const calls: { url: string; ua: string | null }[] = [];
@@ -14,7 +17,7 @@ function setup(routes: Record<string, { status: number; body?: string }>, minDel
     const url = new URL(String(input));
     calls.push({ url: url.pathname + url.search, ua: new Headers(init?.headers).get("User-Agent") });
     const route = routes[url.pathname + url.search] ?? { status: 404 };
-    return new Response(route.body ?? "", { status: route.status });
+    return new Response(route.body ?? "", { status: route.status, headers: route.headers });
   }) as typeof fetch;
   const source = new HttpGdgSource({
     baseUrl: "https://gdg.community.dev",
@@ -115,5 +118,61 @@ describe("HttpGdgSource", () => {
     expect(result.ok && result.value).toContain("gdg-nuevo-capitulo-ejemplo");
     expect(result.ok && result.value).toContain("gdg-zaragoza");
     expect(result.ok && result.value).toHaveLength(7);
+  });
+
+  describe("revisión de seguridad", () => {
+    const madrid = { status: 200, body: fixture("chapter-gdg-madrid.html") };
+
+    it("sigue una redirección del mismo origen a una ruta permitida", async () => {
+      const { source, calls } = setup({
+        "/robots.txt": robots,
+        "/gdg-madrid-old/": { status: 301, headers: { location: "/gdg-madrid/" } },
+        "/gdg-madrid/": madrid,
+      });
+      const result = await source.getChapter("gdg-madrid-old");
+      // La página dice ser gdg-madrid: se rechaza para no guardar un slug distinto del pedido.
+      expect(result).toMatchObject({ ok: false, error: { kind: "invalid" } });
+      expect(calls.map((c) => c.url)).toEqual(["/robots.txt", "/gdg-madrid-old/", "/gdg-madrid/"]);
+    });
+
+    it("no sigue una redirección a una ruta prohibida por robots.txt", async () => {
+      const { source, calls } = setup({
+        "/robots.txt": robots,
+        "/gdg-x/": { status: 302, headers: { location: "/api/chapter_region/" } },
+      });
+      expect(await source.getChapter("gdg-x")).toEqual({
+        ok: false,
+        error: { kind: "forbidden", path: "/api/chapter_region/" },
+      });
+      expect(calls.map((c) => c.url)).toEqual(["/robots.txt", "/gdg-x/"]);
+    });
+
+    it("no sigue una redirección a otro dominio", async () => {
+      const { source, calls } = setup({
+        "/robots.txt": robots,
+        "/gdg-x/": { status: 302, headers: { location: "https://evil.example/gdg-x/" } },
+      });
+      expect(await source.getChapter("gdg-x")).toMatchObject({ ok: false, error: { kind: "forbidden" } });
+      expect(calls).toHaveLength(2);
+    });
+
+    it("rechaza una página cuyo slug no coincide con el pedido", async () => {
+      const { source } = setup({ "/robots.txt": robots, "/gdg-otro/": madrid });
+      expect(await source.getChapter("gdg-otro")).toEqual({
+        ok: false,
+        error: { kind: "invalid", detail: "la página de gdg-otro dice ser gdg-madrid" },
+      });
+    });
+
+    it("rechaza respuestas demasiado grandes", async () => {
+      const { source } = setup({
+        "/robots.txt": robots,
+        "/gdg-madrid/": { status: 200, body: "x".repeat(5 * 1024 * 1024 + 1) },
+      });
+      expect(await source.getChapter("gdg-madrid")).toEqual({
+        ok: false,
+        error: { kind: "invalid", detail: "respuesta demasiado grande" },
+      });
+    });
   });
 });

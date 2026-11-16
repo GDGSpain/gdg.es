@@ -67,4 +67,16 @@ describe.skipIf(!emulator)("FirestoreOrganizerRepository (emulador)", () => {
     expect(ana.get("own")).toEqual({ bio: "propia" });
     expect(ana.get("hiddenAt")).not.toBeNull();
   });
+
+  it("borra a quien se queda sin capítulos, salvo si está oculto", async () => {
+    await repo.replaceChapterTeam(975, [m("ana"), m("oculta")], t);
+    await db.doc("organizers/oculta").update({ hiddenAt: new Date() });
+
+    expect(await repo.replaceChapterTeam(975, [], t)).toEqual({ members: 0, removed: 2 });
+
+    expect((await db.doc("organizers/ana").get()).exists).toBe(false);
+    const oculta = await db.doc("organizers/oculta").get();
+    expect(oculta.exists).toBe(true);
+    expect(oculta.get("chapterIds")).toEqual([]);
+  });
 });

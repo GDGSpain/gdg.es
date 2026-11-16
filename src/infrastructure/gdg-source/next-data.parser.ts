@@ -14,6 +14,18 @@ const emptyToNull = z
   .nullish()
   .transform((v) => (v && v.trim() !== "" ? v.trim() : null));
 
+/** URL de una página de gdg.community.dev: solo https y ese host (evita `javascript:` y similares). */
+export const sourcePageUrl = z.url({ protocol: /^https$/, hostname: /^gdg\.community\.dev$/ });
+
+/** Slug de capítulo válido. */
+export const SLUG_PATTERN = /^[a-z0-9][a-z0-9-]*$/;
+
+/** Usuario de X o Instagram con su formato; si no lo cumple, null. */
+const handle = (pattern: RegExp) =>
+  emptyToNull.transform((v) => (v && pattern.test(v.replace(/^@/, "")) ? v.replace(/^@/, "") : null));
+const xHandle = handle(/^[A-Za-z0-9_]{1,15}$/);
+const instagramHandle = handle(/^[A-Za-z0-9._]{1,30}$/);
+
 /** URL absoluta válida o null (la fuente mezcla "", null y URLs sin esquema). */
 const urlOrNull = emptyToNull.transform((v) => {
   if (!v) return null;
@@ -43,9 +55,9 @@ const chapterDataSchema = z.object({
     .nullish()
     .transform((v) => v ?? ""),
   website: urlOrNull,
-  twitter_handle: emptyToNull,
+  twitter_handle: xHandle,
   linkedin_page: urlOrNull,
-  instagram_handle: emptyToNull,
+  instagram_handle: instagramHandle,
   members_count: z
     .number()
     .int()
@@ -54,7 +66,7 @@ const chapterDataSchema = z.object({
     .transform((v) => v ?? null),
   is_active: z.boolean(),
   is_hidden: z.boolean().default(false),
-  url: z.url(),
+  url: sourcePageUrl,
 });
 
 /** Miembro del equipo: se valida cada uno por separado para que uno raro no tumbe el capítulo. */
@@ -66,14 +78,14 @@ const teamMemberSchema = z.object({
     last_name: z.string().nullish(),
     profile_url: z.string().regex(/^\/u\/[a-z0-9]+\/?$/i),
     cropped_avatar_url: urlOrNull,
-    twitter: emptyToNull,
+    twitter: xHandle,
   }),
 });
 
 const chapterPageSchema = z.object({
   props: z.object({
     pageProps: z.object({
-      chapterSlug: z.string().min(1),
+      chapterSlug: z.string().regex(SLUG_PATTERN),
       chapterData: chapterDataSchema,
       prerenderData: z.object({ chapterTeam: z.array(z.unknown()).nullish() }).nullish(),
     }),
@@ -103,7 +115,7 @@ export function parseTeam(raw: unknown[]): SourceTeamMember[] {
       profileId,
       name,
       avatarUrl: avatar && !DEFAULT_AVATAR.test(avatar) ? avatar : null,
-      twitter: user.twitter?.replace(/^@/, "") ?? null,
+      twitter: user.twitter,
       role: title?.trim() || "Organizer",
     });
   }
@@ -155,9 +167,9 @@ export function parseChapterPage(html: string): Result<SourceChapter, ParseError
     bannerUrl: c.cropped_banner_url,
     descriptionHtml: c.description,
     website: c.website,
-    twitter: c.twitter_handle?.replace(/^@/, "") ?? null,
+    twitter: c.twitter_handle,
     linkedin: c.linkedin_page,
-    instagram: c.instagram_handle?.replace(/^@/, "") ?? null,
+    instagram: c.instagram_handle,
     membersCount: c.members_count,
     active: c.is_active && !c.is_hidden,
     url: c.url,

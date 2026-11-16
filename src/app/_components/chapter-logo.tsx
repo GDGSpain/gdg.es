@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./chapter-logo.module.css";
+import { isAllowedImageUrl } from "./image-url";
 
 /** Logo del capítulo, o sus iniciales si la fuente no tiene logo (RF-CHAPTERS-001/002). */
 export function ChapterLogo({
@@ -11,9 +12,7 @@ export function ChapterLogo({
   logoUrl: string | null;
   size?: number;
 }) {
-  const usable =
-    logoUrl && new URL(logoUrl).hostname === "res.cloudinary.com" && !/DefaultChapterThumbnail/.test(logoUrl);
-  if (usable) {
+  if (isAllowedImageUrl(logoUrl) && !/DefaultChapterThumbnail/.test(logoUrl)) {
     return <Image className={styles.logo} src={logoUrl} alt="" width={size} height={size} />;
   }
   const initials = title
