@@ -2,8 +2,10 @@
  * Raíz de composición del servidor (ADR-0006): único sitio que conoce a la vez los casos de uso y los
  * adaptadores concretos. RF-SYNC-002: dependencias del sync de capítulos.
  */
+import type { ChapterReaderPort } from "@/modules/chapters/ports/chapter-reader.port";
 import type { ImportChaptersDeps } from "@/modules/sync/import-chapters.service";
 import type { AppConfig } from "@/shared/config/config";
+import { FirestoreChapterReader } from "@/infrastructure/firestore/chapter-reader.adapter";
 import { FirestoreChapterRepository } from "@/infrastructure/firestore/chapter-repository.adapter";
 import { getServerFirestore } from "@/infrastructure/firestore/admin";
 import { HttpGdgSource } from "@/infrastructure/gdg-source/http-gdg-source.adapter";
@@ -22,4 +24,12 @@ export function buildImportChaptersDeps(config: AppConfig): ImportChaptersDeps {
     repository: new FirestoreChapterRepository(getServerFirestore(config)),
     now: () => new Date(),
   };
+}
+
+/**
+ * Lector de capítulos para la web pública (RF-CHAPTERS-001/002).
+ * @param config configuración validada
+ */
+export function buildChapterReader(config: AppConfig): ChapterReaderPort {
+  return new FirestoreChapterReader(getServerFirestore(config));
 }

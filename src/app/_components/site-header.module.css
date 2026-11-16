@@ -1,0 +1,31 @@
+.header {
+  border-bottom: var(--border-width) solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  max-width: var(--container-max);
+  min-height: var(--header-height);
+  margin: 0 auto;
+  padding: 0 var(--container-gutter);
+}
+
+.brand {
+  display: inline-flex;
+}
+
+.nav {
+  display: flex;
+  gap: var(--space-6);
+  list-style: none;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.nav a {
+  color: var(--color-text);
+}

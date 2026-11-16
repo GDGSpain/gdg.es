@@ -97,3 +97,33 @@ describe.skipIf(!emulator)("FirestoreChapterRepository (emulador)", () => {
     await expect(repo.upsertFromSource(fields({ sourceUrl: "no-es-una-url" }), t1)).rejects.toThrow();
   });
 });
+
+describe.skipIf(!emulator)("FirestoreChapterReader (emulador)", () => {
+  it("lee el resumen y la ficha, y marca como ocultos los que tienen hiddenAt", async () => {
+    const { FirestoreChapterReader } = await import("./chapter-reader.adapter");
+    const db = getServerFirestore(
+      loadConfig({ FIRESTORE_EMULATOR_HOST: emulator, FIREBASE_PROJECT_ID: "demo-gdg-es" }),
+    );
+    await db.recursiveDelete(db.collection("chapters"));
+    const repo = new FirestoreChapterRepository(db);
+    await repo.upsertFromSource(fields(), new Date("2026-11-12T04:00:00Z"));
+    await repo.upsertFromSource(
+      fields({ sourceId: 968, slug: "gdg-santiago-de-compostela" }),
+      new Date("2026-11-12T04:00:00Z"),
+    );
+    await db.doc("chapters/968").update({ hiddenAt: new Date() });
+
+    const reader = new FirestoreChapterReader(db);
+    const all = await reader.listAll();
+    expect(all.find((c) => c.slug === "gdg-santiago-de-compostela")?.hidden).toBe(true);
+    const madrid = await reader.findBySlug("gdg-madrid");
+    expect(madrid).toMatchObject({
+      title: "GDG Madrid",
+      comunidadId: "MD",
+      hidden: false,
+      website: "http://gdg.es",
+    });
+    expect(madrid?.syncedAt).toEqual(new Date("2026-11-12T04:00:00Z"));
+    expect(await reader.findBySlug("no-existe")).toBeNull();
+  });
+});

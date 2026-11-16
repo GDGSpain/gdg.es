@@ -4,11 +4,11 @@
 Página pública con todos los capítulos activos de España, buscable y filtrable.
 
 ## Criterios de Aceptación
-- [ ] Lista de capítulos activos con logo, nombre, ciudad y número de próximos eventos
-- [ ] Búsqueda por nombre o ciudad
-- [ ] Filtro por comunidad autónoma
-- [ ] Cada capítulo enlaza a su ficha (RF-CHAPTERS-002)
-- [ ] Página indexable (renderizado en servidor, metadatos y sitemap)
+- [x] Lista de capítulos activos con logo, nombre, ciudad y comunidad (el número de próximos eventos llega con RF-SYNC-004)
+- [x] Búsqueda por nombre o ciudad (sin distinguir acentos ni mayúsculas)
+- [x] Filtro por comunidad autónoma, con el número de capítulos de cada una
+- [x] Cada capítulo enlaza a su ficha (RF-CHAPTERS-002)
+- [ ] Página indexable (renderizado en servidor y metadatos hechos; *falta el sitemap*)
 
 ## Impacto
 
@@ -24,13 +24,20 @@ Página pública con todos los capítulos activos de España, buscable y filtrab
 - Ninguno detectado
 
 ## Notas Técnicas
-- Acceso al mapa de capítulos (RF-MAP-001) desde la misma página.
+- Acceso al mapa de capítulos (RF-MAP-001) desde la misma página, cuando exista.
+- Filtros en la URL (`?q=`, `?comunidad=`) con formulario GET: funciona sin JavaScript.
+- Solo se listan capítulos activos y no ocultos (`isPublic`).
 
 ## Implementación
-<!-- Se rellena al implementar -->
+- `src/modules/chapters/chapter.ts`, `ports/chapter-reader.port.ts` — dominio y puerto
+- `src/modules/chapters/list-chapters.service.ts` (+ test) — caso de uso
+- `src/infrastructure/firestore/chapter-reader.adapter.ts` (+ test con emulador)
+- `src/app/capitulos/page.tsx`, `page.module.css`, `error.tsx` — página
+- `src/app/_components/` — cabecera, pie y logo de capítulo
+- `next.config.ts` — imágenes de `res.cloudinary.com`
 
 ## Estado
-- [ ] Análisis completado
-- [ ] Código implementado
-- [ ] Tests pasando
-- [ ] Documentación actualizada
+- [x] Análisis completado
+- [x] Código implementado
+- [ ] Tests pasando — caso de uso en verde; el del lector, en el CI con emulador
+- [x] Documentación actualizada

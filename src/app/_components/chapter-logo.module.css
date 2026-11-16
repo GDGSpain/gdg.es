@@ -1,0 +1,18 @@
+.logo {
+  flex: none;
+  border-radius: var(--radius-md);
+  border: var(--border-width) solid var(--color-border);
+  background: var(--color-surface);
+  object-fit: contain;
+}
+
+.fallback {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  border-radius: var(--radius-md);
+  background: var(--color-action-subtle);
+  color: var(--color-link);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-lg);
+}
