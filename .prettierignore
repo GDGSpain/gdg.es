@@ -7,3 +7,4 @@ docs/context/*.json
 .claude/
 src/sync/__fixtures__/
 db/seed/
+hosting/

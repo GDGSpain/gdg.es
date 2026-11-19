@@ -32,8 +32,8 @@
     "ignore": ["firebase.json", "**/.*", "README.md"],
     "redirects": [
       {
-        "source": "/:path*",
-        "destination": "https://gdg-es-web--gdg-es-develop.europe-west4.hosted.app/:path",
+        "regex": "^/(.*)$",
+        "destination": "https://gdg-es-web--gdg-es-develop.europe-west4.hosted.app/:1",
         "type": 302
       }
     ]
