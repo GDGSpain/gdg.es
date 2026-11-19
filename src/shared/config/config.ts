@@ -45,6 +45,17 @@ export const configSchema = z.object({
 /** Configuración validada. */
 export type AppConfig = z.infer<typeof configSchema>;
 
+/** projectId del JSON de FIREBASE_CONFIG (lo define App Hosting en tiempo de ejecución). */
+function projectFromFirebaseConfig(raw: string | undefined): string | undefined {
+  if (!raw) return undefined;
+  try {
+    const value = (JSON.parse(raw) as { projectId?: unknown }).projectId;
+    return typeof value === "string" && value ? value : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 /**
  * Valida un conjunto de variables de entorno.
  * @param env variables (normalmente `process.env`)
@@ -52,23 +63,19 @@ export type AppConfig = z.infer<typeof configSchema>;
  * @throws Error con la lista de variables inválidas, para que la app no arranque mal configurada
  */
 export function loadConfig(env: Record<string, string | undefined>): AppConfig {
-  // En Google Cloud (App Hosting, Cloud Run) el proyecto viene en GOOGLE_CLOUD_PROJECT: así DEV y PRO
-  // usan siempre su propio proyecto sin configurarlo a mano.
+  // En Google Cloud el proyecto lo da el entorno (App Hosting expone FIREBASE_CONFIG; otros servicios,
+  // GOOGLE_CLOUD_PROJECT). Si no hay ninguno, el Admin SDK lo averigua con las credenciales de ejecución.
   const parsed = configSchema.safeParse({
     ...env,
-    FIREBASE_PROJECT_ID: env.FIREBASE_PROJECT_ID || env.GOOGLE_CLOUD_PROJECT || env.GCLOUD_PROJECT,
+    FIREBASE_PROJECT_ID:
+      env.FIREBASE_PROJECT_ID ||
+      env.GOOGLE_CLOUD_PROJECT ||
+      env.GCLOUD_PROJECT ||
+      projectFromFirebaseConfig(env.FIREBASE_CONFIG),
   });
   if (!parsed.success) {
     const fields = parsed.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; ");
     throw new Error(`Configuración inválida: ${fields}`);
-  }
-  // En App Hosting el Admin SDK usa la cuenta de ejecución (ADC): no hacen falta claves, solo el proyecto.
-  if (
-    parsed.data.NODE_ENV === "production" &&
-    !parsed.data.FIREBASE_PROJECT_ID &&
-    !parsed.data.FIRESTORE_EMULATOR_HOST
-  ) {
-    throw new Error("Configuración inválida: falta FIREBASE_PROJECT_ID en producción");
   }
   if (Boolean(parsed.data.FIREBASE_CLIENT_EMAIL) !== Boolean(parsed.data.FIREBASE_PRIVATE_KEY)) {
     throw new Error("Configuración inválida: FIREBASE_CLIENT_EMAIL y FIREBASE_PRIVATE_KEY van juntas");
