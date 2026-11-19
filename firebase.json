@@ -30,13 +30,11 @@
   "hosting": {
     "public": "hosting",
     "ignore": ["firebase.json", "**/.*", "README.md"],
-    "rewrites": [
+    "redirects": [
       {
-        "source": "**",
-        "run": {
-          "serviceId": "gdg-es-web",
-          "region": "europe-west4"
-        }
+        "source": "/:path*",
+        "destination": "https://gdg-es-web--gdg-es-develop.europe-west4.hosted.app/:path",
+        "type": 302
       }
     ]
   },

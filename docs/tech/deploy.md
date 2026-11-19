@@ -21,12 +21,16 @@ flowchart LR
 
 ## Primer despliegue en DEV (manual, desde tu Mac)
 
-Resultado: la web en **https://gdg-es-develop.web.app** (Firebase Hosting reescribe todas las rutas al
-backend de App Hosting `gdg-es-web`, Cloud Run en `europe-west4`). También responde en
-`https://gdg-es-web--gdg-es-develop.europe-west4.hosted.app`.
+Resultado: la web en **https://gdg-es-web--gdg-es-develop.europe-west4.hosted.app** (App Hosting) y
+**https://gdg-es-develop.web.app** redirige ahí (302, conservando la ruta).
+
+Por qué redirección y no reescritura: App Hosting deja su servicio de Cloud Run cerrado a peticiones que no
+lleguen por su propio dominio, así que una reescritura de Hosting a Cloud Run devuelve `403 Forbidden`
+(comprobado el 2026-11-19). Para servir la web en un dominio propio sin redirección (`dev.gdg.es`, `gdg.es`)
+se conecta como **dominio personalizado del backend de App Hosting**, no de Hosting.
 
 Ficheros: `apphosting.yaml` (recursos y variables; sin claves), `firebase.json` (`apphosting` con lo que no
-se sube —nunca `.env*`— y `hosting` con la reescritura), `hosting/` (carpeta pública vacía).
+se sube —nunca `.env*`— y `hosting` con la redirección), `hosting/` (carpeta pública vacía).
 
 Una sola vez:
 
@@ -44,10 +48,10 @@ Cada despliegue:
 
 ```bash
 npx firebase deploy --only firestore,apphosting --project gdg-es-develop   # reglas + web (5–10 min)
-npx firebase deploy --only hosting --project gdg-es-develop                # web.app → backend (solo si cambia la reescritura)
+npx firebase deploy --only hosting --project gdg-es-develop                # web.app → backend (solo si cambia la redirección)
 ```
 
-Comprobar: https://gdg-es-develop.web.app/capitulos debe listar los 38 capítulos. Si da error 500, mirar
+Comprobar: https://gdg-es-develop.web.app/capitulos debe redirigir y listar los 38 capítulos. Si da error 500, mirar
 los registros del backend (consola → App Hosting → `gdg-es-web` → Registros): casi siempre es el rol del
 paso 3.
 

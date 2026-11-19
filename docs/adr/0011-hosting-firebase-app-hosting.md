@@ -23,8 +23,9 @@ Firebase Hosting clásico a dos proyectos: `gdg-es-develop` (desde `develop`) y 
   token OIDC de una cuenta de servicio). El mismo caso de uso lo dispara el botón del panel.
 - Secretos en **Cloud Secret Manager**, referenciados desde `apphosting.yaml`.
 - Backend `gdg-es-web` en `europe-west4`. Mientras no esté conectado a GitHub se despliega desde el código
-  local (`firebase deploy --only apphosting`). **Firebase Hosting** reescribe todas las rutas al backend para
-  que la web se vea en el dominio de siempre (`gdg-es-develop.web.app`, y `gdg.es` en PRO).
+  local (`firebase deploy --only apphosting`). **Firebase Hosting** redirige `gdg-es-develop.web.app` al
+  backend (una reescritura da 403 porque el Cloud Run de App Hosting no admite tráfico de otro origen). Los
+  dominios propios (`gdg.es` en PRO) se conectan directamente al backend de App Hosting.
 - El proyecto lo toma la app de `GOOGLE_CLOUD_PROJECT`, así un mismo `apphosting.yaml` vale para DEV y PRO.
 
 ## Alternativas
